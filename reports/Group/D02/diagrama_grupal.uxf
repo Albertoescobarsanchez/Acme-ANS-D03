@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>255</x>
+      <y>465</y>
+      <w>285</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airport
+--
++ name: String {Mandatory, ValidString(max = 50), Automapped}
++ iataCode: String {Mandatory, ValidIATACode, Column(unique = true)}
++ operationalScope: OperationalScope {Mandatory, Valid, Automapped}
++ city: String {Mandatory, ValidString(max = 50), Automapped}
++ country: String {Mandatory, ValidString(max = 50), Automapped}
++ website: String {Optional, ValidUrl, Automapped}
++ email: String {Optional, ValidEmail, Automapped}
++ phoneNumber: String {Optional, ValidString(pattern = "\\+?\\d{6,15}$"), Automapped}
+bg=GREEN
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>175</y>
+      <w>340</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--
++ name: String {Mandatory, ValidString(max = 50), Automapped}
++ iataCode: String {Mandatory, ValidIATACode, Column(unique = true)}
++ website: String {Mandatory, ValidUrl, Automapped}
++ type: AirlineType {Mandatory, Valid, Automapped}
++ foundationMoment: Date {Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
++ email: String {Optional, ValidEmail, Automapped}
++ phoneNumber: String {Optional, ValidString(pattern = "^\\+?\\d{6,15}$"), Automapped}
+fg=BLACK
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>685</x>
+      <y>345</y>
+      <w>300</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Aircraft
+--
++ model: String {Mandatory, ValidString(max = 50), Automapped}
++ registrationNumber: String {Mandatory, ValidString(max = 50), Column(unique = true)}
++ capacityPassengers: Integer {Mandatory, ValidNumber(min = 0), Automapped}
++ cargoWeight: Integer {Mandatory, ValidNumber(min = 2000, max = 50000), Automapped}
++ status: Status {Mandatory, Valid, Automapped}
++ details: String {Optional, ValidString(max = 255), Automapped}
+
+bg=GREEN
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>235</x>
+      <y>195</y>
+      <w>310</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Review
+--
++ name: String {Mandatory, ValidString(max = 50), Automapped}
++ moment: Date {Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
++ subject: String {Mandatory, ValidString(max = 50), Automapped}
++ text: String {Mandatory, ValidString, Automapped}
++ score: Double {Optional, ValidNumber(min = 0, max = 10), Automapped}
++ recommended: Boolean {Optional, Valid, Automapped}
+bg=GREEN
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>335</y>
+      <w>270</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Service
+--
++ name: String {Mandatory, ValidString(max = 50), Automapped}
++ pictureLink: String {Mandatory, ValidUrl, Automapped}
++ averageDwellTime: Double {Mandatory, ValidNumber(min = 0), Automapped}
++ promotionCode: String {Optional, Column(unique = true), ValidPromotionCode}
++ discount: Money {Optional, ValidMoney, Automapped}
+bg=GREEN
+fg=BLACK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>395</x>
+      <y>105</y>
+      <w>105</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+OperationalScope
+--
+INTERNATIONAL
+DOMESTIC
+REGIONAL
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>110</y>
+      <w>105</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AirlineType
+--
+LUXURY
+STANDARD
+LOW_COST
+fg=BLACK
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>485</y>
+      <w>105</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Status
+--
+ACTIVE
+UNDER_MAINTENANCE
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>465</y>
+      <w>185</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ numberAirports: Map&lt;OperationalScope, Integer&gt;
++ numberAirlines: Map&lt;AirlineType, Integer&gt;
++ ratiowithEmailAndPhoneNumber: Double
++ ratioActiveAircraft: Double
++ ratioNonActiveAircraft: Double
++ reviewsWithScoreAbove5: Double
++ countNumberOfReviews: Integer
++ averageNumberOfReviews: Double
++ minimumNumberOfReviews: Integer
++ maximumNumberOfReviews: Integer
++ standardDeviationNumberOfReviews: Double
+
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>265</y>
+      <w>20</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;-x
+m1=1
+m2=*
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>235</y>
+      <w>120</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>220.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>385</x>
+      <y>265</y>
+      <w>25</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=0..1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>165</x>
+      <y>225</y>
+      <w>100</w>
+      <h>305</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=0..1
+m2=*</panel_attributes>
+    <additional_attributes>180.0;580.0;10.0;580.0;20.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>385</x>
+      <y>410</y>
+      <w>20</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

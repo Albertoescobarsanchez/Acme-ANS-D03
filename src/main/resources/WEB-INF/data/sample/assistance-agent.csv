@@ -1,0 +1,3 @@
+key,key:userAccount,employeeCode,languages,startDate,bio,salary,photoURL,key:airline
+agent-01,user-account-agent-01,AGO123456,"English, Spanish, French",2008/01/01 00:00,My name is Agent One,EUR 1500,http://example.com/agent1.jpg,airline-01
+agent-02,user-account-agent-02,AGT123456,"Spanish, Chinese",2014/05/21 00:00,My name is Agent Two,EUR 1700,http://example.com/agent2.jpg,airline-01

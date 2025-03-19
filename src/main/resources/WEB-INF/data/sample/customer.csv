@@ -1,0 +1,3 @@
+key,key:userAccount,identifier,phone-number,physical-address,city,country,earned-points
+customer-01,user-account-customer-01,CC000000,633541243,Calle Olivo 21,Sevilla,España,35
+customer-02,user-account-customer-02,CC000001,688696562,Gran Vía,Madrid,España,50

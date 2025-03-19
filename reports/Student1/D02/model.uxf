@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>176</x>
+      <y>304</y>
+      <w>472</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Flight
+--
++tag: String{Mandatory,ValidString(max = 50),Automapped}
++selfTransfer: Boolean{Mandatory,Valid,Automapped}
++cost: Money{Mandatory,ValidMoney,Automapped} 
++description: String{Optional,ValidString,Automapped}
++scheduledDeparture: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
++scheduledArrival: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
++origin: Airport{Mandatory,Valid,Automapped}
++destination: Airport{Mandatory,Valid,Automapped}
++layovers: Integer{Mandatory,ValidNumber(min = 1),Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>560</y>
+      <w>88</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Status
+--
++ON_TIME
++DELAYED
++CANCELLED
++LANDED
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>176</x>
+      <y>536</y>
+      <w>472</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Leg
+--
++flightNumber: String{Mandatory,ValidLegCode,Column(unique = true)}
++scheduledDeparture: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
++scheduledArrival: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
++hours: Float{Mandatory,Valid,Automapped}
++status: Status{Mandatory,Valid,Automapped}
++departureAirport: Airport{Mandatory,Valid,Automapped}
++arrivalAirport: Airport{Mandatory,Valid,Automapped}
++aircraft: Aircraft{}
+
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>456</y>
+      <w>40</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+Has
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>232</y>
+      <w>312</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AirlineManagerDashboard
+--
++ranking: Integer
++yearsToRetire: Integer
++ratioOfOntimeAndDelayedFlights: Double
++mostPopularAirport: Airport
++lessPopularAirport: Airport
++numberofLegsByStatus: Map&lt;Status, Integer&gt;
++averageFlightCost: Money
++deviationFlightCost: Money
++maximumFlightCost: Money
++minimumFlightCost: Money
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>192</x>
+      <y>136</y>
+      <w>408</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Rol&gt;&gt;
+AirlineManager
+--
++identifierNumber: String{Mandatory,ValidIdentifierCode,Column(unique = true)}
++yearsOfExperience: Integer{Mandatory,ValidNumber,Automapped}
++birthDate: Date{Mandatory,ValidMoment,Temporal}
++pictureLink: String{Optional,ValidUrl,Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>232</y>
+      <w>72</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+Manages
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>736</x>
+      <y>160</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>176</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+Works for
+m2=0..n</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>536</y>
+      <w>408</w>
+      <h>184</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+WeatherData
+--
++date: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
++weatherCondition: String{Mandatory,ValidString,Automapped}
++description: String{Mandatory,ValidString,Automapped}
++temperature: Float{Mandatory,Valid,Automapped}
++maxTemperature: Float{Mandatory,Valid,Automapped}
++minTemperature: Float{Mandatory,Valid,Automapped}
++sensationTemperature: Float{Mandatory,Valid,Automapped}
++humidity: Float{Mandatory,ValidNumber(min = 0),Automapped}
++windSpeed: Float{Mandatory,ValidNumber(min = 0),Automapped}
++cloudiness: Float{Mandatory,ValidNumber(min = 0),Automapped}
++visibility: Integer{Mandatory,ValidNumber(min = 0),Automapped}
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>784</x>
+      <y>416</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airport
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>464</y>
+      <w>56</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+Data of
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+</diagram>
