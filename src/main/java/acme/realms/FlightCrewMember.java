@@ -57,7 +57,7 @@ public class FlightCrewMember extends AbstractRole {
 	private Money				salary;
 
 	@Optional
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
 	private Integer				yearsExperience;
 
