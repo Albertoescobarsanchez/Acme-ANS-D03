@@ -10,22 +10,31 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.consumer;
+package acme.features.airlineManager.flight;
+
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.client.components.principals.UserAccount;
 import acme.client.repositories.AbstractRepository;
-import acme.realms.Consumer;
+import acme.entities.flight.Flight;
+import acme.entities.leg.Leg;
+import acme.realms.AirlineManager;
 
 @Repository
-public interface AuthenticatedConsumerRepository extends AbstractRepository {
+public interface AirlineManagerFlightRepository extends AbstractRepository {
 
-	@Query("select ua from UserAccount ua where ua.id = :id")
-	UserAccount findUserAccountById(int id);
+	@Query("select m from AirlineManager m where m.id = :id")
+	AirlineManager findAirlineManagerById(int id);
 
-	@Query("select c from Consumer c where c.userAccount.id = :id")
-	Consumer findConsumerByUserAccountId(int id);
+	@Query("select f from Flight f where f.id = :id")
+	Flight findFlightById(int id);
+
+	@Query("select f from Flight f where f.airlineManager.id = :id")
+	Collection<Flight> findFlightsByAirlineManagerId(int id);
+
+	@Query("select l from Leg l where l.flight.id = :id")
+	Collection<Leg> findLegsByFlightId(int id);
 
 }
