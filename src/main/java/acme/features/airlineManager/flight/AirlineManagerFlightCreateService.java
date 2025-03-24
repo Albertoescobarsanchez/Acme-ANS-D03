@@ -10,77 +10,81 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.consumer;
+package acme.features.airlineManager.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.principals.Authenticated;
-import acme.client.components.principals.UserAccount;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.realms.Consumer;
+import acme.entities.flight.Flight;
+import acme.realms.AirlineManager;
 
 @GuiService
-public class AuthenticatedConsumerCreateService extends AbstractGuiService<Authenticated, Consumer> {
+public class AirlineManagerFlightCreateService extends AbstractGuiService<AirlineManager, Flight> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedConsumerRepository repository;
-
-	// AbstractService<Authenticated, Consumer> ---------------------------
+	private AirlineManagerFlightRepository repository;
 
 
 	@Override
 	public void authorise() {
 		boolean status;
 
-		status = !super.getRequest().getPrincipal().hasRealmOfType(Consumer.class);
+		status = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class);
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Consumer object;
-		int userAccountId;
-		UserAccount userAccount;
+		Flight flight;
+		int managerId;
+		AirlineManager manager;
 
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		userAccount = this.repository.findUserAccountById(userAccountId);
+		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		manager = this.repository.findAirlineManagerById(managerId);
 
-		object = new Consumer();
-		object.setUserAccount(userAccount);
-
-		super.getBuffer().addData(object);
+		flight = new Flight();
+		flight.setAirlineManager(manager);
+		flight.setDraftMode(true);
+		flight.setScheduledArrival(MomentHelper.getBaseMoment());
+		flight.setScheduledDeparture(MomentHelper.getBaseMoment());
+		flight.setOrigin("Empty");
+		flight.setDestination("Empty");
+		flight.setLayovers(0);
+		super.getBuffer().addData(flight);
 	}
 
 	@Override
-	public void bind(final Consumer object) {
+	public void bind(final Flight object) {
 		assert object != null;
 
-		super.bindObject(object, "company", "sector");
+		super.bindObject(object, "tag", "selfTransfer", "cost", "description");
 	}
 
 	@Override
-	public void validate(final Consumer object) {
+	public void validate(final Flight object) {
 		assert object != null;
 	}
 
 	@Override
-	public void perform(final Consumer object) {
+	public void perform(final Flight object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final Consumer object) {
+	public void unbind(final Flight object) {
+
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "company", "sector");
+		dataset = super.unbindObject(object, "tag", "selfTransfer", "cost", "description");
 
 		super.getResponse().addData(dataset);
 	}

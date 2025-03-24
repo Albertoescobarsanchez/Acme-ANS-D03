@@ -7,7 +7,7 @@
       <x>176</x>
       <y>304</y>
       <w>472</w>
-      <h>160</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Flight
@@ -18,9 +18,10 @@ Flight
 +description: String{Optional,ValidString,Automapped}
 +scheduledDeparture: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
 +scheduledArrival: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
-+origin: Airport{Mandatory,Valid,Automapped}
-+destination: Airport{Mandatory,Valid,Automapped}
-+layovers: Integer{Mandatory,ValidNumber(min = 1),Automapped}
++origin: String{Mandatory,ValidString,Automapped}
++destination: String{Mandatory,ValidString,Automapped}
++layovers: Integer{Mandatory,ValidNumber(min = 0),Automapped}
++draftMode: Boolean{Mandatory,Valid,Automapped}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
@@ -58,10 +59,7 @@ Leg
 +scheduledArrival: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
 +hours: Float{Mandatory,Valid,Automapped}
 +status: Status{Mandatory,Valid,Automapped}
-+departureAirport: Airport{Mandatory,Valid,Automapped}
-+arrivalAirport: Airport{Mandatory,Valid,Automapped}
-+aircraft: Aircraft{}
-
++draftMode: Boolean{Mandatory,Valid,Automapped}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
@@ -69,15 +67,15 @@ bg=GREEN</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>408</x>
-      <y>456</y>
+      <y>464</y>
       <w>40</w>
-      <h>96</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 Has
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -190,8 +188,8 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>416</y>
+      <x>704</x>
+      <y>424</y>
       <w>88</w>
       <h>56</h>
     </coordinates>
@@ -203,15 +201,70 @@ Airport
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>464</y>
-      <w>56</w>
-      <h>88</h>
+      <x>736</x>
+      <y>472</y>
+      <w>104</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 Data of
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>424</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Aircraft
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>464</y>
+      <w>176</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+departureAirport
+m2=0..n</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>472</y>
+      <w>104</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+arrivalAirport
+m2=0..n</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>112</x>
+      <y>472</y>
+      <w>112</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+aircraft
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;80.0</additional_attributes>
   </element>
 </diagram>

@@ -18,7 +18,6 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.entities.airport.Airport;
 import acme.realms.AirlineManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -63,19 +62,24 @@ public class Flight extends AbstractEntity {
 	private Date				scheduledArrival;
 
 	@Mandatory
-	@Valid
+	@ValidString
 	@Automapped
-	private Airport				origin;
+	private String				origin;
 
 	@Mandatory
-	@Valid
+	@ValidString
 	@Automapped
-	private Airport				destination;
+	private String				destination;
 
 	@Mandatory
-	@ValidNumber(min = 1)
+	@ValidNumber(min = 0)
 	@Automapped
 	private Integer				layovers;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
 
 	@Mandatory
 	@Valid

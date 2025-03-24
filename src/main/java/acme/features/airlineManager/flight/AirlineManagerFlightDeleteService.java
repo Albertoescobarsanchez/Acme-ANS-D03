@@ -10,74 +10,73 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.consumer;
+package acme.features.airlineManager.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.principals.Authenticated;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.realms.Consumer;
+import acme.entities.flight.Flight;
+import acme.realms.AirlineManager;
 
 @GuiService
-public class AuthenticatedConsumerUpdateService extends AbstractGuiService<Authenticated, Consumer> {
+public class AirlineManagerFlightDeleteService extends AbstractGuiService<AirlineManager, Flight> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedConsumerRepository repository;
-
-	// AbstractService interface ----------------------------------------------ç
+	private AirlineManagerFlightRepository repository;
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-
-		status = super.getRequest().getPrincipal().hasRealmOfType(Consumer.class);
-
+		int flightId = super.getRequest().getData("id", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
+		status = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().getAccountId() == flight.getAirlineManager().getUserAccount().getId();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Consumer object;
-		int userAccountId;
+		Flight flight;
+		int flightId;
 
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		object = this.repository.findConsumerByUserAccountId(userAccountId);
+		flightId = super.getRequest().getData("id", int.class);
+		flight = this.repository.findFlightById(flightId);
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(flight);
 	}
 
 	@Override
-	public void bind(final Consumer object) {
+	public void bind(final Flight object) {
 		assert object != null;
 
-		super.bindObject(object, "company", "sector");
+		super.bindObject(object, "tag", "selfTransfer", "cost", "description");
 	}
 
 	@Override
-	public void validate(final Consumer object) {
+	public void validate(final Flight object) {
 		assert object != null;
 	}
 
 	@Override
-	public void perform(final Consumer object) {
+	public void perform(final Flight object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
+		;
 	}
 
 	@Override
-	public void unbind(final Consumer object) {
+	public void unbind(final Flight object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "company", "sector");
+		dataset = super.unbindObject(object, "tag", "selfTransfer", "cost", "description", "scheduledDeparture", "scheduledArrival", "origin", "destination", "layovers", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 

@@ -60,16 +60,21 @@ public class Leg extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
+	private Boolean				draftMode;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
 	private Airport				departureAirport;
 
 	@Mandatory
 	@Valid
-	@Automapped
+	@ManyToOne(optional = false)
 	private Airport				arrivalAirport;
 
 	@Mandatory
 	@Valid
-	@Automapped
+	@ManyToOne(optional = false)
 	private Aircraft			aircraft;
 
 	@Mandatory
