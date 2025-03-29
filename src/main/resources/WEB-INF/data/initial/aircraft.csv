@@ -1,0 +1,2 @@
+key,model,registrationNumber,capacityPassengers,cargoWeight,status,details,key:airline
+aircraft-01,Model,123456,100,3000,ACTIVE,null,airline-01

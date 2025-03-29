@@ -34,5 +34,6 @@
 		<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
 		<acme:submit code="airline-manager.flight.form.button.delete" action="/airline-manager/flight/delete"/>
 		<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>
+		<acme:button code="airline-manager.leg.form.button.list" action="/airline-manager/leg/list?masterId=${id}"/>
 	</jstl:if>
 </acme:form>
