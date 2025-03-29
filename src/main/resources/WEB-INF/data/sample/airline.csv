@@ -1,0 +1,65 @@
+key,name,iataCode,website,type,foundationMoment,email,phoneNumber
+# base entity
+airline-00,Lorem ipsum dolor sit ame,CVD,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+# name - standard variations
+airline-01,"L",BBB,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-02,"Lo",BBC,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",BBD,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",BBE,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-05,โลเร็ม อิปซัม,BBF,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-06,لوريم إيبسوم,BBG,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-07,洛伦·伊普森,BBH,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-08,<marquee>Hacked</marquee>,BBI,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-09,<script>alert(‘Hacked!’);</script>,BBJ,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-10,'' or 'A' = 'A ,BBK,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+# name - no singular values
+# IATAcode - standard variations
+airline-11,Lorem ipsum dolor sit ame,AAA,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-12,Lorem ipsum dolor sit ame,ZZZ,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+# IATAcode - no singular values
+# website - standard variations
+airline-13,Lorem ipsum dolor sit ame,BBL,ftp://a,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-14,Lorem ipsum dolor sit ame,BBM,ftp://a.b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-15,Lorem ipsum dolor sit ame,BBN,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-16,Lorem ipsum dolor sit ame,BBO,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-17,Lorem ipsum dolor sit ame,BBP,https://www.lorem-ipsum.org,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-18,Lorem ipsum dolor sit ame,BBQ,ftp://www.lorem-ipsum.org,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-19,Lorem ipsum dolor sit ame,BBR,http://www.lorem-ipsum.org/dolor/sit.html,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-20,Lorem ipsum dolor sit ame,BBS,http://www.lorem-ipsum.org/dolor/sit.html#dolor,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-21,Lorem ipsum dolor sit ame,BBT,http://example.org?a=1&b=2,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-22,Lorem ipsum dolor sit ame,BBU,http://example.org?,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-23,Lorem ipsum dolor sit ame,BBV,http://example.org?a,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-24,Lorem ipsum dolor sit ame,BBW,http://example.org?a&b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-25,Lorem ipsum dolor sit ame,BBX,http://example.org/,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-26,Lorem ipsum dolor sit ame,BBZ,http://example.org/a,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-27,Lorem ipsum dolor sit ame,BCA,http://example.org/a/b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-28,Lorem ipsum dolor sit ame,BCB,http://example.org/a/b?,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-29,Lorem ipsum dolor sit ame,BCD,http://example.org/a/b?a&b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+# website - no singular values
+# type - standard variations
+airline-30,Lorem ipsum dolor sit ame,BCE,http://lorem.com/ipsum,STANDARD,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-31,Lorem ipsum dolor sit ame,BCF,http://lorem.com/ipsum,LOW_COST,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+# type - no singular values
+# foundationMoment - standard variations
+airline-32,Lorem ipsum dolor sit ame,BCG,http://lorem.com/ipsum,LUXURY,2000/01/01 0:00,acme@lorem-ipsum.org,650788393
+airline-33,Lorem ipsum dolor sit ame,BCH,http://lorem.com/ipsum,LUXURY,2000/01/01 0:01,acme@lorem-ipsum.org,650788393
+airline-34,Lorem ipsum dolor sit ame,BCI,http://lorem.com/ipsum,LUXURY,2024/12/31 23:59,acme@lorem-ipsum.org,650788393
+airline-35,Lorem ipsum dolor sit ame,BCJ,http://lorem.com/ipsum,LUXURY,2025/01/01 0:00,acme@lorem-ipsum.org,650788393
+# foundationMoment - no singular values
+# emailAddres - standard variations
+airline-36,Lorem ipsum dolor sit ame,BCL,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,a@b.e,650788393
+airline-37,Lorem ipsum dolor sit ame,BCM,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,a@b.es,650788393
+airline-38,Lorem ipsum dolor sit ame,BCN,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,a@b.esx,650788393
+airline-39,Lorem ipsum dolor sit ame,BCO,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,650788393
+airline-40,Lorem ipsum dolor sit ame,BCP,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,650788393
+# emailAddres - no singular values
+# phoneNumber - standard variations
+airline-41,Lorem ipsum dolor sit ame,BCQ,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,+123456
+airline-42,Lorem ipsum dolor sit ame,BCR,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,123456
+airline-43,Lorem ipsum dolor sit ame,BCS,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,+1234567
+airline-44,Lorem ipsum dolor sit ame,BCT,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,1234567
+airline-45,Lorem ipsum dolor sit ame,BCU,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,+123456789012345
+airline-46,Lorem ipsum dolor sit ame,BCV,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,123456789012345
+airline-47,Lorem ipsum dolor sit ame,BCX,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,+12345678901234
+airline-48,Lorem ipsum dolor sit ame,BCY,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,12345678901234
+# phoneNumber - no singular values
