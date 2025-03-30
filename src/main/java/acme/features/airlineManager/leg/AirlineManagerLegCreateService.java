@@ -57,7 +57,6 @@ public class AirlineManagerLegCreateService extends AbstractGuiService<AirlineMa
 
 		leg = new Leg();
 		leg.setFlight(flight);
-		leg.setHours((float) 0);
 		leg.setDraftMode(true);
 		super.getBuffer().addData(leg);
 	}
@@ -101,8 +100,10 @@ public class AirlineManagerLegCreateService extends AbstractGuiService<AirlineMa
 		}
 		flight.setDestination(object.getArrivalAirport().getCity());
 		flight.setScheduledArrival(object.getScheduledArrival());
-		flight.setLayovers(legs.size() - 1);
-		object.setHours(object.getHours());
+		if (legs.size() > 0)
+			flight.setLayovers(legs.size() - 1);
+		else
+			flight.setLayovers(0);
 		object.setId(0);
 		this.repository.save(object);
 		this.repository.save(flight);

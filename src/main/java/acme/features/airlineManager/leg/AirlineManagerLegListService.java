@@ -49,9 +49,10 @@ public class AirlineManagerLegListService extends AbstractGuiService<AirlineMana
 	public void load() {
 		Collection<Leg> objects;
 		int flightId = super.getRequest().getData("masterId", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
 		super.getResponse().addGlobal("masterId", flightId);
 		objects = this.repository.findLegsByFlightId(flightId);
-
+		super.getResponse().addGlobal("masterDraftMode", flight.getDraftMode());
 		super.getBuffer().addData(objects);
 	}
 
@@ -68,6 +69,7 @@ public class AirlineManagerLegListService extends AbstractGuiService<AirlineMana
 			dataset.put("draftMode", "✓");
 		else
 			dataset.put("draftMode", "✗");
+
 		super.getResponse().addData(dataset);
 	}
 

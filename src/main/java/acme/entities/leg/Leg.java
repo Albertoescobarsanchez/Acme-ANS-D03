@@ -52,11 +52,6 @@ public class Leg extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private Float				hours;
-
-	@Mandatory
-	@Valid
-	@Automapped
 	private Status				status;
 
 	@Mandatory
