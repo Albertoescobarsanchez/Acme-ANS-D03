@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.bookingRecord;
+package acme.features.customer.bookingRecord;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

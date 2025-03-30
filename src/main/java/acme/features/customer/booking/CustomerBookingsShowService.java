@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.booking;
+package acme.features.customer.booking;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingsShowService extends AbstractGuiService<Customer, Booking> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -51,25 +51,6 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 	}
 
 	@Override
-	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "price", "travelClass", "flight");
-	}
-
-	@Override
-	public void validate(final Booking booking) {
-		if (booking.isDraftMode() == false)
-			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
-		Booking b = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
-		if (b != null)
-			super.state(false, "locatorCode", "acme.validation.confirmation.message.booking.locator-code");
-	}
-
-	@Override
-	public void perform(final Booking booking) {
-		this.repository.save(booking);
-	}
-
-	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 		SelectChoices choices;
@@ -89,4 +70,5 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 
 		super.getResponse().addData(dataset);
 	}
+
 }

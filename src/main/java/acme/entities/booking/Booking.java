@@ -78,7 +78,7 @@ public class Booking extends AbstractEntity {
 			return noPrice;
 		} else {
 			price = flightRepository.findCostByFlight(this.flight.getId());
-			Collection<Passenger> pass = bookingRepository.findPassengersByBooking(this.getId());
+			Collection<Passenger> pass = bookingRepository.findPassengerByBooking(this.getId());
 			Double amount = price.getAmount() * pass.size();
 			price.setAmount(amount);
 			return price;

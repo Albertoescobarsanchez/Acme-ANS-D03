@@ -1,0 +1,37 @@
+key,key:customer,key:flight,locator-code,purchase-moment,travel-class,draft-mode,last-nibble
+#base-examples
+booking-01,customer-01,flight-01,MQLTCA63,2012/07/02 0:00,ECONOMY,true,1234
+#locatorCode-examples
+booking-02,customer-01,flight-01,Z25HMTX,2012/07/02 0:00,ECONOMY,true,1234
+booking-03,customer-01,flight-01,890FTIV,2012/07/02 0:00,ECONOMY,true,1234
+booking-04,customer-01,flight-01,IKSL258,2012/07/02 0:00,ECONOMY,true,1234
+booking-05,customer-01,flight-01,QOCMWS2,2012/07/02 0:00,ECONOMY,true,1234
+booking-06,customer-01,flight-01,AXS4TE,2012/07/02 0:00,ECONOMY,true,1234
+booking-07,customer-02,flight-01,HMB1GFC,2012/07/02 0:00,ECONOMY,true,1234
+booking-08,customer-02,flight-01,GYV32KK0,2012/07/02 0:00,ECONOMY,true,1234
+booking-09,customer-02,flight-01,GJQJSMGI,2012/07/02 0:00,ECONOMY,true,1234
+booking-10,customer-02,flight-01,OBVKTUQ,2012/07/02 0:00,ECONOMY,true,1234
+booking-11,customer-02,flight-01,WYVEH7,2012/07/02 0:00,ECONOMY,true,1234
+#purchaseMoment-examples
+booking-12,customer-01,flight-01,MQLTCA64,2012/07/02 0:00,ECONOMY,true,1234
+booking-13,customer-01,flight-01,MQLTCA65,2000/01/01 00:00,ECONOMY,true,1234
+booking-14,customer-01,flight-01,MQLTCA66,2000/01/01 00:01,ECONOMY,true,1234
+booking-15,customer-01,flight-01,MQLTCA67,2024/12/31 23:59,ECONOMY,true,1234
+booking-16,customer-01,flight-01,MQLTCA68,2025/01/01 0:00,ECONOMY,true,1234
+#travelClass-examples
+booking-17,customer-01,flight-01,MQLTCA69,2012/07/02 0:00,ECONOMY,true,1234
+booking-18,customer-01,flight-01,MQLTCA70,2012/07/02 0:00,BUSINESS,true,1234
+#lastNibble-examples
+booking-19,customer-01,flight-01,MQLTCA75,2012/07/02 00:00,ECONOMY,true,1234
+booking-20,customer-01,flight-01,MQLTCA76,2012/07/02 00:00,ECONOMY,true,1603
+booking-21,customer-01,flight-01,MQLTCA77,2012/07/02 00:00,ECONOMY,true,6855
+booking-22,customer-01,flight-01,MQLTCA78,2012/07/02 00:00,ECONOMY,true,4669
+booking-23,customer-01,flight-01,MQLTCA79,2012/07/02 00:00,ECONOMY,true,4178
+booking-24,customer-01,flight-01,MQLTCA80,2012/07/02 00:00,ECONOMY,true,5630
+booking-25,customer-01,flight-01,MQLTCA81,2012/07/02 00:00,ECONOMY,true,1816
+booking-26,customer-01,flight-01,MQLTCA82,2012/07/02 00:00,ECONOMY,true,9907
+booking-27,customer-01,flight-01,MQLTCA83,2012/07/02 00:00,ECONOMY,true,0879
+#draftmode-examples
+booking-28,customer-01,flight-01,MQLTCA84,2012/07/02 00:00,ECONOMY,true,0879
+booking-29,customer-01,flight-01,MQLTCA85,2012/07/02 00:00,ECONOMY,false,0879
+
