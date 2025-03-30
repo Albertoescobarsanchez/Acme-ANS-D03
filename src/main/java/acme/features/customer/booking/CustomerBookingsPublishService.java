@@ -1,5 +1,5 @@
 
-package acme.features.customerBookings;
+package acme.features.customer.booking;
 
 import java.util.ArrayList;
 import java.util.List;
