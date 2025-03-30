@@ -22,5 +22,6 @@
 	<acme:list-column code="airline-manager.leg.list.label.status" path="status" width="25%"/>
 	<acme:list-column code="airline-manager.leg.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>
-
-<acme:button code="airline-manager.leg.list.button.create" action="/airline-manager/leg/create?masterId=${masterId}"/>
+<jstl:if test="${masterDraftMode==true}">
+	<acme:button code="airline-manager.leg.list.button.create" action="/airline-manager/leg/create?masterId=${masterId}"/>
+</jstl:if>
