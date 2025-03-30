@@ -1,5 +1,5 @@
 /*
- * AirlineManagerFlightShowService.java
+ * AirlineManagerLegtShowService.java
  *
  * Copyright (C) 2012-2025 Rafael Corchuelo.
  *
@@ -36,7 +36,7 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 		boolean status;
 		int flightId = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(flightId);
-		status = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class) && flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().getActiveRealm().getId() == flight.getAirlineManager().getId();
+		status = flight != null && super.getRequest().getPrincipal().getActiveRealm().getId() == flight.getAirlineManager().getId();
 		super.getResponse().setAuthorised(status);
 	}
 

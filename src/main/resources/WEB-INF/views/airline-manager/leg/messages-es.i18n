@@ -1,0 +1,43 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+airline-manager.leg.list.title = Lista de tramos
+airline-manager.leg.form.title = Datos del tramo
+
+airline-manager.leg.list.label.flightNumber = Número de vuelo
+airline-manager.leg.list.label.departureAirport = Aeropuerto de salida
+airline-manager.leg.list.label.arrivalAirport = Aeropuerto de llegada
+airline-manager.leg.list.label.status = Estado
+airline-manager.leg.list.label.draftMode = Es borrador
+
+airline-manager.leg.list.button.create = Crear tramo
+
+airline-manager.leg.form.label.flightNumber = Número de vuelo
+airline-manager.leg.form.label.scheduledDeparture = Salida programada
+airline-manager.leg.form.label.scheduledArrival = Llegada programada
+airline-manager.leg.form.label.status = Estado
+airline-manager.leg.form.label.departureAirport = Aeropuerto de salida
+airline-manager.leg.form.label.arrivalAirport = Aeropuerto de llegada
+airline-manager.leg.form.label.aircraft = Avión
+
+airline-manager.leg.form.button.create = Crear tramo
+airline-manager.leg.form.button.update = Actualizar tramo
+airline-manager.leg.form.button.delete = Borrar tramo
+airline-manager.leg.form.button.publish = Publicar tramo
+
+airline-manager.leg.form.error.duplicatedFlightNumber = Número de vuelo duplicado
+airline-manager.leg.form.error.flightNumberNotStartingWithAirlineIATACode = El número de vuelo debe empezar por el código IATA de la aerolínea
+airline-manager.leg.form.error.arrivalBeforeDeparture = La llegada programada tiene que ser posterior a la salida programada
+airline-manager.leg.form.error.legDepartureBeforeExistingLegArrival = La fecha de salida programada tiene que ser posterior a la fecha de llegada programada del último tramo existente
+airline-manager.leg.form.error.arrivalAirportCannotBeEqualThanDepartureAirport = El aeropuerto de llegada no puede ser igual que el aeropuerto de salida
+airline-manager.leg.form.error.departurebeforeSomePastLegArrival = La fecha programada de salida tiene que ser posterior a la fecha programada de llegada de cualquier tramo pasado
+airline-manager.leg.form.error.arrivalAfterSomeFutureLegDeparture = La fecha programada de llegada tiene que ser anterior a la fecha programada de salida de cualquier tramo futuro
+airline-manager.leg.form.error.departureAirportMustBeEqualThanPreviousLegArrivalAirport = El aeropuerto de salida tiene que ser igual que el aeropuerto de llegada del tramo anterior
+airline-manager.leg.form.error.arrivalAirportMustBeEqualThanNextLegDepartureAirport = El aeropuerto de llegada tiene que ser igual que el aeropuerto de salida del siguiente tramo
