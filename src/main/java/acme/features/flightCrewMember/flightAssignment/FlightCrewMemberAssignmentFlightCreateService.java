@@ -45,7 +45,7 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 		flightAssignment.setLastUpdate(MomentHelper.getBaseMoment());
 		flightAssignment.setStatus(StatusAssignment.CONFIRMED);
 		flightAssignment.setRemarks("This is remarks");
-		flightAssignment.setPublish(false);
+		flightAssignment.setDraftMode(false);
 		//flightAssignment.setLeg("Empty");
 		//flightAssignment.setMember(0);
 		super.getBuffer().addData(flightAssignment);

@@ -1,2 +1,2 @@
-key, duty, last-update, status, remarks, publish, key:leg, key:member
-flight-assignment-01, PILOT, 2022/05/21 10:00, PENDING, "This is a comment", false, leg-01, flight-crew-member-01
+key,duty,last-update,status,remarks,draft-mode,key:leg,key:member
+flight-assignment-01,PILOT,2022/05/21 10:00,PENDING,This is a comment,false,leg-01,flight-crew-member-01

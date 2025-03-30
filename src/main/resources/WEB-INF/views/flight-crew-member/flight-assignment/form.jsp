@@ -16,23 +16,23 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="airline-manager.flight.form.label.tag" path="tag"/>
-	<acme:input-checkbox code="airline-manager.flight.form.label.selfTransfer" path="selfTransfer"/>
-	<acme:input-money code="airline-manager.flight.form.label.cost" path="cost"/>
-	<acme:input-textbox code="airline-manager.flight.form.label.description" path="description"/>
+	<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.duty" path="duty"/>
+	<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.lastUpdate" path="lastUpdate"/>
+	<acme:input-money code="flight-crew-member.flight-assignment.form.label.status" path="status"/>
+	<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.remarks" path="remarks"/>
 	
 	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="airline-manager.flight.form.button.create" action="/airline-manager/flight/create"/>
+		<acme:submit code="flight-crew-member.flight-assignment.form.button.create" action="/flight-crew-member/flight-assignment/create"/>
 	</jstl:if>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
-		<acme:input-moment code="airline-manager.flight.form.label.scheduledDeparture" path="scheduledDeparture" readonly="true"/>
-		<acme:input-moment code="airline-manager.flight.form.label.scheduledArrival" path="scheduledArrival" readonly="true"/>
-		<acme:input-textbox code="airline-manager.flight.form.label.origin" path="origin" readonly="true"/>
-		<acme:input-textbox code="airline-manager.flight.form.label.destination" path="destination" readonly="true"/>
-		<acme:input-textbox code="airline-manager.flight.form.label.layovers" path="layovers" readonly="true"/>
-		<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
-		<acme:submit code="airline-manager.flight.form.button.delete" action="/airline-manager/flight/delete"/>
-		<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& publish==true}">
+		<acme:input-moment code="flight-crew-member.flight-assignment.form.label.scheduledDeparture" path="scheduledDeparture" readonly="true"/>
+		<acme:input-moment code="flight-crew-member.flight-assignment.form.label.scheduledArrival" path="scheduledArrival" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.origin" path="origin" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.destination" path="destination" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.layovers" path="layovers" readonly="true"/>
+		<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update"/>
+		<acme:submit code="flight-crew-member.flight-assignment.form.button.delete" action="/flight-crew-member/flight-assignment/delete"/>
+		<acme:submit code="flight-crew-member.flight-assignment.form.button.publish" action="/flight-crew-member/flight-assignment/publish"/>
 	</jstl:if>
 </acme:form>

@@ -12,22 +12,17 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.flight.Flight;
 import acme.entities.flightAssignment.FlightAssignment;
-import acme.entities.leg.Leg;
-import acme.realms.AirlineManager;
+import acme.realms.FlightCrewMember;
 
 @GuiService
-public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiService<AirlineManager, Flight> {
+public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -40,7 +35,7 @@ public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiS
 		boolean status;
 		int flightAssignmentId = super.getRequest().getData("id", int.class);
 		FlightAssignment flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-		status = flightAssignment != null && flightAssignment.isPublish() && super.getRequest().getPrincipal().getAccountId() == flightAssignment.getMember().getUserAccount().getId();
+		status = flightAssignment != null && flightAssignment.isDraftMode() && super.getRequest().getPrincipal().getAccountId() == flightAssignment.getMember().getUserAccount().getId();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -65,15 +60,10 @@ public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiS
 	@Override
 	public void validate(final FlightAssignment object) {
 		assert object != null;
-		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getId()));
-		super.state(!legs.isEmpty(), "*", "airline-manager.flight.form.error.publishingWithoutAnyLeg");
-
-		boolean allpublished = legs.stream().allMatch(l -> !l.getDraftMode());
-		super.state(allpublished, "*", "airline-manager.flight.form.error.notPublishedLegs");
 	}
 
 	@Override
-	public void perform(final Flight object) {
+	public void perform(final FlightAssignment object) {
 		assert object != null;
 		object.setDraftMode(false);
 		this.repository.save(object);

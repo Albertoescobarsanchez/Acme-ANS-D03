@@ -25,7 +25,7 @@ public class FlightCrewMemberAssignmentFlightShowService extends AbstractGuiServ
 		boolean status;
 		int flightAssignmentId = super.getRequest().getData("id", int.class);
 		FlightAssignment flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-		status = super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class) && flightAssignment != null && !flightAssignment.isPublish() && super.getRequest().getPrincipal().getActiveRealm().getId() == flightAssignment.getMember().getId();
+		status = super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class) && flightAssignment != null && !flightAssignment.isDraftMode() && super.getRequest().getPrincipal().getActiveRealm().getId() == flightAssignment.getMember().getId();
 		super.getResponse().setAuthorised(status);
 	}
 

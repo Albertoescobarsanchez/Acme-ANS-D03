@@ -1,2 +1,3 @@
 key,name,iataCode,operational-scope,city,country,website,email,phone-number
-airport-00,Empty Airport,EMP,INTERNATIONAL,empty,empty,https://empty.com,empty@airport.com,+000000000
+airport-00,First Airport,FIR,INTERNATIONAL,first,first,https://first.com,first@airport.com,+000000000
+airport-01,Second Airport,SEC,INTERNATIONAL,second,second,https://second.com,second@airport.com,+000000000

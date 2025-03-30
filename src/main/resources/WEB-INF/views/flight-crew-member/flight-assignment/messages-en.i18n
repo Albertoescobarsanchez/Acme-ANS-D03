@@ -16,13 +16,14 @@ flight-crew-member.flight-assignment.list.label.origin = Origin
 flight-crew-member.flight-assignment.list.label.destination = Destination
 flight-crew-member.flight-assignment.list.label.draftMode = Is DraftMode
 
-flight-crew-member.flight-assignment.form.label.tag = Tag
-flight-crew-member.flight-assignment.form.label.selfTransfer = Requires self transfer
-flight-crew-member.flight-assignment.form.label.cost =  Cost
-flight-crew-member.flight-assignment.form.label.description = Description
+flight-crew-member.flight-assignment.form.label.duty = Duty
+flight-crew-member.flight-assignment.form.label.lastUpdate = Last Update
+flight-crew-member.flight-assignment.form.label.status = Status
+flight-crew-member.flight-assignment.form.label.remarks = Remarks
+
+flight-crew-member.flight-assignment.form.button.create = Create flight assignment
 
 flight-crew-member.flight-assignment.list.button.create = Create flight assignment
-flight-crew-member.flight-assignment.form.button.create = Create flight assignment
 flight-crew-member.flight-assignment.form.button.update = Update flight assignment
 flight-crew-member.flight-assignment.form.button.delete = Delete flight assignment
 flight-crew-member.flight-assignment.form.button.publish = Publish flight assignment

@@ -1,8 +1,6 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -31,23 +29,15 @@ public class FlightCrewMemberAssignmentFlightListService extends AbstractGuiServ
 
 	@Override
 	public void load() {
-		Collection<FlightAssignment> objects;
-		objects = this.repository.findFlightsAssignmentByFlightCrewMemberId(super.getRequest().getPrincipal().getActiveRealm().getId());
-		super.getBuffer().addData(objects);
+		int id;
+		id = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean completed = super.getRequest().getData("completed", boolean.class);
+		if (completed)
+			super.getBuffer().addData(this.repository.findFlightAssignmentCompletedByMemberId(id));
+		else
+			super.getBuffer().addData(this.repository.findFlightAssignmentNotCompletedByMemberId(id));
 	}
-	/*
-	 * @Override
-	 * public void loadCompleted() {
-	 * int id;
-	 * Status status;
-	 * FlightAssignment fligthAssignment;
-	 * id = super.getRequest().getPrincipal().getActiveRealm().getId();
-	 * fligthAssignment = this.repository.findFlightAssignmentById(id);
-	 * status = fligthAssignment.getLeg().getStatus();
-	 * if (status == Status.DELAYED)
-	 * super.getBuffer().addData(fligthAssignment);
-	 * }
-	 */
+
 	@Override
 	public void unbind(final FlightAssignment object) {
 		assert object != null;
@@ -56,7 +46,7 @@ public class FlightCrewMemberAssignmentFlightListService extends AbstractGuiServ
 
 		dataset = super.unbindObject(object, "duty", "status", "publish", "leg");
 		dataset.put("leg", object.getLeg().getFlightNumber());
-		if (object.isPublish())
+		if (object.isDraftMode())
 			dataset.put("publish", "✓");
 		else
 			dataset.put("publish", "✗");
