@@ -1,6 +1,6 @@
 key,model,registrationNumber,capacityPassengers,cargoWeight,status,details,key:airline
 #base-example
-aircraft-00,Boeing 737-800,B737-000,400,26000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-00,Boeing,B737-000,400,26000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-00
 #model-example
 aircraft-01,L,A320-001,410,27000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 aircraft-02,Lo,B777-002,420,28000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-02

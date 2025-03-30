@@ -1,8 +1,8 @@
 key,draftMode,key:flight,flightNumber,hours,scheduledDeparture,scheduledArrival,status,key:departureAirport,key:arrivalAirport,key:aircraft
 #base entity
-leg-00,true,flight-12,BBB-1111,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
-leg-01,true,flight-13,BCB-1112,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
-leg-02,true,flight-12,BBC-1113,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
-leg-03,true,flight-11,CBB-1114,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
-leg-04,true,flight-12,BCC-1115,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-00,true,flight-12,BBB1111,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-01,true,flight-13,BCB1112,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-02,true,flight-12,BBC1113,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-03,true,flight-11,CBB1114,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-04,true,flight-12,BCC1115,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
 
