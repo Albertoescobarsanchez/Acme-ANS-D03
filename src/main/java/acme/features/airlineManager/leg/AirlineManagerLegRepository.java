@@ -38,8 +38,8 @@ public interface AirlineManagerLegRepository extends AbstractRepository {
 	@Query("select a from Airport a")
 	Collection<Airport> findAirports();
 
-	@Query("select a from Aircraft a where a.airline.id = :id")
-	Collection<Aircraft> findAircraftsByAirlineId(int id);
+	@Query("select a from Aircraft a where a.airline.id = :id and a.status = 'ACTIVE'")
+	Collection<Aircraft> findActiveAircraftsByAirlineId(int id);
 
 	@Query("select l from Leg l where l.aircraft.airline.id = :id")
 	Collection<Leg> findLegsByAirlineId(int id);
