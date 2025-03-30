@@ -1,6 +1,8 @@
 
 package acme.entities.leg;
 
+import java.beans.Transient;
+import java.time.Duration;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -50,11 +52,6 @@ public class Leg extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private Float				hours;
-
-	@Mandatory
-	@Valid
-	@Automapped
 	private Status				status;
 
 	@Mandatory
@@ -81,4 +78,11 @@ public class Leg extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Flight				flight;
+
+
+	@Transient
+	public Float getHours() {
+		Duration duration = Duration.between(this.scheduledDeparture.toInstant(), this.scheduledArrival.toInstant());
+		return (float) (duration.toMillis() / (1000.0 * 60 * 60));
+	}
 }

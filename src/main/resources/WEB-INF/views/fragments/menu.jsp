@@ -46,6 +46,12 @@
 		<acme:menu-option code="master.menu.airline-manager" access="hasRealm('AirlineManager')">
 			<acme:menu-suboption code="master.menu.airline-manager.flight.list" action="/airline-manager/flight/list"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.assistance-agent" access="hasRealm('AssistanceAgent')">
+			<acme:menu-suboption code="master.menu.assistance-agent.claim.list" action="/assistance-agent/claim/list"/>
+			<acme:menu-suboption code="master.menu.assistance-agent.claim.listCompleted" action="/assistance-agent/claim/listCompleted"/>
+			<acme:menu-suboption code="master.menu.assistance-agent.claim.listPending" action="/assistance-agent/claim/listPending"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>		

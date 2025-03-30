@@ -17,6 +17,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
 import acme.entities.claim.Claim;
+import acme.entities.claim.Indicator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,7 +49,7 @@ public class TrackingLog extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private Boolean				accepted;
+	private Indicator			accepted;
 
 	@Optional
 	@ValidString
