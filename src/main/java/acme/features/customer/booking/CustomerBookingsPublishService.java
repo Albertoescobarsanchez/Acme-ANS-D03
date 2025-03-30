@@ -1,16 +1,19 @@
 
 package acme.features.customer.booking;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.entities.booking.Booking;
-import acme.entities.leg.Leg;
+import acme.entities.booking.TravelClass;
+import acme.entities.flight.Flight;
+import acme.entities.flight.FlightRepository;
+import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 public class CustomerBookingsPublishService extends AbstractGuiService<Customer, Booking> {
@@ -18,24 +21,29 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerBookingsRepository repository;
+	private CustomerBookingsRepository	repository;
+
+	@Autowired
+	private FlightRepository			flightRepository;
+
+	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId();
 		int bookingId = super.getRequest().getData("id", int.class);
 		Booking booking = this.repository.findBookingById(bookingId);
-		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class) && booking != null && booking && super.getRequest().getPrincipal().getActiveRealm().getId() == booking.getCustomer().getId();
+
+		boolean status = booking.getCustomer().getUserAccount().getId() == customerId && super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Booking booking;
-		int bookingId;
+		int bookingId = super.getRequest().getData("id", int.class);
 
-		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
 
 		super.getBuffer().addData(booking);
@@ -43,36 +51,43 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 
 	@Override
 	public void bind(final Booking object) {
-		assert object != null;
-
-		super.bindObject(object, "locatorMode", "lastNibble");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "price", "passengers");
 	}
 
 	@Override
-	public void validate(final Booking object) {
-		assert object != null;
-		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getId()));
-		super.state(!legs.isEmpty(), "*", "airline-manager.flight.form.error.publishingWithoutAnyLeg");
-
-		boolean allpublished = legs.stream().allMatch(l -> !l.getDraftMode());
-		super.state(allpublished, "*", "airline-manager.flight.form.error.notPublishedLegs");
+	public void validate(final Booking booking) {
+		if (booking.getLastNibble() == null || booking.getLastNibble().isBlank() || booking.getLastNibble().isEmpty()) {
+			String lastNibbleStored = this.repository.findBookingById(booking.getId()).getLastNibble();
+			if (lastNibbleStored == null || lastNibbleStored.isBlank() || lastNibbleStored.isBlank())
+				super.state(false, lastNibbleStored, "acme.validation.confirmation.message.lastNibble");
+		}
 	}
 
 	@Override
-	public void perform(final Booking object) {
-		assert object != null;
-		object.setLastNibble(null);
-		;
-		this.repository.save(object);
+	public void perform(final Booking booking) {
+		if (booking.getLastNibble() == null || booking.getLastNibble().isBlank() || booking.getLastNibble().isEmpty())
+			booking.setLastNibble(this.repository.findBookingById(booking.getId()).getLastNibble());
+		booking.setDraftMode(false);
+		this.repository.save(booking);
 	}
 
 	@Override
-	public void unbind(final Booking object) {
-		assert object != null;
-
+	public void unbind(final Booking booking) {
 		Dataset dataset;
+		SelectChoices choices;
+		SelectChoices flightChoices;
 
-		dataset = super.unbindObject(object, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+		Collection<Flight> flights = this.flightRepository.findAllFlights();
+		flightChoices = SelectChoices.from(flights, "descriptions", booking.getFlight());
+		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
+		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "price");
+		dataset.put("travelClass", choices);
+		dataset.put("passengers", passengers);
+		dataset.put("flight", flightChoices.getSelected().getKey());
+		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);
 	}

@@ -26,30 +26,35 @@ public class CustomerBookingsListService extends AbstractGuiService<Customer, Bo
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		int customerId;
+		Collection<Booking> bookings;
+
+		customerId = super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId();
+		bookings = this.repository.findBookingByCustomerId(customerId);
+		status = bookings.stream().allMatch(b -> b.getCustomer().getUserAccount().getId() == customerId);
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Booking> objects;
-		objects = this.repository.findBookingByCustomerId(super.getRequest().getPrincipal().getActiveRealm().getId());
+		Collection<Booking> bookings;
+		bookings = this.repository.findBookingByCustomerId(super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId());
 
-		super.getBuffer().addData(objects);
+		super.getBuffer().addData(bookings);
 	}
 
 	@Override
-	public void unbind(final Booking object) {
-		assert object != null;
-
+	public void unbind(final Booking booking) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "locatorCode", "lastNibble");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass");
 
-		// Comprobar que el último nibble de la tarjeta no es nulo ni vacío
-		if (object.getLastNibble() == null || object.getLastNibble().isEmpty())
-			throw new IllegalArgumentException("The booking cannot be published because the last credit card nibble has not been stored.");
-		dataset = super.unbindObject(object, "locatorCode", "lastNibble");
+		//		// Comprobar que el último nibble de la tarjeta no es nulo ni vacío
+		//		if (booking.getLastNibble() == null || booking.getLastNibble().isEmpty())
+		//			throw new IllegalArgumentException("The booking cannot be published because the last credit card nibble has not been stored.");
+		//		dataset = super.unbindObject(booking, "locatorCode", "lastNibble");
+
 		super.getResponse().addData(dataset);
 	}
 
