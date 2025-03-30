@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
+import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
@@ -16,6 +17,7 @@ import acme.entities.flight.FlightRepository;
 import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
+@GuiService
 public class CustomerBookingsPublishService extends AbstractGuiService<Customer, Booking> {
 
 	// Internal state ---------------------------------------------------------
