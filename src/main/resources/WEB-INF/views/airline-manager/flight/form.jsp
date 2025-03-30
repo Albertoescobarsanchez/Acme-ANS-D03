@@ -25,14 +25,19 @@
 		<acme:submit code="airline-manager.flight.form.button.create" action="/airline-manager/flight/create"/>
 	</jstl:if>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 		<acme:input-moment code="airline-manager.flight.form.label.scheduledDeparture" path="scheduledDeparture" readonly="true"/>
 		<acme:input-moment code="airline-manager.flight.form.label.scheduledArrival" path="scheduledArrival" readonly="true"/>
 		<acme:input-textbox code="airline-manager.flight.form.label.origin" path="origin" readonly="true"/>
 		<acme:input-textbox code="airline-manager.flight.form.label.destination" path="destination" readonly="true"/>
 		<acme:input-textbox code="airline-manager.flight.form.label.layovers" path="layovers" readonly="true"/>
+	</jstl:if>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
 		<acme:submit code="airline-manager.flight.form.button.update" action="/airline-manager/flight/update"/>
 		<acme:submit code="airline-manager.flight.form.button.delete" action="/airline-manager/flight/delete"/>
 		<acme:submit code="airline-manager.flight.form.button.publish" action="/airline-manager/flight/publish"/>
+	</jstl:if>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+		<acme:button code="airline-manager.leg.form.button.list" action="/airline-manager/leg/list?masterId=${id}"/>
 	</jstl:if>
 </acme:form>

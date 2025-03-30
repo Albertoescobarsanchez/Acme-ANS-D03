@@ -33,6 +33,6 @@
 		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.layovers" path="layovers" readonly="true"/>
 		<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update"/>
 		<acme:submit code="flight-crew-member.flight-assignment.form.button.delete" action="/flight-crew-member/flight-assignment/delete"/>
-		<acme:submit code="flight-crew-member.flight-assignment.form.button.publish" action="/flight-crew-member/flight-assignment/publish"/>
+		<acme:submit code="flight-crew-member.flight-assignment.form.button.draftMode" action="/flight-crew-member/flight-assignment/draft-mode"/>
 	</jstl:if>
 </acme:form>

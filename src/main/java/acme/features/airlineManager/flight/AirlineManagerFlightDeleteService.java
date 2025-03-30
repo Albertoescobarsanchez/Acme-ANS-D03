@@ -1,5 +1,5 @@
 /*
- * AirlineManagerFlightUpdateService.java
+ * AirlineManagerLegUpdateService.java
  *
  * Copyright (C) 2012-2025 Rafael Corchuelo.
  *
@@ -35,7 +35,7 @@ public class AirlineManagerFlightDeleteService extends AbstractGuiService<Airlin
 		boolean status;
 		int flightId = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(flightId);
-		status = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().getAccountId() == flight.getAirlineManager().getUserAccount().getId();
+		status = flight != null && flight.getDraftMode() && super.getRequest().getPrincipal().getActiveRealm().getId() == flight.getAirlineManager().getId();
 		super.getResponse().setAuthorised(status);
 	}
 

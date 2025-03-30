@@ -1,2 +1,2 @@
-key,flight-number,scheduled-departure,scheduled-arrival,hours,status,draft-mode,key:departure-airport,key:arrival-airport,key:aircraft,key:flight
-leg-01,AIX0000,2025/02/21 10:00,2025/02/21 12:00,2,ON_TIME,true,airport-00,airport-01,aircraft-01,flight-01
+key,flight-number,scheduled-departure,scheduled-arrival,status,draft-mode,key:departure-airport,key:arrival-airport,key:aircraft,key:flight
+leg-01,AIX0000,2025/02/21 10:00,2025/02/21 12:00,ON_TIME,true,airport-00,airport-01,aircraft-01,flight-01

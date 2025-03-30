@@ -1,5 +1,5 @@
 /*
- * AirlineManagerFlightShowService.java
+ * AirlineManagerLegtShowService.java
  *
  * Copyright (C) 2012-2025 Rafael Corchuelo.
  *
@@ -33,7 +33,11 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int flightId = super.getRequest().getData("id", int.class);
+		Flight flight = this.repository.findFlightById(flightId);
+		status = flight != null && super.getRequest().getPrincipal().getActiveRealm().getId() == flight.getAirlineManager().getId();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
