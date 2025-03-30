@@ -1,2 +1,7 @@
-key,flight-number,scheduled-departure,scheduled-arrival,status,draft-mode,key:departure-airport,key:arrival-airport,key:aircraft,key:flight
-leg-01,AIX0000,2025/02/21 10:00,2025/02/21 12:00,ON_TIME,true,airport-00,airport-01,aircraft-01,flight-01
+key,draftMode,key:flight,flightNumber,hours,scheduledDeparture,scheduledArrival,status,key:departureAirport,key:arrivalAirport,key:aircraft
+#base entity
+leg-00,true,flight-12,BBB1111,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-01,true,flight-13,BCB1112,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-02,true,flight-12,BBC1113,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-03,true,flight-11,CBB1114,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
+leg-04,true,flight-12,BCC1115,24.0,2015/03/13 00:00,2015/03/14 00:00,ON_TIME,airport-01,airport-01,aircraft-00
