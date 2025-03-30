@@ -1,15 +1,15 @@
 key,model,registrationNumber,capacityPassengers,cargoWeight,status,details,key:airline
 #base-example
-aircraft-00,Boeing,B737-000,400,26000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-00
+aircraft-00,Boeing,B737-000,400,26000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 #model-example
 aircraft-01,L,A320-001,410,27000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
-aircraft-02,Lo,B777-002,420,28000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-02
-aircraft-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",A350-003,430,29000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-03
-aircraft-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",B787-004,440,30000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-04
+aircraft-02,Lo,B777-002,420,28000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",A350-003,430,29000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",B787-004,440,30000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 #registrationNumber-example
-aircraft-05,Bombardier CRJ900,L,450,31000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-05
+aircraft-05,Bombardier CRJ900,L,450,31000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 aircraft-06,Boeing 787,Lo,460,32000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-06
-aircraft-07,Airbus A220,"Lorem ipsum dolor sit amet, consectetur adipiscin",470,33000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-07
+aircraft-07,Airbus A220,"Lorem ipsum dolor sit amet, consectetur adipiscin",470,33000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 aircraft-08,ATR 72,"Lorem ipsum dolor sit amet, consectetur adipiscing",480,34000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-08
 #capacity-example
 aircraft-09,Boeing 747,B747-009,1,35000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-09
