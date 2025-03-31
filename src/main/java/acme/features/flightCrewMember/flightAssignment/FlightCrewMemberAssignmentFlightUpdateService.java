@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -26,6 +27,7 @@ import acme.entities.flightAssignment.FlightAssignment;
 import acme.entities.flightAssignment.StatusAssignment;
 import acme.entities.leg.Leg;
 import acme.realms.FlightCrewMember;
+import acme.realms.StatusCrewMember;
 
 @GuiService
 public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
@@ -65,14 +67,28 @@ public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiSe
 
 	@Override
 	public void validate(final FlightAssignment object) {
-		assert object != null;
-	}
+		super.state(object.getMember() != null, "flightCrewMember", "acme.validation.flightAssignment.flightcrewmember");
+		super.state(object.getLeg() != null, "leg", "acme.validation.flightAssignment.leg");
 
-	@Override
-	public void perform(final FlightAssignment object) {
-		assert object != null;
+		//Solo 1 piloto y 1 copiloto por vuelo
+		if (object.getDuty() != null && object.getLeg() != null) {
+			boolean isDutyAssigned = this.repository.hasDutyAssigned(object.getLeg().getId(), object.getDuty(), object.getId());
+			super.state(!isDutyAssigned, "duty", "acme.validation.flightAssignment.duty");
+		}
 
-		this.repository.save(object);
+		if (object.getLeg() != null) {
+			boolean linkPastLeg = object.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
+			super.state(!linkPastLeg, "leg", "acme.validation.flightAssignment.leg.moment");
+		}
+
+		//Solo miembros de estado "AVAILABLE" pueden ser asignados
+		//No se puede asignar a multiples legs simultaneos
+		if (object.getMember() != null) {
+			boolean available = object.getMember().getStatus().equals(StatusCrewMember.AVAILABLE);
+			super.state(available, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.available");
+			boolean assigned = this.repository.hasLegAssociated(object.getMember().getId(), MomentHelper.getCurrentMoment());
+			super.state(!assigned, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.multipleLegs");
+		}
 	}
 
 	@Override
