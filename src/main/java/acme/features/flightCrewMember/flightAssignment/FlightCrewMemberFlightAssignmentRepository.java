@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.flightAssignment.FlightAssignment;
+import acme.entities.leg.Leg;
 import acme.realms.FlightCrewMember;
 
 @Repository
@@ -27,4 +28,16 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 
 	@Query("select fa from FlightAssignment fa where not fa.leg.status = 'LANDED' and fa.member.id = :id")
 	Collection<FlightAssignment> findFlightAssignmentNotCompletedByMemberId(int id);
+
+	@Query("select f from FlightAssignment f")
+	Collection<Leg> findFlightAssignment();
+
+	@Query("select f from FlightCrewMember f where f.airline.id = :id")
+	Collection<FlightCrewMember> findAllFlightCrewMemberFromAirline(int id);
+
+	@Query("select l from Leg l where l.aircraft.airline.id = :id")
+	Collection<Leg> findAllLegsFromAirline(int id);
+
+	@Query("select l from Leg l")
+	Collection<Leg> findAllLegs(int id);
 }

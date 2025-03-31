@@ -1,9 +1,12 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
@@ -11,6 +14,7 @@ import acme.client.services.GuiService;
 import acme.entities.flightAssignment.Duty;
 import acme.entities.flightAssignment.FlightAssignment;
 import acme.entities.flightAssignment.StatusAssignment;
+import acme.entities.leg.Leg;
 import acme.realms.FlightCrewMember;
 
 @GuiService
@@ -34,20 +38,17 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 	@Override
 	public void load() {
 		FlightAssignment flightAssignment;
-		int crewMemberId;
-		FlightCrewMember flightCrewMember;
-
-		crewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flightCrewMember = this.repository.findFlightCrewMemberById(crewMemberId);
-
 		flightAssignment = new FlightAssignment();
 		flightAssignment.setDuty(Duty.LEAD_ATTENDANT);
-		flightAssignment.setLastUpdate(MomentHelper.getBaseMoment());
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		flightAssignment.setStatus(StatusAssignment.CONFIRMED);
 		flightAssignment.setRemarks("This is remarks");
-		flightAssignment.setDraftMode(false);
-		//flightAssignment.setLeg("Empty");
-		//flightAssignment.setMember(0);
+		flightAssignment.setDraftMode(true);
+
+		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
+		flightAssignment.setMember(member);
+
 		super.getBuffer().addData(flightAssignment);
 	}
 
@@ -55,28 +56,44 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 	public void bind(final FlightAssignment object) {
 		assert object != null;
 
-		super.bindObject(object, "duty", "lastUpdate", "status", "remarks", "publish", "leg", "member");
+		super.bindObject(object, "duty", "status", "remarks", "leg");
 	}
 
 	@Override
 	public void validate(final FlightAssignment object) {
 		assert object != null;
+
 	}
 
 	@Override
 	public void perform(final FlightAssignment object) {
 		assert object != null;
 		this.repository.save(object);
+
 	}
 
 	@Override
 	public void unbind(final FlightAssignment object) {
-
 		Dataset dataset;
+		dataset = super.unbindObject(object, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");
 
-		dataset = super.unbindObject(object, "duty", "lastUpdate", "status", "remarks", "publish", "leg", "member");
+		//Choices
+		SelectChoices dutyChoices;
+		SelectChoices statusChoices;
+		SelectChoices legChoices;
+
+		dutyChoices = SelectChoices.from(Duty.class, object.getDuty());
+		statusChoices = SelectChoices.from(StatusAssignment.class, object.getStatus());
+		FlightCrewMember crewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		Collection<Leg> legs = this.repository.findAllLegsFromAirline(crewMember.getAirline().getId());
+		legChoices = SelectChoices.from(legs, "flightNumber", null);
+
+		dataset.put("dutyChoices", dutyChoices);
+		dataset.put("statusChoices", statusChoices);
+		dataset.put("legChoices", legChoices);
 
 		super.getResponse().addData(dataset);
+
 	}
 
 	@Override

@@ -16,23 +16,19 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.duty" path="duty"/>
-	<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.lastUpdate" path="lastUpdate"/>
-	<acme:input-money code="flight-crew-member.flight-assignment.form.label.status" path="status"/>
+	<acme:input-select code="flight-crew-member.flight-assignment.form.label.duty" path="duty" choices="${dutyChoices}"/>
+	<acme:input-moment code="flight-crew-member.flight-assignment.form.label.lastUpdate" path="lastUpdate"/>
+	<acme:input-select code="flight-crew-member.flight-assignment.form.label.status" path="status" choices="${statusChoices}"/>
 	<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.remarks" path="remarks"/>
+	<acme:input-select code="flight-crew-member.flight-assignment.form.label.leg" path="leg" choices="${legChoices}"/>
 	
 	<jstl:if test="${_command == 'create'}">
 		<acme:submit code="flight-crew-member.flight-assignment.form.button.create" action="/flight-crew-member/flight-assignment/create"/>
 	</jstl:if>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& publish==true}">
-		<acme:input-moment code="flight-crew-member.flight-assignment.form.label.scheduledDeparture" path="scheduledDeparture" readonly="true"/>
-		<acme:input-moment code="flight-crew-member.flight-assignment.form.label.scheduledArrival" path="scheduledArrival" readonly="true"/>
-		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.origin" path="origin" readonly="true"/>
-		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.destination" path="destination" readonly="true"/>
-		<acme:input-textbox code="flight-crew-member.flight-assignment.form.label.layovers" path="layovers" readonly="true"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
 		<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update"/>
 		<acme:submit code="flight-crew-member.flight-assignment.form.button.delete" action="/flight-crew-member/flight-assignment/delete"/>
-		<acme:submit code="flight-crew-member.flight-assignment.form.button.draftMode" action="/flight-crew-member/flight-assignment/draft-mode"/>
+		<acme:submit code="flight-crew-member.flight-assignment.form.button.publish" action="/flight-crew-member/flight-assignment/publish"/>				
 	</jstl:if>
 </acme:form>
