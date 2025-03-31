@@ -1,5 +1,5 @@
 /*
- * AirlineManagerFlightCreateService.java
+ * AirlineManagerLegCreateService.java
  *
  * Copyright (C) 2012-2025 Rafael Corchuelo.
  *
@@ -75,7 +75,7 @@ public class AirlineManagerFlightCreateService extends AbstractGuiService<Airlin
 	@Override
 	public void perform(final Flight object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

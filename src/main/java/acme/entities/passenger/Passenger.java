@@ -5,8 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -17,6 +19,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidPassportNumber;
+import acme.realms.Customer;
 import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,6 +55,10 @@ public class Passenger extends AbstractEntity {
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				birthDate;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	@Mandatory
 	@Automapped

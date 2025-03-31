@@ -1,0 +1,130 @@
+/*
+ * AirlineManagerLegUpdateService.java
+ *
+ * Copyright (C) 2012-2025 Rafael Corchuelo.
+ *
+ * In keeping with the traditional purpose of furthering education and research, it is
+ * the policy of the copyright owner to permit non-commercial use and redistribution of
+ * this software. It has been tested carefully, but it is not guaranteed for any particular
+ * purposes. The copyright owner does not offer any warranties or representations, nor do
+ * they accept any liabilities with respect to them.
+ */
+
+package acme.features.airlineManager.leg;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
+import acme.client.helpers.PrincipalHelper;
+import acme.client.services.AbstractGuiService;
+import acme.client.services.GuiService;
+import acme.entities.flight.Flight;
+import acme.entities.leg.Leg;
+import acme.entities.leg.Status;
+import acme.realms.AirlineManager;
+
+@GuiService
+public class AirlineManagerLegDeleteService extends AbstractGuiService<AirlineManager, Leg> {
+
+	// Internal state ---------------------------------------------------------
+
+	@Autowired
+	private AirlineManagerLegRepository repository;
+
+
+	@Override
+	public void authorise() {
+		boolean status;
+		int legId = super.getRequest().getData("id", int.class);
+		Leg leg = this.repository.findLegById(legId);
+		status = leg != null && leg.getDraftMode() && leg.getFlight().getAirlineManager().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		super.getResponse().setAuthorised(status);
+	}
+
+	@Override
+	public void load() {
+		Leg leg;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		leg = this.repository.findLegById(id);
+
+		super.getBuffer().addData(leg);
+	}
+
+	@Override
+	public void bind(final Leg object) {
+		assert object != null;
+
+		super.bindObject(object, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+	}
+
+	@Override
+	public void validate(final Leg object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Leg object) {
+		assert object != null;
+		Flight flight = object.getFlight();
+		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(flight.getId()));
+		legs.remove(object);
+		if (legs.isEmpty()) {
+			flight.setScheduledArrival(MomentHelper.getBaseMoment());
+			flight.setScheduledDeparture(MomentHelper.getBaseMoment());
+			flight.setOrigin("Empty");
+			flight.setDestination("Empty");
+			flight.setLayovers(0);
+		} else {
+			Leg firstLeg = legs.stream().sorted(Comparator.comparing(leg -> leg.getScheduledDeparture())).findFirst().get();
+			Leg lastLeg = legs.stream().sorted(Comparator.comparing(leg -> ((Leg) leg).getScheduledDeparture()).reversed()).findFirst().get();
+			flight.setOrigin(firstLeg.getDepartureAirport().getCity());
+			flight.setScheduledDeparture(firstLeg.getScheduledDeparture());
+			flight.setDestination(lastLeg.getArrivalAirport().getCity());
+			flight.setScheduledArrival(lastLeg.getScheduledArrival());
+			flight.setLayovers(legs.size() - 1);
+		}
+		this.repository.delete(object);
+		this.repository.save(flight);
+	}
+
+	@Override
+	public void unbind(final Leg object) {
+
+		Dataset dataset;
+
+		dataset = super.unbindObject(object, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "draftMode");
+		final SelectChoices departureAirportChoices;
+		final SelectChoices arrivalAirportChoices;
+		final SelectChoices aircraftChoices;
+		final SelectChoices statusChoices;
+		statusChoices = SelectChoices.from(Status.class, object.getStatus());
+		departureAirportChoices = SelectChoices.from(this.repository.findAirports(), "iataCode", object.getDepartureAirport());
+		arrivalAirportChoices = SelectChoices.from(this.repository.findAirports(), "iataCode", object.getArrivalAirport());
+		aircraftChoices = SelectChoices.from(this.repository.findActiveAircraftsByAirlineId(object.getFlight().getAirlineManager().getAirline().getId()), "registrationNumber", object.getAircraft());
+		dataset.put("departureAirports", departureAirportChoices);
+		dataset.put("arrivalAirports", arrivalAirportChoices);
+		dataset.put("aircraftChoices", aircraftChoices);
+		dataset.put("statuses", statusChoices);
+		dataset.put("departureAirport", departureAirportChoices.getSelected().getKey());
+		dataset.put("arrivalAirport", arrivalAirportChoices.getSelected().getKey());
+		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
+		dataset.put("status", statusChoices.getSelected().getKey());
+		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void onSuccess() {
+		if (super.getRequest().getMethod().equals("POST"))
+			PrincipalHelper.handleUpdate();
+	}
+
+}
