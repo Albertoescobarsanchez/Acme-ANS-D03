@@ -41,3 +41,7 @@ master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 master.menu.airline-manager = Airline Manager
 master.menu.airline-manager.flight.list = Flights
+
+master.menu.flight-crew-member = Flight crew member
+master.menu.flight-crew-member.flight-assignment.list.completed = List of completed flights
+master.menu.flight-crew-member.flight-assignment.list.not-completed = List of not-completed flights

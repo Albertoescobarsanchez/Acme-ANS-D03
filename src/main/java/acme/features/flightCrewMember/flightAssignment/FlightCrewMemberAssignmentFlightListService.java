@@ -44,7 +44,7 @@ public class FlightCrewMemberAssignmentFlightListService extends AbstractGuiServ
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "duty", "status", "draftMode", "leg");
+		dataset = super.unbindObject(object, "duty", "status", "draftMode", "leg", "lastUpdate", "remarks");
 		dataset.put("leg", object.getLeg().getFlightNumber());
 		if (object.isDraftMode())
 			dataset.put("draftMode", "✓");
