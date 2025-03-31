@@ -41,4 +41,7 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("SELECT c.leg FROM Claim c WHERE c.id = :claimId")
 	Leg findLegByClaimId(int claimId);
 
+	@Query("SELECT c FROM Claim c WHERE c.indicator = acme.entities.claim.Indicator.PENDING")
+	Collection<Claim> findUndergoingClaims();
+
 }
