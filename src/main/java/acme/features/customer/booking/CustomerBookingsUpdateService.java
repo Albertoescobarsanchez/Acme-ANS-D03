@@ -52,7 +52,7 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "price", "travelClass", "flight");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "travelClass", "flight");
 	}
 
 	@Override
@@ -76,12 +76,12 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 		SelectChoices flightChoices;
 
 		Collection<Flight> flights = this.flightRepository.findAllFlights();
-		flightChoices = SelectChoices.from(flights, "descriptions", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
 		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "price");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
 		dataset.put("flight", flightChoices.getSelected().getKey());

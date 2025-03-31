@@ -23,7 +23,7 @@ assistance-agent.claim.form.label.description = Descripción
 assistance-agent.claim.form.label.claimType = Tipo
 assistance-agent.claim.form.label.indicator = Es Aceptada
 assistance-agent.claim.form.label.leg = Escala
-assistance-agent.claim.form.label.draftMode = Borrador
+assistance-agent.claim.form.label.draftMode = Es borrador
 
 assistance-agent.claim.list.button.create = Crear reclamación
 assistance-agent.claim.list.button.listAll = Lista de reclamaciones

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
@@ -53,7 +52,7 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 
 	@Override
 	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "price", "passengers");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "passengers");
 	}
 
 	@Override
@@ -80,12 +79,12 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 		SelectChoices flightChoices;
 
 		Collection<Flight> flights = this.flightRepository.findAllFlights();
-		flightChoices = SelectChoices.from(flights, "descriptions", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
 		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "price");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
 		dataset.put("flight", flightChoices.getSelected().getKey());
@@ -94,9 +93,9 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 		super.getResponse().addData(dataset);
 	}
 
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
-	}
+	//	@Override
+	//	public void onSuccess() {
+	//		if (super.getRequest().getMethod().equals("POST"))
+	//			PrincipalHelper.handleUpdate();
+	//	}
 }

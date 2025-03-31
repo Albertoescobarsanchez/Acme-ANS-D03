@@ -8,25 +8,25 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-customer.booking.list.title = Listado de Reservas
-customer.booking.form.title = Detalles de la Reserva
+customer.booking.list.title = Lista de Reservas
+customer.booking.form.title = Datos de la Reserva
 
-booking.list.label.locatorCode = Código de localización
-booking.list.label.purchaseMoment = Momento de compra
-booking.list.label.travelClass = Tipo de viaje
-booking.list.label.lastNibble = Ultima tarjeta
-booking.list.label.price = Precio
-booking.list.label.passenger = Pasajeros
-booking.list.label.draftMode = Estado de publicación
-booking.list.label.flight = vuelo
+customer.booking.list.label.locatorCode = Código de localización
+customer.booking.list.label.purchaseMoment = Momento de compra
+customer.booking.list.label.travelClass = Categoría de cabina
+customer.booking.list.label.lastNibble = Últimos digitos de la tarjeta
+#customer.booking.list.label.price = Precio
+customer.booking.list.label.passenger = Pasajeros
+customer.booking.list.label.flight = Vuelo
+customer.booking.list.label.draftMode = Es borrador
 
-booking.form.button.create = Crear reserva
-booking.form.button.update = Actualizar reserva
-booking.form.button.publish = Publicar reserva
-booking.form.button.passenger = Lista de pasajeros
-booking-record.form.button.create = Crear un registro de reserva
-booking.form.button.delete = Eliminar reserva
+customer.booking.form.button.create = Crear reserva
+customer.booking.form.button.update = Actualizar reserva
+customer.booking.form.button.publish = Publicar reserva
+customer.booking.form.button.passenger = Lista de pasajeros
+customer.booking-record.form.button.create = Crear un registro de reserva
+customer.booking.form.button.delete = Eliminar reserva
 
 acme.validation.confirmation.message.lastNibble = Los últimos digitos de la tarjeta de crédito deberán ser rellenados si la reserva es publicada
 acme.validation.confirmation.message.update = Una reserva no puede ser actualizada si está publicada
-acme.validation.confirmation.message.booking.locator-code = Ya existe otra reserva con este código de localizador
+acme.validation.confirmation.message.booking.locator-code = Ya existe otra reserva con este código de localización

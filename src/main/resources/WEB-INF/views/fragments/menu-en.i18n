@@ -45,3 +45,7 @@ master.menu.airline-manager.flight.list = Flights
 master.menu.assistance-agent.claim.list = Claim list
 master.menu.assistance-agent.claim.listCompleted = Completed Claim list
 master.menu.assistance-agent.claim.listPending = Pending Claim list
+
+# master.menu.customer ##########################################################
+master.menu.customer = Customer
+master.menu.customer.booking.list = Bookings

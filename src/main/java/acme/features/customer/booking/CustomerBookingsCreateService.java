@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
@@ -66,7 +65,7 @@ public class CustomerBookingsCreateService extends AbstractGuiService<Customer, 
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.flightRepository.findFlightById(flightId);
 
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "draftMode", "lastNibble", "price");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "draftMode", "lastNibble");
 		booking.setFlight(flight);
 
 	}
@@ -90,10 +89,10 @@ public class CustomerBookingsCreateService extends AbstractGuiService<Customer, 
 		SelectChoices flightChoices;
 
 		Collection<Flight> flights = this.flightRepository.findAllFlights();
-		flightChoices = SelectChoices.from(flights, "descriptions", booking.getFlight());
+		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "price");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble");
 		dataset.put("travelClass", choices);
 		dataset.put("flight", flightChoices.getSelected().getKey());
 		dataset.put("flights", flightChoices);
@@ -101,9 +100,9 @@ public class CustomerBookingsCreateService extends AbstractGuiService<Customer, 
 		super.getResponse().addData(dataset);
 	}
 
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
-	}
+	//	@Override
+	//	public void onSuccess() {
+	//		if (super.getRequest().getMethod().equals("POST"))
+	//			PrincipalHelper.handleUpdate();
+	//	}
 }

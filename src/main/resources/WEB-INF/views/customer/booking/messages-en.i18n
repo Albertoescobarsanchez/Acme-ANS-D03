@@ -8,25 +8,25 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-customer.booking.list.title = List of bookings
-customer.booking.form.title = List of bookings
+customer.booking.list.title = Bookings list
+customer.booking.form.title = Bookings data
 
-booking.list.label.locatorCode = locator Code
-booking.list.label.purchaseMoment = Purchase Moment
-booking.list.label.travelClass = Travel Class
-booking.list.label.lastNibble = Last Nibble
-booking.list.label.price = Price
-booking.list.label.passenger = Passengers
-booking.list.label.draftMode = draftMode
-booking.list.label.flight = flight
+customer.booking.list.label.locatorCode = locator Code
+customer.booking.list.label.purchaseMoment = Purchase Moment
+customer.booking.list.label.travelClass = Travel Class
+customer.booking.list.label.lastNibble = Last Nibble
+#customer.booking.list.label.price = Price
+customer.booking.list.label.passenger = Passengers
+customer.booking.list.label.flight = Flight
+customer.booking.list.label.draftMode = DraftMode
 
-booking.form.button.create = Create booking
-booking.form.button.update = Update booking
-booking.form.button.publish = Publish booking
-booking.form.button.passenger = List of passengers
-booking-record.form.button.create = Create a booking record
-# booking.form.button.delete = Delete booking
+customer.booking.form.button.create = Create booking
+customer.booking.form.button.update = Update booking
+customer.booking.form.button.publish = Publish booking
+customer.booking.form.button.passenger = List of passengers
+customer.booking-record.form.button.create = Create booking record
+customer.booking.form.button.delete = Delete booking
 
 acme.validation.confirmation.message.lastNibble = The lastNibble must be filled if the booking is published
 acme.validation.confirmation.message.update = A booking can not be updated if it is published
-acme.validation.confirmation.message.booking.locator-code = There is already another booking with this locator code
+acme.validation.confirmation.message.booking.locator-code = There is already another booking with this Locator Code
