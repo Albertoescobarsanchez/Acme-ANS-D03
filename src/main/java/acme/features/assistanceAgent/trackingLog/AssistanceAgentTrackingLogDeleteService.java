@@ -42,12 +42,12 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode");
+		super.bindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution");
 	}
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		if (trackingLog.isDraftMode() != false)
+		if (!trackingLog.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.draftMode.message");
 	}
 

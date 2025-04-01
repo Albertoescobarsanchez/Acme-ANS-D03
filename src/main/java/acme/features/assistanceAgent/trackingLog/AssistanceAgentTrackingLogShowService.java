@@ -50,7 +50,7 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 		int id = super.getRequest().getData("id", int.class);
 		Claim claim = this.repository.findClaimByTrackingLogId(id);
 
-		dataset = super.unbindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode");
+		dataset = super.unbindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode", "claim");
 		dataset.put("indicator", indicatorChoices);
 		dataset.put("claim", claim);
 

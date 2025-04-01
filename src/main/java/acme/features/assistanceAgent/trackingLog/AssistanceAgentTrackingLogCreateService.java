@@ -84,6 +84,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		dataset = super.unbindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode", "claim");
 		dataset.put("indicator", indicatorChoices);
 		trackingLog.setClaim(claim);
+		dataset.put("readOnlyIndicator", "true");
 
 		super.getResponse().addData(dataset);
 	}
