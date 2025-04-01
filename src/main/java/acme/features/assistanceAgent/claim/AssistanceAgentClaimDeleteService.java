@@ -43,12 +43,12 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void bind(final Claim claim) {
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator", "leg", "draftMode");
+		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator", "leg");
 	}
 
 	@Override
 	public void validate(final Claim claim) {
-		if (claim.isDraftMode() != false)
+		if (!claim.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.draftMode.message");
 	}
 
