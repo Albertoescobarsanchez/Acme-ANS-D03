@@ -62,7 +62,7 @@ public class CustomerBookingsShowService extends AbstractGuiService<Customer, Bo
 		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
 		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "lastNibble", "draftMode");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
 		dataset.put("flight", flightChoices.getSelected().getKey());
