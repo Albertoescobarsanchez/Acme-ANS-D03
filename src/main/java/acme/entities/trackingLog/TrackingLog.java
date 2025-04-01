@@ -49,12 +49,16 @@ public class TrackingLog extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private Indicator			accepted;
+	private Indicator			indicator;
 
 	@Optional
 	@ValidString
 	@Automapped
 	private String				resolution;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 

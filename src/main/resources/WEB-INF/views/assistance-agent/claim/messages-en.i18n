@@ -31,8 +31,8 @@ assistance-agent.claim.list.button.listAll = List All Claims
 assistance-agent.claim.list.button.listCompleted = List Completed Claims
 assistance-agent.claim.list.button.listPending = List Pending Claims
 assistance-agent.claim.form.button.create = Create claim
-assistance-agent.claim.form.button.update = Update claim
-assistance-agent.claim.form.button.delete = Delete claim
-assistance-agent.claim.form.button.publish = Publish claim
+assistance-agent.claim.form.button.update = Edit
+assistance-agent.claim.form.button.delete = Delete
+assistance-agent.claim.form.button.publish = Publish
 
 assistance-agent.claim.form.error.publishingWithoutAnyLeg = It is not possible to publish a claim without any leg
