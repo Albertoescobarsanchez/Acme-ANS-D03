@@ -44,7 +44,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 
 	@Override
 	public void bind(final Claim claim) {
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator", "leg", "draftMode");
+		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator", "leg");
 
 	}
 
@@ -71,6 +71,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		dataset.put("indicator", indicatorChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
+		dataset.put("readOnlyIndicator", "false");
 
 		super.getResponse().addData(dataset);
 	}

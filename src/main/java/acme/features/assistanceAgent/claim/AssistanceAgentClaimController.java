@@ -15,11 +15,6 @@ import acme.realms.AssistanceAgent;
 @Controller
 public class AssistanceAgentClaimController extends AbstractGuiController<AssistanceAgent, Claim> {
 
-	// Internal state ---------------------------------------------------------
-
-	@Autowired
-	private AssistanceAgentClaimListService				listService;
-
 	@Autowired
 	private AssistanceAgentClaimPendingListService		listPendingService;
 
@@ -46,7 +41,7 @@ public class AssistanceAgentClaimController extends AbstractGuiController<Assist
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
+		//		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);

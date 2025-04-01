@@ -46,22 +46,18 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		trackingLog = this.repository.findTrackingLogById(id);
 		trackingLog.setUpdateMoment(today);
 		trackingLog.setClaim(claim);
-		System.out.println("Hola");
-		System.out.println(trackingLog.getClaim());
-		System.out.println(claim);
 
 		super.getBuffer().addData(trackingLog);
 	}
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode", "claim");
+		super.bindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution");
 	}
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-
-		if (trackingLog.isDraftMode() != false)
+		if (!trackingLog.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 	}
 
@@ -80,6 +76,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		dataset = super.unbindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode", "claim");
 		dataset.put("indicator", indicatorChoices);
 		dataset.put("claim", claim);
+		dataset.put("readOnlyIndicator", "false");
 
 		super.getResponse().addData(dataset);
 	}
