@@ -23,3 +23,6 @@ administrator.airline.list.label.phoneNumber = Teléfono
 administrator.airline.list.button.create = Crear Aerolínea
 administrator.airline.form.button.create = Crear
 administrator.airline.form.button.update = Editar
+
+
+administrator.airline.form.label.confirmation = Confirm

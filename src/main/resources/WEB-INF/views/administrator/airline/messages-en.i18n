@@ -23,3 +23,5 @@ administrator.airline.list.label.phoneNumber = Phone number
 administrator.airline.list.button.create = Create Airline
 administrator.airline.form.button.create = Create
 administrator.airline.form.button.update = Edit
+
+administrator.airline.form.label.confirmation = Confirm

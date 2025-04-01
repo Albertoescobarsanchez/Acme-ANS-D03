@@ -55,7 +55,10 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 
 	@Override
 	public void validate(final Airline airline) {
-		;
+		boolean confirmation;
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+
+		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
@@ -72,7 +75,7 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 
 		dataset = super.unbindObject(airline, "name", "iataCode", "website", "type", "foundationMoment", "email", "phoneNumber");
 		dataset.put("types", choices);
-		dataset.put("readonly", false);
+		dataset.put("confirmation", false);
 
 		super.getResponse().addData(dataset);
 
