@@ -3,6 +3,7 @@ package acme.entities.flight;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -33,7 +34,7 @@ public class Flight extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Mandatory
 	@ValidString(max = 50)
-	@Automapped
+	@Column(unique = true)
 	private String				tag;
 
 	@Mandatory

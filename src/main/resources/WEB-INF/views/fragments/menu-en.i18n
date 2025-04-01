@@ -49,3 +49,5 @@ master.menu.assistance-agent.claim.listPending = Pending Claim list
 # master.menu.customer ##########################################################
 master.menu.customer = Customer
 master.menu.customer.booking.list = Bookings
+master.menu.customer.passenger.list = Passengers
+master.menu.customer.bookingRecord.create = Booking Record

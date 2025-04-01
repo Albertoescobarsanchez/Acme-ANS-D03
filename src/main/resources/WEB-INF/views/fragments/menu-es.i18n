@@ -49,3 +49,5 @@ master.menu.assistance-agent.claim.listPending = Lista de reclamaciones pendient
 # master.menu.customer ##########################################################
 master.menu.customer = Cliente
 master.menu.customer.booking.list = Reservas
+master.menu.customer.passenger.list = Pasajeros
+master.menu.customer.bookingRecord.create = Registro de reservas

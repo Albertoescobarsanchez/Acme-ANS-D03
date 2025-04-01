@@ -58,14 +58,13 @@ public class CustomerBookingsCreateService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking booking) {
-		assert booking != null;
 		Flight flight;
 		int flightId;
 
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.flightRepository.findFlightById(flightId);
 
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "draftMode", "lastNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastNibble");
 		booking.setFlight(flight);
 
 	}

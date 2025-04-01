@@ -11,7 +11,7 @@
 customer.booking.list.title = Bookings list
 customer.booking.form.title = Bookings data
 
-customer.booking.list.label.locatorCode = locator Code
+customer.booking.list.label.locatorCode = Locator Code
 customer.booking.list.label.purchaseMoment = Purchase Moment
 customer.booking.list.label.travelClass = Travel Class
 customer.booking.list.label.lastNibble = Last Nibble
@@ -25,7 +25,7 @@ customer.booking.form.button.update = Update booking
 customer.booking.form.button.publish = Publish booking
 customer.booking.form.button.passenger = List of passengers
 customer.booking-record.form.button.create = Create booking record
-customer.booking.form.button.delete = Delete booking
+#customer.booking.form.button.delete = Delete booking
 
 acme.validation.confirmation.message.lastNibble = The lastNibble must be filled if the booking is published
 acme.validation.confirmation.message.update = A booking can not be updated if it is published

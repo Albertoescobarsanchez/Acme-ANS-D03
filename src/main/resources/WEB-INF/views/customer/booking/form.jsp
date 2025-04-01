@@ -17,29 +17,47 @@
 
 <acme:form>
 		<acme:input-textbox code="customer.booking.list.label.locatorCode" path="locatorCode"/>
-		<acme:input-moment code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" readonly="false"/>
+		<acme:input-moment code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
 		<acme:input-select code="customer.booking.list.label.travelClass" path="travelClass" choices="${travelClass}"/>
 		<acme:input-textbox code="customer.booking.list.label.lastNibble" path="lastNibble"/>
-<%-- 		<acme:input-money code="customer.booking.list.label.price" path="price" readonly="true"/>
- --%>		
  		<acme:input-select code="customer.booking.list.label.flight" path="flight" choices="${flights}"/>
-<%-- 		<acme:input-textarea code="customer.booking.list.label.passenger" path="passengers" readonly="true"/>
- --%>		
- 		<acme:input-checkbox code="customer.booking.list.label.draftMode" path="draftMode"/>
-	<jstl:choose>
-			<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+  		<acme:input-textarea code="customer.booking.list.label.passenger" path="passengers" readonly="true"/>
+	<jstl:choose> 
+			<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true }">
 				<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-<%-- 				<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
- --%>				
- 				<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete"/>	
-			</jstl:when>
+ 				<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
+  				<jstl:if test="${_command != 'create'}">		
+ 					 <acme:button code="customer.booking.form.button.passenger" action="/customer/passenger/list?bookingId=${id}"/>
+				</jstl:if>	 	
+			</jstl:when>	
 			<jstl:when test="${_command == 'create'}">
 				<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>
-			</jstl:when>		
+			</jstl:when>	
+	</jstl:choose>
+
+ </acme:form>
+ 
+ 
+<%--  <acme:form>
+		<acme:input-textbox code="customer.booking.list.label.locatorCode" path="locatorCode"/>
+		<acme:input-moment code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
+		<acme:input-select code="customer.booking.list.label.travelClass" path="travelClass" choices="${travelClass}"/>
+		<acme:input-textbox code="customer.booking.list.label.lastNibble" path="lastNibble"/>
+ 		<acme:input-select code="customer.booking.list.label.flight" path="flight" choices="${flights}"/>
+  		<acme:input-textarea code="customer.booking.list.label.passenger" path="passengers" readonly="true"/>
+	<jstl:choose> 
+
+			<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true }">
+				<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
+ 				<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>				
+	  			<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete"/> 			
+			</jstl:when>	
+			<jstl:when test="${_command == 'create'}">
+				<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>
+			</jstl:when>
+			<jstl:when test="${_command != 'create'}">
+	 			<acme:button code="customer.booking.form.button.passenger" action="/customer/passenger/list?bookingId=${id}"/>
+			</jstl:when>
 	</jstl:choose>	
-	
-<%-- 	<jstl:if test="${passengers.size() != 0 && (_command == 'update' || _command == 'show' || _command == 'publish')}">
-			<acme:button code="customer.booking.form.button.passenger" action="/customer/passenger/list?bookingId=${bookingId}"/>
-	</jstl:if> --%>
-		
-</acme:form>
+
+ </acme:form> --%>

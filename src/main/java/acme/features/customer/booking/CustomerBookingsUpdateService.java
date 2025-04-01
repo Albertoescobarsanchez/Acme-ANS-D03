@@ -52,15 +52,15 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "travelClass", "flight");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "lastNibble", "travelClass", "flight");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		if (booking.isDraftMode() == false)
+		if (booking.isDraftMode() != false)
 			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
-		Booking b = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
-		if (b != null)
+		Collection<Booking> b = this.repository.findAllBookingByLocatorCode(booking.getLocatorCode()).stream().filter(x -> x.getId() != booking.getId()).toList();
+		if (!b.isEmpty())
 			super.state(false, "locatorCode", "acme.validation.confirmation.message.booking.locator-code");
 	}
 

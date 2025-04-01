@@ -56,7 +56,7 @@ public class CustomerBookingsDeleteService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "travelClass", "flight");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "lastNibble", "travelClass", "flight");
 	}
 
 	@Override
