@@ -1,0 +1,13 @@
+flight-crew-member.flight-assignment.form.title = Flight assignment
+
+flight-crew-member.flight-assignment.form.label.duty = Duty
+flight-crew-member.flight-assignment.form.label.lastUpdate = Last update
+flight-crew-member.flight-assignment.form.label.status = Status
+flight-crew-member.flight-assignment.form.label.remarks = Remarks
+flight-crew-member.flight-assignment.form.label.leg = Leg
+
+flight-crew-member.flight-assignment.form.button.create = Create
+
+flight-crew-member.flight-assignment.form.button.update = Update
+flight-crew-member.flight-assignment.form.button.delete = Delete
+flight-crew-member.flight-assignment.form.button.publish = Publish
