@@ -40,8 +40,20 @@ master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 master.menu.airline-manager = Airline Manager
+
 master.menu.airline-manager.flight.list = Flights
 
 master.menu.flight-crew-member = Flight crew member
 master.menu.flight-crew-member.flight-assignment.list.completed = List of completed flights
 master.menu.flight-crew-member.flight-assignment.list.not-completed = List of not-completed flights
+
+master.menu.assistance-agent = Assistance Agent
+master.menu.airline-manager.flight.list = Flights
+master.menu.assistance-agent.claim.list = Claim list
+master.menu.assistance-agent.claim.listCompleted = Completed Claim list
+master.menu.assistance-agent.claim.listPending = Pending Claim list
+
+# master.menu.customer ##########################################################
+master.menu.customer = Customer
+master.menu.customer.booking.list = Bookings
+

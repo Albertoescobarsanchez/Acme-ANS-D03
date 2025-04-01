@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+assistance-agent.claim.list.title = Claim list
+assistance-agent.claim.form.title = Claim data
+
+assistance-agent.claim.list.label.registrationMoment = Registration Moment
+assistance-agent.claim.list.label.passengerEmail = Passenger Email
+assistance-agent.claim.list.label.description = Description
+assistance-agent.claim.list.label.claimType = Type
+assistance-agent.claim.list.label.indicator = Is Accepted
+
+assistance-agent.claim.form.label.registrationMoment = Registration Moment
+assistance-agent.claim.form.label.passengerEmail = Passenger Email
+assistance-agent.claim.form.label.description = Description
+assistance-agent.claim.form.label.claimType = Type
+assistance-agent.claim.form.label.indicator = Indicator
+assistance-agent.claim.form.label.leg = Leg
+assistance-agent.claim.form.label.draftMode = DraftMode
+
+
+assistance-agent.claim.list.button.create = Create claim
+assistance-agent.claim.list.button.listAll = List All Claims
+assistance-agent.claim.list.button.listCompleted = List Completed Claims
+assistance-agent.claim.list.button.listPending = List Pending Claims
+assistance-agent.claim.form.button.create = Create claim
+assistance-agent.claim.form.button.update = Edit
+assistance-agent.claim.form.button.delete = Delete
+assistance-agent.claim.form.button.publish = Publish
+
+assistance-agent.claim.form.error.publishingWithoutAnyLeg = It is not possible to publish a claim without any leg
