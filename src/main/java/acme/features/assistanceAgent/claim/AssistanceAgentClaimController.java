@@ -4,7 +4,6 @@ package acme.features.assistanceAgent.claim;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
@@ -12,7 +11,6 @@ import acme.entities.claim.Claim;
 import acme.realms.AssistanceAgent;
 
 @GuiController
-@Controller
 public class AssistanceAgentClaimController extends AbstractGuiController<AssistanceAgent, Claim> {
 
 	@Autowired
