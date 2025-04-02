@@ -35,17 +35,19 @@ public class AdministratorAirportShowService extends AbstractGuiService<Administ
 
 		id = super.getRequest().getData("id", int.class);
 		airport = this.repository.findAirportById(id);
+		System.out.println(airport);
 
 		super.getBuffer().addData(airport);
 	}
 
 	@Override
 	public void unbind(final Airport airport) {
-		SelectChoices choices = SelectChoices.from(OperationalScope.class, airport.getOperationalScope());
 		Dataset dataset;
+		SelectChoices choices;
+		choices = SelectChoices.from(OperationalScope.class, airport.getOperationalScope());
 
-		dataset = super.unbindObject(null, "name", "iataCode", "operationalScope", "city", "country", "website", "email", "phoneNumber");
-		dataset.put("operationalScope", choices);
+		dataset = super.unbindObject(airport, "name", "iataCode", "city", "country", "website", "email", "phoneNumber");
+		dataset.put("operationaScope", choices);
 
 		super.getResponse().addData(dataset);
 	}

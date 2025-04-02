@@ -70,7 +70,7 @@ public class AdministratorAirportCreateService extends AbstractGuiService<Admini
 
 		choices = SelectChoices.from(OperationalScope.class, airport.getOperationalScope());
 
-		dataset = super.unbindObject(airport, "name", "iataCode", "operationalScope", "city", "country", "website", "email", "phoneNumber");
+		dataset = super.unbindObject(airport, "name", "iataCode", "city", "country", "website", "email", "phoneNumber");
 		dataset.put("operationalScope", choices);
 		dataset.put("confirmation", false);
 
