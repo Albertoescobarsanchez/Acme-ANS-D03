@@ -23,10 +23,10 @@
 		<acme:input-textbox code="administrator.airport.list.label.country" path="country"/>
 		<acme:input-url code="administrator.airport.list.label.website" path="website"/>		
 		<acme:input-email code="administrator.airport.list.label.email" path="email" />
-		<acme:input-integer code="administrator.airport.list.label.phoneNumber" path="phoneNumber"/>
+		<acme:input-textbox code="administrator.airport.list.label.phoneNumber" path="phoneNumber"/>
 		<acme:input-checkbox code="administrator.airport.form.label.confirmation" path="confirmation"/>
 		<jstl:choose>
-			<jstl:when test="${acme:anyOf(_command, 'show')}">
+			<jstl:when test="${acme:anyOf(_command, 'show|update')}">
 				<acme:submit code="administrator.airport.form.button.update" action="/administrator/airport/update"/>
 			</jstl:when>
 			<jstl:when test="${_command == 'create'}">
