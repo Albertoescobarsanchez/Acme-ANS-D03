@@ -19,9 +19,11 @@
 	<acme:input-moment code="assistance-agent.claim.form.label.registrationMoment" path="registrationMoment" readonly="true"/>
 	<acme:input-email code="assistance-agent.claim.form.label.passengerEmail" path="passengerEmail"/>
 	<acme:input-textbox code="assistance-agent.claim.form.label.description" path="description"/>
-	<acme:input-select code="assistance-agent.claim.form.label.claimType" path="claimType"  choices="${claimType}"/>
-	<acme:input-select code="assistance-agent.claim.form.label.indicator" path="indicator" choices="${indicator}" readonly="${readOnlyIndicator}"/>
-	<acme:input-select code="assistance-agent.claim.form.label.leg" path="leg" choices="${legs}"/>
+	<acme:input-select code="assistance-agent.claim.form.label.claimType" path="claimType"  choices="${claimTypes}"/>
+	<acme:input-textbox code="assistance-agent.claim.form.label.indicator" path="getIndicator" readonly="true"/>
+	<jstl:if test="${pending == true || pending == null }">
+		<acme:input-select code="assistance-agent.claim.form.label.leg" path="leg" choices="${legs}"/>
+	</jstl:if>
 
 	
 	<jstl:choose>
