@@ -1,6 +1,8 @@
 
 package acme.features.administrator.airline;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -46,10 +48,17 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void validate(final Airline airline) {
-		boolean confirmation;
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		{
+			boolean confirmation;
+			confirmation = super.getRequest().getData("confirmation", boolean.class);
 
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+			super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		}
+		{
+			Collection<Airline> airlines = this.repository.findAirlinesByIataCode(airline.getIataCode()).stream().filter(a -> a.getId() != airline.getId()).toList();
+			if (!airlines.isEmpty())
+				super.state(false, "iataCode", "acme.validation.confirmation.message.airline.iata-codes");
+		}
 	}
 
 	@Override
