@@ -21,8 +21,11 @@ public interface CustomerPassengerRepository extends AbstractRepository {
 	@Query("select c from Customer c where c.id = :customerId")
 	Customer findCustomerById(@Param("customerId") Integer customerId);
 
-	@Query("select p from Passenger p where p.customer.userAccount.id = :customerId")
-	Collection<Passenger> findPassengerByCustomerId(@Param("customerId") Integer customerId);
+	@Query("select p from Passenger p where p.customer.id = :customerId")
+	Collection<Passenger> findPassengersByCustomerId(@Param("customerId") Integer customerId);
+
+	@Query("select p from Passenger p where p.customer.id = :customerId")
+	Passenger findPassengerByCustomerId(@Param("customerId") Integer customerId);
 
 	@Query("select br from BookingRecord br where br.passenger.id = :passengerId")
 	Collection<BookingRecord> findBookingRecordByPassengerId(@Param("passengerId") Integer passengerId);

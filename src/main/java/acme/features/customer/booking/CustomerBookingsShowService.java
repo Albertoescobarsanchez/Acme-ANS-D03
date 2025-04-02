@@ -55,17 +55,19 @@ public class CustomerBookingsShowService extends AbstractGuiService<Customer, Bo
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices flightChoices;
+		//		Date today = MomentHelper.getCurrentMoment();
 
-		Collection<Flight> flights = this.flightRepository.findAllFlights();
-		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
+		Collection<Flight> flights = this.flightRepository.findAllFlights().stream().filter(f -> f.getDraftMode() == false).toList();
+		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight() != null ? booking.getFlight() : flights.stream().findFirst().orElse(null));
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
-		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "lastNibble", "draftMode");
+		Collection<Passenger> passengerN = this.repository.findPassengersByBookingId(booking.getId());
+		Collection<String> passengers = passengerN.stream().map(p -> p.getFullName()).toList();
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "draftMode", "lastNibble");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
-		dataset.put("flight", flightChoices.getSelected().getKey());
+		dataset.put("flight", flightChoices.getSelected() != null ? flightChoices.getSelected().getKey() : null);
 		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);

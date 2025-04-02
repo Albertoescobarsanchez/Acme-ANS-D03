@@ -15,3 +15,5 @@ customer.booking-record.list.label.passenger = Passenger
 customer.booking-record.list.label.booking = Booking
 
 acme.validation.confirmation.message.booking-record.create = That relation is already created
+acme.validation.confirmation.message.booking-record.create.booking = The booking must not be null
+acme.validation.confirmation.message.booking-record.create.passenger = The passenger must not be null

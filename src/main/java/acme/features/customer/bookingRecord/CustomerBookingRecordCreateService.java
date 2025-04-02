@@ -65,9 +65,21 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		BookingRecord br = this.repository.findBookingRecordById(bookingRecord.getBooking().getId(), bookingRecord.getPassenger().getId());
-		if (br != null)
-			super.state(false, "*", "acme.validation.confirmation.message.booking-record.create");
+
+		if (bookingRecord.getBooking() == null && bookingRecord.getPassenger() == null) {
+			super.state(false, "booking", "acme.validation.confirmation.message.booking-record.create.booking");
+			super.state(false, "passenger", "acme.validation.confirmation.message.booking-record.create.passenger");
+
+		} else if (bookingRecord.getPassenger() == null)
+			super.state(false, "passenger", "acme.validation.confirmation.message.booking-record.create.passenger");
+		else if (bookingRecord.getBooking() == null)
+			super.state(false, "booking", "acme.validation.confirmation.message.booking-record.create.booking");
+		else {
+			BookingRecord br = this.repository.findBookingRecordBybookingIdPassengerId(bookingRecord.getBooking().getId(), bookingRecord.getPassenger().getId());
+			if (br != null)
+				super.state(false, "*", "acme.validation.confirmation.message.booking-record.create");
+		}
+
 	}
 
 	@Override
@@ -83,7 +95,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId();
 		Collection<Booking> bookings = this.bookingRepository.findBookingByCustomerId(customerId);
-		Collection<Passenger> passengers = this.passengerRepository.findPassengerByCustomerId(customerId);
+		Collection<Passenger> passengers = this.passengerRepository.findPassengersByCustomerId(customerId).stream().filter(p -> p.isDraftMode() == false).toList();
 		bookingChoices = SelectChoices.from(bookings, "locatorCode", bookingRecord.getBooking());
 		passengerChoices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
 

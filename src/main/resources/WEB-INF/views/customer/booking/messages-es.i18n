@@ -11,13 +11,13 @@
 customer.booking.list.title = Lista de Reservas
 customer.booking.form.title = Datos de la Reserva
 
+customer.booking.list.label.flight = Vuelo
 customer.booking.list.label.locatorCode = Código de localización
-customer.booking.list.label.purchaseMoment = Momento de compra
 customer.booking.list.label.travelClass = Categoría de cabina
+customer.booking.list.label.purchaseMoment = Momento de compra
 customer.booking.list.label.lastNibble = Últimos digitos de la tarjeta
 customer.booking.list.label.price = Precio
 customer.booking.list.label.passenger = Pasajeros
-customer.booking.list.label.flight = Vuelo
 customer.booking.list.label.draftMode = Es borrador
 
 customer.booking.form.button.create = Crear reserva

@@ -31,7 +31,7 @@ public class CustomerBookingsListService extends AbstractGuiService<Customer, Bo
 
 		customerId = super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId();
 		bookings = this.repository.findBookingByCustomerId(customerId);
-		status = bookings.stream().allMatch(b -> b.getCustomer().getUserAccount().getId() == customerId);
+		status = bookings.stream().allMatch(b -> b.getCustomer().getUserAccount().getId() == customerId) && super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -47,13 +47,7 @@ public class CustomerBookingsListService extends AbstractGuiService<Customer, Bo
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
-
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass");
-
-		//		// Comprobar que el último nibble de la tarjeta no es nulo ni vacío
-		//		if (booking.getLastNibble() == null || booking.getLastNibble().isEmpty())
-		//			throw new IllegalArgumentException("The booking cannot be published because the last credit card nibble has not been stored.");
-		//		dataset = super.unbindObject(booking, "locatorCode", "lastNibble");
 
 		super.getResponse().addData(dataset);
 	}

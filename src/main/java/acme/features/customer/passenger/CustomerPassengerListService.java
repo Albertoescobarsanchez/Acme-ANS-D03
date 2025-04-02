@@ -28,10 +28,10 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId();
-		Collection<Passenger> passengers = this.repository.findPassengerByCustomerId(customerId);
-
-		boolean status = passengers.stream().allMatch(b -> b.getCustomer().getUserAccount().getId() == customerId) && super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Collection<Passenger> passengers = this.repository.findPassengersByCustomerId(customerId);
+		//		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		boolean status = passengers.stream().allMatch(b -> b.getCustomer().getId() == customerId) && super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -41,8 +41,10 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		Collection<Passenger> passengers;
 		int id;
 
-		id = super.getRequest().getData("bookingId", int.class);
-		passengers = this.bookingRepository.findPassengersByBookingId(id);
+		id = super.getRequest().getPrincipal().getActiveRealm().getId();
+		//		System.out.println(id);
+		passengers = this.repository.findPassengersByCustomerId(id);
+		//		System.out.println(passengers);
 
 		super.getBuffer().addData(passengers);
 	}
@@ -50,7 +52,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 	@Override
 	public void unbind(final Passenger passenger) {
 		Dataset dataset;
-		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "draftMode", "specialNeeds");
+		dataset = super.unbindObject(passenger, "fullName", "email");
 		super.getResponse().addData(dataset);
 	}
 
