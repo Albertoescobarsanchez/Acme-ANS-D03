@@ -24,8 +24,11 @@ public class AssistanceAgentClaimPendingListService extends AbstractGuiService<A
 
 	@Override
 	public void authorise() {
-		boolean isAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		super.getResponse().setAuthorised(isAgent);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override

@@ -59,7 +59,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
 
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator", "draftMode");
+		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator");
 		claim.setLeg(leg);
 
 	}
@@ -80,16 +80,13 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		SelectChoices claimTypeChoices = SelectChoices.from(ClaimType.class, claim.getClaimType());
 		SelectChoices indicatorChoices = SelectChoices.from(Indicator.class, claim.getIndicator());
 		SelectChoices legChoices = SelectChoices.from(this.repository.findAvailableLegs(), "flightNumber", claim.getLeg());
-		SelectChoices draftModeChoices = new SelectChoices();
-		draftModeChoices.add("true", "True", claim.isDraftMode());
-		draftModeChoices.add("false", "False", !claim.isDraftMode());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "draftMode");
 		dataset.put("claimType", claimTypeChoices);
 		dataset.put("indicator", indicatorChoices);
-		dataset.put("draftMode", draftModeChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
+		dataset.put("readOnlyIndicator", "true");
 
 		super.getResponse().addData(dataset);
 	}

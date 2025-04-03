@@ -41,7 +41,7 @@ public class AirlineManagerLegCreateService extends AbstractGuiService<AirlineMa
 
 		int flightId = super.getRequest().getData("masterId", int.class);
 		Flight flight = this.repository.findFlightById(flightId);
-		status = flight != null && flight.getAirlineManager().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+		status = flight != null && flight.getDraftMode() && flight.getAirlineManager().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		super.getResponse().setAuthorised(status);
 	}

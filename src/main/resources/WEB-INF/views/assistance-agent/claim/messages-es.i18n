@@ -30,8 +30,8 @@ assistance-agent.claim.list.button.listAll = Lista de reclamaciones
 assistance-agent.claim.list.button.listCompleted = Reclamaciones completas
 assistance-agent.claim.list.button.listPending = Reclamaciones pendientes
 assistance-agent.claim.form.button.create = Crear reclamación
-assistance-agent.claim.form.button.update = Actualizar reclamación
-assistance-agent.claim.form.button.delete = Borrar reclamación
-assistance-agent.claim.form.button.publish = Publicar reclamación
+assistance-agent.claim.form.button.update = Editar
+assistance-agent.claim.form.button.delete = Borrar
+assistance-agent.claim.form.button.publish = Publicar
 
 assistance-agent.claim.form.error.publishingWithoutAnyLeg = No es posible publicar una reclamación sin ninguna escala

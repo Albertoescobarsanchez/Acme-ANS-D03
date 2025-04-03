@@ -52,7 +52,7 @@ public class FlightAssignment extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private boolean				publish;
+	private boolean				draftMode;
 
 	@Mandatory
 	@Valid

@@ -50,8 +50,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 
 	@Override
 	public void validate(final Claim claim) {
-
-		if (claim.isDraftMode() != false)
+		if (!claim.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 	}
 
@@ -72,6 +71,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		dataset.put("indicator", indicatorChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
+		dataset.put("readOnlyIndicator", "false");
 
 		super.getResponse().addData(dataset);
 	}

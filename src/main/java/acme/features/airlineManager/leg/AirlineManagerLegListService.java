@@ -62,7 +62,7 @@ public class AirlineManagerLegListService extends AbstractGuiService<AirlineMana
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "flightNumber", "status", "draftMode");
+		dataset = super.unbindObject(object, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "draftMode");
 		dataset.put("departureAirport", object.getDepartureAirport().getIataCode());
 		dataset.put("arrivalAirport", object.getArrivalAirport().getIataCode());
 		if (object.getDraftMode())
