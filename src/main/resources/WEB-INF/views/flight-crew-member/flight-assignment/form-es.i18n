@@ -1,0 +1,13 @@
+flight-crew-member.flight-assignment.form.title = Asignación de vuelo
+
+flight-crew-member.flight-assignment.form.label.duty = Cargo
+flight-crew-member.flight-assignment.form.label.lastUpdate = Última actualización
+flight-crew-member.flight-assignment.form.label.status = Estado
+flight-crew-member.flight-assignment.form.label.remarks = Observaciones
+flight-crew-member.flight-assignment.form.label.leg = Tramo
+
+flight-crew-member.flight-assignment.form.button.create = Crear
+
+flight-crew-member.flight-assignment.form.button.update = Actualizar
+flight-crew-member.flight-assignment.form.button.delete = Borrar
+flight-crew-member.flight-assignment.form.button.publish = Publicar

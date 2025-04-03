@@ -10,6 +10,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.claim.Indicator;
 import acme.entities.trackingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
@@ -49,7 +50,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode", "claim");
+		super.bindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution");
 	}
 
 	@Override
@@ -67,10 +68,13 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
 		SelectChoices indicatorChoices = SelectChoices.from(Indicator.class, trackingLog.getIndicator());
+		int id = super.getRequest().getData("id", int.class);
+		Claim claim = this.repository.findClaimByTrackingLogId(id);
 
 		dataset = super.unbindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode", "claim");
 		dataset.put("indicator", indicatorChoices);
-
+		dataset.put("readOnlyIndicator", "false");
+		dataset.put("claim", claim);
 		super.getResponse().addData(dataset);
 	}
 

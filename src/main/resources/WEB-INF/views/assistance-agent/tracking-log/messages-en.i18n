@@ -22,11 +22,13 @@ assistance-agent.tracking-log.form.label.resolutionPercentage = Resolution Perce
 assistance-agent.tracking-log.form.label.resolution = Resolution
 assistance-agent.tracking-log.form.label.indicator = Is Accepted
 assistance-agent.tracking-log.form.label.draftMode = DraftMode
+assistance-agent.tracking-log.form.label.claim = Claim
 
 
 assistance-agent.tracking-log.list.button.create = Create tracking log
 assistance-agent.tracking-log.list.button.list = List tracking logs
 assistance-agent.tracking-log.form.button.list = Tracking Logs
+assistance-agent.tracking-log.form.button.create = Create tracking log
 assistance-agent.tracking-log.form.button.update = Edit
 assistance-agent.tracking-log.form.button.delete = Delete
 assistance-agent.tracking-log.form.button.publish = Publish

@@ -22,6 +22,7 @@ assistance-agent.tracking-log.form.label.resolutionPercentage = Porcentaje de re
 assistance-agent.tracking-log.form.label.resolution = Resolución
 assistance-agent.tracking-log.form.label.indicator = Es Aceptada
 assistance-agent.tracking-log.form.label.draftMode = Borrador
+assistance-agent.tracking-log.form.label.claim = Reclamación
 
 
 assistance-agent.tracking-log.list.button.create = Crear registro de seguimiento

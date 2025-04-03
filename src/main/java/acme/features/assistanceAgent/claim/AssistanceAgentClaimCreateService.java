@@ -59,7 +59,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
 
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator", "draftMode");
+		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "indicator");
 		claim.setLeg(leg);
 
 	}
@@ -86,6 +86,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		dataset.put("indicator", indicatorChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
+		dataset.put("readOnlyIndicator", "true");
 
 		super.getResponse().addData(dataset);
 	}

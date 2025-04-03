@@ -1,0 +1,10 @@
+flight-crew-member.flight-assignment.list.title = Flight assignement list
+
+flight-crew-member.flight-assignment.list.label.duty = Duty
+flight-crew-member.flight-assignment.list.label.lastUpdate = Last update
+flight-crew-member.flight-assignment.list.label.status = Status
+flight-crew-member.flight-assignment.list.label.remarks = Remarks
+flight-crew-member.flight-assignment.list.label.draftMode = Draft mode
+flight-crew-member.flight-assignment.list.label.flightNumber = Flight number
+
+flight-crew-member.flight-assignment.list.button.create = Create
