@@ -8,32 +8,15 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-airline-manager.flight.list.title = Flight list
-airline-manager.flight.form.title = Flight data
+authenticated.airline-manager.form.title= Airline manager profile
 
-airline-manager.flight.list.label.tag = Tag
-airline-manager.flight.list.label.origin = Origin
-airline-manager.flight.list.label.destination = Destination
-airline-manager.flight.list.label.draftMode = Is draftMode
+authenticated.airline-manager.form.label.identifierNumber = Identifier number
+authenticated.airline-manager.form.label.yearsOfExperience = Years of experience
+authenticated.airline-manager.form.label.birthDate = Birth date
+authenticated.airline-manager.form.label.pictureLink = Picture link
+authenticated.airline-manager.form.label.airline = Airline
 
-airline-manager.flight.form.label.tag = Tag
-airline-manager.flight.form.label.selfTransfer = Requires self transfer
-airline-manager.flight.form.label.cost =  Cost
-airline-manager.flight.form.label.description = Description
+authenticated.airline-manager.form.button.create = Create profile
+authenticated.airline-manager.form.button.update = Update profile
 
-airline-manager.flight.form.label.scheduledDeparture = Scheduled departure
-airline-manager.flight.form.label.scheduledArrival = Scheduled arrival
-airline-manager.flight.form.label.origin = Origin
-airline-manager.flight.form.label.destination = Destination
-airline-manager.flight.form.label.layovers = Layovers
-
-airline-manager.flight.list.button.create = Create flight
-airline-manager.flight.form.button.create = Create flight
-airline-manager.flight.form.button.update = Update flight
-airline-manager.flight.form.button.delete = Delete flight
-airline-manager.flight.form.button.publish = Publish flight
-
-airline-manager.flight.form.error.publishingWithoutAnyLeg = It is not possible to publish a flight without any leg
-airline-manager.flight.form.error.notPublishedLegs = It is not possible to publish a flight without publishing all its legs
-
-airline-manager.leg.form.button.list = Legs
+authenticated.airline-manager.form.error.duplicatedIdentifierNumber = Duplicated identifier number

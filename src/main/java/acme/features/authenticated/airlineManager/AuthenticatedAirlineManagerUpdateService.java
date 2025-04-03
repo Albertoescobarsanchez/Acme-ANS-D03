@@ -44,7 +44,7 @@ public class AuthenticatedAirlineManagerUpdateService extends AbstractGuiService
 	public void load() {
 
 		int managerId = super.getRequest().getPrincipal().getAccountId();
-		AirlineManager manager = this.repository.findAirlineManagerById(managerId);
+		AirlineManager manager = this.repository.findAirlineManagerByUserAccountId(managerId);
 
 		super.getBuffer().addData(manager);
 	}
@@ -59,6 +59,9 @@ public class AuthenticatedAirlineManagerUpdateService extends AbstractGuiService
 	@Override
 	public void validate(final AirlineManager object) {
 		assert object != null;
+
+		boolean duplicatedNumber = this.repository.findAirlineManagers().stream().anyMatch(manager -> manager.getIdentifierNumber().equals(object.getIdentifierNumber()) && manager.getId() != object.getId());
+		super.state(!duplicatedNumber, "identifierNumber", "authenticated.airline-manager.form.error.duplicatedIdentifierNumber");
 	}
 
 	@Override

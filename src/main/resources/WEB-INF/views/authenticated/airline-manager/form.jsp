@@ -20,13 +20,14 @@
 	<acme:input-integer code="authenticated.airline-manager.form.label.yearsOfExperience" path="yearsOfExperience"/>
 	<acme:input-moment code="authenticated.airline-manager.form.label.birthDate" path="birthDate"/>
 	<acme:input-textbox code="authenticated.airline-manager.form.label.pictureLink" path="pictureLink"/>
-	<acme:input-select code="authenticated.airline-manager.form.label.airline" path="airline" choices="${airlineChoices}"/>
 	
 	<jstl:if test="${_command == 'create'}" >
+	<acme:input-select code="authenticated.airline-manager.form.label.airline" path="airline" choices="${airlineChoices}"/>
 		<acme:submit code="authenticated.airline-manager.form.button.create" action="/authenticated/airline-manager/create"/>
 	</jstl:if>
 	
 	<jstl:if test="${_command == 'update'}" >
+		<acme:input-select code="authenticated.airline-manager.form.label.airline" path="airline" choices="${airlineChoices}" readonly="true"/>
 		<acme:submit code="authenticated.airline-manager.form.button.update" action="/authenticated/airline-manager/update"/>
 	</jstl:if>
 	

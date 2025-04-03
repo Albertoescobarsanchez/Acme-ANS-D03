@@ -64,6 +64,9 @@ public class AuthenticatedAirlineManagerCreateService extends AbstractGuiService
 	@Override
 	public void validate(final AirlineManager object) {
 		assert object != null;
+
+		boolean duplicatedNumber = this.repository.findAirlineManagers().stream().anyMatch(manager -> manager.getIdentifierNumber().equals(object.getIdentifierNumber()) && manager.getId() != object.getId());
+		super.state(!duplicatedNumber, "identifierNumber", "authenticated.airline-manager.form.error.duplicatedIdentifierNumber");
 	}
 
 	@Override

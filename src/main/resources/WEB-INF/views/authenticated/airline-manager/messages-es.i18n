@@ -8,33 +8,16 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-airline-manager.flight.list.title = Lista de vuelos
-airline-manager.flight.form.title = Datos del vuelo
 
-airline-manager.flight.list.label.tag = Etiqueta
-airline-manager.flight.list.label.origin = Origen
-airline-manager.flight.list.label.destination = Destino
-airline-manager.flight.list.label.draftMode = Es borrador
+authenticated.airline-manager.form.title= Perfil de gerente de aerolínea
 
-airline-manager.flight.list.button.create = Crear vuelo
+authenticated.airline-manager.form.label.identifierNumber = Número de identificación
+authenticated.airline-manager.form.label.yearsOfExperience = Años de experiencia
+authenticated.airline-manager.form.label.birthDate = Fecha de nacimiento
+authenticated.airline-manager.form.label.pictureLink = Enlace de imagen
+authenticated.airline-manager.form.label.airline = Aerolínea
 
-airline-manager.flight.form.label.tag = Etiqueta
-airline-manager.flight.form.label.selfTransfer = Requiere traslado por cuenta propia
-airline-manager.flight.form.label.cost =  Coste
-airline-manager.flight.form.label.description = Descripción
+authenticated.airline-manager.form.button.create = Crear perfil
+authenticated.airline-manager.form.button.update = Actualizar perfil
 
-airline-manager.flight.form.label.scheduledDeparture = Salida programada
-airline-manager.flight.form.label.scheduledArrival = Llegada programada
-airline-manager.flight.form.label.origin = Origen
-airline-manager.flight.form.label.destination = Destino
-airline-manager.flight.form.label.layovers = Escalas
-
-airline-manager.flight.form.button.create = Crear vuelo
-airline-manager.flight.form.button.update = Actualizar vuelo
-airline-manager.flight.form.button.delete = Borrar vuelo
-airline-manager.flight.form.button.publish = Publicar vuelo
-
-airline-manager.flight.form.error.publishingWithoutAnyLeg = No es posible publicar un vuelo sin ningún tramo
-airline-manager.flight.form.error.notPublishedLegs = No es posible publicar un vuelo sin publicar todos sus tramos
-
-airline-manager.leg.form.button.list = Tramos
+authenticated.airline-manager.form.error.duplicatedIdentifierNumber = Número de identificación duplicado
