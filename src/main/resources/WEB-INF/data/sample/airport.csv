@@ -1,0 +1,58 @@
+key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
+#base-example
+airport-01,"Lorem ipsum dolor sit ame",NBN,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme@lorem-ipsum.org,2785524576
+#name-examples
+airport-02,"Lorem ipsum dolor sit ame",BBB,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme1@lorem-ipsum.org,2785524576
+airport-03,"L",BBQ,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme2@lorem-ipsum.org,2785524576
+airport-04,"Lo",BBW,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme3@lorem-ipsum.org,2785524576
+airport-05,"Lorem ipsum dolor sit amet, consectetur adipiscin",BBE,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme4@lorem-ipsum.org,2785524576
+airport-06,"Lorem ipsum dolor sit amet, consectetur adipiscing",BBR,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme5@lorem-ipsum.org,2785524576
+airport-07,"โลเร็ม อิปซัม",BBT,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme6@lorem-ipsum.org,2785524576
+airport-08,"لوريم إيبسوم",BBY,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme7@lorem-ipsum.org,2785524576
+airport-09,"洛伦·伊普森",BBI,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme8@lorem-ipsum.org,2785524576
+airport-10,"<marquee>Hacked</marquee>",BBO,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme9@lorem-ipsum.org,2785524576
+airport-11,"<script>alert(‘Hacked!’);</script>",BBP,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme10@lorem-ipsum.org,2785524576
+airport-12,"' or 'A' = 'A ",BBV,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme11@lorem-ipsum.org,2785524576
+#IATAcode-examples
+airport-13,"Lorem ipsum dolor sit ame",LDE,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme12@lorem-ipsum.org,2785524576
+airport-14,"Lorem ipsum dolor sit ame",LLL,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme13@lorem-ipsum.org,2785524576
+airport-15,"Lorem ipsum dolor sit ame",EXN,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme14@lorem-ipsum.org,2785524576
+airport-16,"Lorem ipsum dolor sit ame",QSV,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme15@lorem-ipsum.org,2785524576
+airport-17,"Lorem ipsum dolor sit ame",FRI,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme16@lorem-ipsum.org,2785524576
+airport-18,"Lorem ipsum dolor sit ame",PNV,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme17@lorem-ipsum.org,2785524576
+airport-19,"Lorem ipsum dolor sit ame",HXT,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme18@lorem-ipsum.org,2785524576
+airport-20,"Lorem ipsum dolor sit ame",GAF,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme19@lorem-ipsum.org,2785524576
+airport-21,"Lorem ipsum dolor sit ame",MOH,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme20@lorem-ipsum.org,2785524576
+airport-22,"Lorem ipsum dolor sit ame",TAT,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme21@lorem-ipsum.org,2785524576
+#operationalScope-examples
+airport-23,"Lorem ipsum dolor sit ame",DEF,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme22@lorem-ipsum.org,2785524576
+airport-24,"Lorem ipsum dolor sit ame",DEQ,DOMESTIC,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme23@lorem-ipsum.org,2785524576
+airport-25,"Lorem ipsum dolor sit ame",DEW,REGIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme24@lorem-ipsum.org,2785524576
+#city-examples
+airport-26,"Lorem ipsum dolor sit ame",DEE,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme25@lorem-ipsum.org,2785524576
+airport-27,"Lorem ipsum dolor sit ame",DER,INTERNATIONAL,"L","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme26@lorem-ipsum.org,2785524576
+airport-28,"Lorem ipsum dolor sit ame",DET,INTERNATIONAL,"Lo","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme27@lorem-ipsum.org,2785524576
+airport-29,"Lorem ipsum dolor sit ame",DEY,INTERNATIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme28@lorem-ipsum.org,2785524576
+airport-30,"Lorem ipsum dolor sit ame",NBQ,INTERNATIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme29@lorem-ipsum.org,2785524576
+airport-31,"Lorem ipsum dolor sit ame",NBW,INTERNATIONAL,"โลเร็ม อิปซัม","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme30@lorem-ipsum.org,2785524576
+airport-32,"Lorem ipsum dolor sit ame",NBE,INTERNATIONAL,"لوريم إيبسوم","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme31@lorem-ipsum.org,2785524576
+airport-33,"Lorem ipsum dolor sit ame",NBR,INTERNATIONAL,"洛伦·伊普森","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme32@lorem-ipsum.org,2785524576
+airport-34,"Lorem ipsum dolor sit ame",NBT,INTERNATIONAL,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme33@lorem-ipsum.org,2785524576
+airport-35,"Lorem ipsum dolor sit ame",NBY,INTERNATIONAL,"<script>alert(‘Hacked!’);</script>","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme34@lorem-ipsum.org,2785524576
+airport-36,"Lorem ipsum dolor sit ame",NBU,INTERNATIONAL,"' or 'A' = 'A ","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme35@lorem-ipsum.org,2785524576
+#country-examples
+airport-37,"Lorem ipsum dolor sit ame",NBO,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme36@lorem-ipsum.org,2785524576
+airport-38,"Lorem ipsum dolor sit ame",NBP,INTERNATIONAL,"Lorem ipsum dolor sit ame","L",http://lorem.com/ipsum,acme37@lorem-ipsum.org,2785524576
+airport-39,"Lorem ipsum dolor sit ame",NBA,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lo",http://lorem.com/ipsum,acme38@lorem-ipsum.org,2785524576
+airport-40,"Lorem ipsum dolor sit ame",NBS,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscin",http://lorem.com/ipsum,acme39@lorem-ipsum.org,2785524576
+airport-41,"Lorem ipsum dolor sit ame",NBD,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing",http://lorem.com/ipsum,acme40@lorem-ipsum.org,2785524576
+airport-42,"Lorem ipsum dolor sit ame",NBF,INTERNATIONAL,"Lorem ipsum dolor sit ame","โลเร็ม อิปซัม",http://lorem.com/ipsum,acme41@lorem-ipsum.org,2785524576
+airport-43,"Lorem ipsum dolor sit ame",NBG,INTERNATIONAL,"Lorem ipsum dolor sit ame","لوريم إيبسوم",http://lorem.com/ipsum,acme42@lorem-ipsum.org,2785524576
+airport-44,"Lorem ipsum dolor sit ame",NBH,INTERNATIONAL,"Lorem ipsum dolor sit ame","洛伦·伊普森",http://lorem.com/ipsum,acme43@lorem-ipsum.org,2785524576
+airport-45,"Lorem ipsum dolor sit ame",NBJ,INTERNATIONAL,"Lorem ipsum dolor sit ame","<marquee>Hacked</marquee>",http://lorem.com/ipsum,acme44@lorem-ipsum.org,2785524576
+airport-46,"Lorem ipsum dolor sit ame",NBK,INTERNATIONAL,"Lorem ipsum dolor sit ame","<script>alert(‘Hacked!’);</script>",http://lorem.com/ipsum,acme45@lorem-ipsum.org,2785524576
+airport-47,"Lorem ipsum dolor sit ame",NBL,INTERNATIONAL,"Lorem ipsum dolor sit ame","' or 'A' = 'A ",http://lorem.com/ipsum,acme46@lorem-ipsum.org,2785524576
+#website-examples
+airport-48,"Lorem ipsum dolor sit ame",NBZ,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",http://lorem.com/ipsum,acme47@lorem-ipsum.org,2785524576
+airport-49,"Lorem ipsum dolor sit ame",NBX,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",ftp://a,acme48@lorem-ipsum.org,2785524576
+airport-50,"Lorem ipsum dolor sit ame",NBV,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame",ftp://a.b,acme49@lorem-ipsum.org,2785524576
