@@ -50,6 +50,7 @@
 		<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
 			<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.list.completed" action="/flight-crew-member/flight-assignment/list?completed=true"/>
 			<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.list.not-completed" action="/flight-crew-member/flight-assignment/list?completed=false"/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.assistance-agent" access="hasRealm('AssistanceAgent')">

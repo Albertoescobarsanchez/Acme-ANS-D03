@@ -1,0 +1,21 @@
+<%@page%>
+
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="acme" uri="http://acme-framework.org/"%>
+
+<acme:form>
+		<acme:input-moment code="flight-crew-member.activity-log.form.label.moment" path="moment" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.activity-log.form.label.type" path="type" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.activity-log.form.label.description" path="description" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.activity-log.form.label.severityLevel" path="severityLevel" readonly="true"/>
+		<acme:input-textbox code="flight-crew-member.activity-log.form.label.draftMode" path="draftMode" readonly="true"/>
+		<acme:input-select code="flight-crew-member.flight-assignment.form.label.assignment" path="assignment" choices="${flightAssignmentChoice}"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
+		<acme:submit code="flight-crew-member.activity-log.form.button.update" action="/flight-crew-member/activity-log/update"/>
+		<acme:submit code="flight-crew-member.activity-log.form.button.delete" action="/flight-crew-member/activity-log/delete"/>
+		<acme:submit code="flight-crew-member.activity-log.form.button.publish" action="/flight-crew-member/activity-log/publish"/>
+	</jstl:if>
+	<jstl:if test="${_command == 'create'}">
+		<acme:button code="flight-crew-member.activity-log.form.button.create" action="/flight-crew-member/activity-log/create?masterId=${masterId}"/>
+	</jstl:if>
+</acme:form>
