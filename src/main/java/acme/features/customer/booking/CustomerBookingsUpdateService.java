@@ -52,15 +52,15 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "draftMode", "lastNibble", "travelClass", "flight");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "price", "lastNibble", "travelClass", "flight");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		if (booking.isDraftMode() == false)
+		if (!booking.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 		Booking b = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
-		if (b != null)
+		if (b != null && b.getId() != booking.getId())
 			super.state(false, "locatorCode", "acme.validation.confirmation.message.booking.locator-code");
 	}
 
@@ -74,14 +74,16 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices flightChoices;
+		//		Date today = MomentHelper.getCurrentMoment();
 
-		Collection<Flight> flights = this.flightRepository.findAllFlights();
+		Collection<Flight> flights = this.flightRepository.findAllFlights().stream().filter(f -> f.getDraftMode() == false).toList();
 		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
-		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble");
+		Collection<Passenger> passengerN = this.repository.findPassengersByBookingId(booking.getId());
+		Collection<String> passengers = passengerN.stream().map(p -> p.getFullName()).toList();
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "draftMode", "lastNibble");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
 		dataset.put("flight", flightChoices.getSelected().getKey());

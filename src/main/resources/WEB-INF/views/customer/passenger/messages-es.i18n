@@ -1,0 +1,24 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+customer.passenger.list.title = Lista de pasajeros
+customer.passenger.form.title = Datos de pasajeros
+
+customer.passenger.list.label.fullName = Nombre Completo
+customer.passenger.list.label.email = Email
+customer.passenger.list.label.passportNumber = Numero de Pasaporte
+customer.passenger.list.label.birthDate = Fecha de Nacimiento
+customer.passenger.list.label.specialNeeds = Necesidades Especiales
+
+customer.passenger.form.button.create = Crear pasajero
+customer.passenger.form.button.update = Editar pasajero
+customer.passenger.form.button.publish = Publicar pasajero
+#customer.passenger.form.button.delete = Eliminar pasajero
+

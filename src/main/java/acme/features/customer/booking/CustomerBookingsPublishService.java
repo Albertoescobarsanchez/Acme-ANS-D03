@@ -10,10 +10,12 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
 import acme.entities.flight.FlightRepository;
 import acme.entities.passenger.Passenger;
+import acme.features.customer.bookingRecord.CustomerBookingRecordRepository;
 import acme.realms.Customer;
 
 @GuiService
@@ -22,10 +24,13 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerBookingsRepository	repository;
+	private CustomerBookingsRepository		repository;
 
 	@Autowired
-	private FlightRepository			flightRepository;
+	private CustomerBookingRecordRepository	bookingRecordRepository;
+
+	@Autowired
+	private FlightRepository				flightRepository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -52,7 +57,7 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 
 	@Override
 	public void bind(final Booking object) {
-		super.bindObject(object, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "passengers");
+		super.bindObject(object, "locatorCode", "purchaseMoment", "price", "travelClass", "lastNibble", "passengers");
 	}
 
 	@Override
@@ -62,14 +67,23 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 			if (lastNibbleStored == null || lastNibbleStored.isBlank() || lastNibbleStored.isBlank())
 				super.state(false, lastNibbleStored, "acme.validation.confirmation.message.lastNibble");
 		}
+
+		Collection<BookingRecord> br = this.bookingRecordRepository.findBookingRecordByBookingId(booking.getId());
+		if (br.isEmpty())
+			super.state(false, "passenger", "acme.validation.confirmation.message.passenger");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
 		if (booking.getLastNibble() == null || booking.getLastNibble().isBlank() || booking.getLastNibble().isEmpty())
 			booking.setLastNibble(this.repository.findBookingById(booking.getId()).getLastNibble());
-		booking.setDraftMode(false);
-		this.repository.save(booking);
+		Booking b = this.repository.findBookingById(booking.getId());
+		b.setFlight(booking.getFlight());
+		b.setLastNibble(booking.getLastNibble());
+		b.setLocatorCode(booking.getLocatorCode());
+		b.setTravelClass(booking.getTravelClass());
+		b.setDraftMode(false);
+		this.repository.save(b);
 	}
 
 	@Override
@@ -77,14 +91,16 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices flightChoices;
+		//		Date today = MomentHelper.getCurrentMoment();
 
-		Collection<Flight> flights = this.flightRepository.findAllFlights();
+		Collection<Flight> flights = this.flightRepository.findAllFlights().stream().filter(f -> f.getDraftMode() == false).toList();
 		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
-		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "draftMode", "lastNibble");
+		Collection<Passenger> passengerN = this.repository.findPassengersByBookingId(booking.getId());
+		Collection<String> passengers = passengerN.stream().map(p -> p.getFullName()).toList();
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "draftMode", "lastNibble");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
 		dataset.put("flight", flightChoices.getSelected().getKey());
@@ -93,9 +109,4 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 		super.getResponse().addData(dataset);
 	}
 
-	//	@Override
-	//	public void onSuccess() {
-	//		if (super.getRequest().getMethod().equals("POST"))
-	//			PrincipalHelper.handleUpdate();
-	//	}
 }

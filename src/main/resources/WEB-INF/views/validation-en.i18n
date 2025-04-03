@@ -1,0 +1,23 @@
+# validation-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.header.message  	= Must have from 1 to 60 characters
+acme.validation.text.message   		= Must have from 1 to 255 characters
+acme.validation.phone.message       = Must match +country-code (area-code) phone-number, where only the phone-number is mandatory 
+
+
+
+acme.validation.NotNull.message = The entity can not be null
+acme.validation.draftMode.message = The entity is not a draft mode
+acme.validation.Customer.identifier.message = The identifier must not be null and must match with the two or three Client's initials
+acme.validation.Customer.identifier.name.message = The identifier does not match the Client's initials
+acme.validation.text.identifier = The identifier is not correct, it must be 6 numbers and 2 or 3 capital letters, it must match with the two or three Client's initials
+acme.validation.text.IATAcode = The IATAcode is not correct
+acme.validation.confirmation.message.passenger = The booking must have at least one passenger to be published
