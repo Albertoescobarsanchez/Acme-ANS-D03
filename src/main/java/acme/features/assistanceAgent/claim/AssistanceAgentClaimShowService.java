@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
@@ -50,7 +51,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 	public void unbind(final Claim claim) {
 		Dataset dataset;
 		SelectChoices claimTypeChoices = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		SelectChoices legChoices = SelectChoices.from(this.repository.findAvailableLegs(), "flightNumber", claim.getLeg());
+		SelectChoices legChoices = SelectChoices.from(this.repository.findAvailableLegs(MomentHelper.getCurrentMoment()), "flightNumber", claim.getLeg());
 		boolean pending = claim.getIndicator().equals(Indicator.PENDING);
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "draftMode");

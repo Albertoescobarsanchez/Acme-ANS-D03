@@ -21,22 +21,23 @@
 	<acme:input-textbox code="assistance-agent.claim.form.label.description" path="description"/>
 	<acme:input-select code="assistance-agent.claim.form.label.claimType" path="claimType"  choices="${claimTypes}"/>
 	<acme:input-textbox code="assistance-agent.claim.form.label.indicator" path="getIndicator" readonly="true"/>
-	<jstl:if test="${pending == true || pending == null }">
+	<jstl:if test="${pending == true || pending == null}">
 		<acme:input-select code="assistance-agent.claim.form.label.leg" path="leg" choices="${legs}"/>
 	</jstl:if>
-  
-  
-  <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true && getIndicator == 'PENDING'}">
-		      <acme:submit code="assistance-agent.claim.form.button.update" action="/assistance-agent/claim/update"/>
-		      <acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>
-		      <acme:submit code="assistance-agent.claim.form.button.publish" action="/assistance-agent/claim/publish" method="post"/>
+
+	
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true && getIndicator == 'PENDING'}">
+		<acme:submit code="assistance-agent.claim.form.button.update" action="/assistance-agent/claim/update"/>
+		<acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>
+		<acme:submit code="assistance-agent.claim.form.button.publish" action="/assistance-agent/claim/publish" method="post"/>
 	</jstl:if>
 	<jstl:choose>
-                <jstl:when test="${_command != 'create'}">
-				                <acme:submit code="assistance-agent.tracking-log.form.button.list" action="/assistance-agent/tracking-log/list?id=${id}" method="get"/>
-			          </jstl:when>
-                <jstl:when test="${_command == 'create'}">
-				                <acme:submit code="assistance-agent.claim.form.button.create" action="/assistance-agent/claim/create"/>
-			          </jstl:when>	
+			<jstl:when test="${_command != 'create'}">
+				<acme:submit code="assistance-agent.tracking-log.form.button.list" action="/assistance-agent/tracking-log/list?id=${id}" method="get"/>
+			</jstl:when>
+			<jstl:when test="${_command == 'create'}">
+				<acme:submit code="assistance-agent.claim.form.button.create" action="/assistance-agent/claim/create"/>
+			</jstl:when>		
 	</jstl:choose>	
+		
 </acme:form>

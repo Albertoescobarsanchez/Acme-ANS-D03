@@ -63,7 +63,13 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		;
+		int claimId;
+		Claim claim;
+
+		claimId = super.getRequest().getData("id", int.class);
+		claim = this.claimRepository.findClaimById(claimId);
+		if (claim.isDraftMode())
+			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 	}
 
 	@Override
