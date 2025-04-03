@@ -55,22 +55,48 @@ public class CustomerBookingsShowService extends AbstractGuiService<Customer, Bo
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices flightChoices;
-		//		Date today = MomentHelper.getCurrentMoment();
 
-		Collection<Flight> flights = this.flightRepository.findAllFlights().stream().filter(f -> f.getDraftMode() == false).toList();
-		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight() != null ? booking.getFlight() : flights.stream().findFirst().orElse(null));
+		Collection<Flight> flights = this.flightRepository.findAllFlights();
+		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+		Collection<Passenger> passengerNumber = this.repository.findPassengersByBookingId(booking.getId());
+		Collection<String> passengers = passengerNumber.stream().map(x -> x.getFullName()).toList();
 
-		Collection<Passenger> passengerN = this.repository.findPassengersByBookingId(booking.getId());
-		Collection<String> passengers = passengerN.stream().map(p -> p.getFullName()).toList();
-
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "draftMode", "lastNibble");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "lastNibble", "draftMode");
 		dataset.put("travelClass", choices);
 		dataset.put("passengers", passengers);
-		dataset.put("flight", flightChoices.getSelected() != null ? flightChoices.getSelected().getKey() : null);
+		dataset.put("flight", flightChoices.getSelected().getKey());
 		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);
 	}
+
+	//	@Override
+	//	public void unbind(final Booking booking) {
+	//		Dataset dataset;
+	//		SelectChoices choices;
+	//		SelectChoices flightChoices;
+	//		//		Date today = MomentHelper.getCurrentMoment();
+	//
+	//		Collection<Flight> flights = this.flightRepository.findAllFlights().stream().filter(f -> !f.getDraftMode()).toList();
+	//
+	//		// Si booking tiene un vuelo, lo usamos; de lo contrario, usamos el primer vuelo disponible (si existe)
+	//		Flight selectedFlight = booking.getFlight() != null ? booking.getFlight() : !flights.isEmpty() ? flights.iterator().next() : null;
+	//
+	//		flightChoices = SelectChoices.from(flights, "tag", selectedFlight);
+	//		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+	//
+	//		Collection<Passenger> passengerN = this.repository.findPassengersByBookingId(booking.getId());
+	//		Collection<String> passengers = passengerN.stream().map(p -> p.getFullName()).toList();
+	//
+	//		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "draftMode", "lastNibble");
+	//		dataset.put("travelClass", choices);
+	//		dataset.put("passengers", passengers);
+	//
+	//		dataset.put("flight", flightChoices.getSelected() != null ? flightChoices.getSelected().getKey() : selectedFlight != null ? selectedFlight.getId() : null);
+	//		dataset.put("flights", flightChoices);
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 
 }

@@ -2,7 +2,6 @@
 package acme.entities.flight;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +20,7 @@ public interface FlightRepository extends AbstractRepository {
 	@Query("select f.cost from Flight f where f.id = :flightId")
 	Money findCostByFlight(@Param("flightId") Integer flightId);
 
-	@Query("select f from Flight f where f.scheduledDeparture = :scheduledDeparture")
-	Flight findFlightByScheduledDeparture(@Param("scheduledDeparture") Date scheduledDeparture);
+	//	@Query("select f from Flight f where f.scheduledDeparture = :scheduledDeparture")
+	//	Flight findFlightByScheduledDeparture(@Param("scheduledDeparture") Date scheduledDeparture);
 
 }

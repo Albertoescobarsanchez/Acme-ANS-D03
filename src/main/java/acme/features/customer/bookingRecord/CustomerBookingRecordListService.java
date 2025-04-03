@@ -42,6 +42,7 @@ public class CustomerBookingRecordListService extends AbstractGuiService<Custome
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getUserAccount().getId();
 		Collection<Booking> bookingsCustomer = this.bookingRepository.findBookingByCustomerId(customerId);
 
+		//		Collection<Passenger> passengers = bookingsCustomer.stream().flatMap(b -> this.passengerRepository.findPublishedPassengersByCustomerId(b.getId()).stream()).toList();
 		Collection<Passenger> passengers = bookingsCustomer.stream().flatMap(b -> this.bookingRepository.findPassengersByBookingId(b.getId()).stream()).toList();
 		Collection<BookingRecord> bookingsRecords = passengers.stream().flatMap(p -> this.repository.findBookingRecordByPassengerId(p.getId()).stream()).toList();
 		super.getBuffer().addData(bookingsRecords);
@@ -51,6 +52,8 @@ public class CustomerBookingRecordListService extends AbstractGuiService<Custome
 	public void unbind(final BookingRecord bookingRecord) {
 		Dataset dataset;
 		dataset = super.unbindObject(bookingRecord, "passenger", "booking");
+		dataset.put("passengerName", bookingRecord.getPassenger().getFullName());
+		dataset.put("bookingLocator", bookingRecord.getBooking().getLocatorCode());
 
 		super.getResponse().addData(dataset);
 	}

@@ -1,10 +1,10 @@
 key,key:customer,key:flight,locator-code,purchase-moment,travel-class,draft-mode,last-nibble
 #base-examples
-booking-01,customer-01,flight-01,MQLTCA63,2012/07/02 0:00,ECONOMY,true,1234
+booking-01,customer-01,flight-01,MQLTCA63,2012/07/02 0:00,ECONOMY,false,1234
 #locatorCode-examples
-booking-02,customer-01,flight-01,Z25HMTX,2012/07/02 0:00,ECONOMY,true,1234
-booking-03,customer-01,flight-01,890FTIV,2012/07/02 0:00,ECONOMY,true,1234
-booking-04,customer-01,flight-01,IKSL258,2012/07/02 0:00,ECONOMY,true,1234
+booking-02,customer-01,flight-01,Z25HMTX,2012/07/02 0:00,ECONOMY,false,1234
+booking-03,customer-01,flight-01,890FTIV,2012/07/02 0:00,ECONOMY,false,1234
+booking-04,customer-01,flight-01,IKSL258,2012/07/02 0:00,ECONOMY,false,1234
 booking-05,customer-01,flight-01,QOCMWS2,2012/07/02 0:00,ECONOMY,true,1234
 booking-06,customer-01,flight-01,AXS4TE,2012/07/02 0:00,ECONOMY,true,1234
 booking-07,customer-02,flight-01,HMB1GFC,2012/07/02 0:00,ECONOMY,true,1234
@@ -34,4 +34,3 @@ booking-27,customer-01,flight-01,MQLTCA83,2012/07/02 00:00,ECONOMY,true,0879
 #draftmode-examples
 booking-28,customer-01,flight-01,MQLTCA84,2012/07/02 00:00,ECONOMY,true,0879
 booking-29,customer-01,flight-01,MQLTCA85,2012/07/02 00:00,ECONOMY,false,0879
-

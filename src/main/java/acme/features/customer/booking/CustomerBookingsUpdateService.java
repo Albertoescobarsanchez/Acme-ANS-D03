@@ -57,7 +57,7 @@ public class CustomerBookingsUpdateService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void validate(final Booking booking) {
-		if (booking.isDraftMode() != false)
+		if (!booking.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 		Booking b = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
 		if (b != null && b.getId() != booking.getId())

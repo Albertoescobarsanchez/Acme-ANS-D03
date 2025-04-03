@@ -16,8 +16,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="customer.booking-record.list.label.passenger" path="passenger" width="15%"/>
-	<acme:list-column code="customer.booking-record.list.label.booking" path="booking" width="30%"/>
+	<acme:list-column code="customer.booking-record.list.label.passenger" path="passengerName" width="15%"/>
+	<acme:list-column code="customer.booking-record.list.label.booking" path="bookingLocator" width="30%"/>
 </acme:list>
 
 <acme:button code="customer.booking-record.form.button.create" action="/customer/booking-record/create"/>  
