@@ -16,7 +16,7 @@ FligthAssignment
 + lastUpdate: Date {Mandatory, ValidMoment(past=True), Temporal(TIMESTAMP)}
 + status: StatusAssignment {Mandatory, Valid, Automapped}
 + remarks: String {Optional, ValidString, Automapped}
-+ publish: Boolean {Mandatory, Valid, Automapped}
++ draftMode: Boolean {Mandatory, Valid, Automapped}
 
 bg=GREEN
 </panel_attributes>
@@ -60,7 +60,7 @@ bg=YELLOW</panel_attributes>
       <x>432</x>
       <y>378</y>
       <w>603</w>
-      <h>99</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 ActivityLog
@@ -69,6 +69,7 @@ ActivityLog
 + type: String {Mandatory, ValidString(max=50), Automapped}
 + description: String {Mandatory, ValidString, Automapped}
 + severityLevel: Integer {Mandatory, ValidNumber(min=0, max=10), Automapped}
++ draftMode: Boolean {Mandatory, Valid, Automapped}
 
 bg=GREEN</panel_attributes>
     <additional_attributes/>
@@ -259,7 +260,7 @@ m1=1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>207</x>
-      <y>513</y>
+      <y>522</y>
       <w>477</w>
       <h>135</h>
     </coordinates>
@@ -317,7 +318,7 @@ bg=CYAN</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>756</x>
-      <y>513</y>
+      <y>522</y>
       <w>333</w>
       <h>144</h>
     </coordinates>
