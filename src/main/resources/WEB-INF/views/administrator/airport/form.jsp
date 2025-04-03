@@ -18,7 +18,7 @@
 <acme:form>
 		<acme:input-textbox code="administrator.airport.list.label.name" path="name" />
 		<acme:input-textbox code="administrator.airport.list.label.iata-code" path="iataCode"/>
-		<acme:input-select code="administrator.airport.list.label.operationalScope" path="operationalScope" choices="${operationaScope}" />		
+		<acme:input-select code="administrator.airport.list.label.operationalScope" path="operationalScope" choices="${operationalScopes}" />		
 		<acme:input-textbox code="administrator.airport.list.label.city" path="city"/>
 		<acme:input-textbox code="administrator.airport.list.label.country" path="country"/>
 		<acme:input-url code="administrator.airport.list.label.website" path="website"/>		

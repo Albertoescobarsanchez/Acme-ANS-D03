@@ -18,8 +18,8 @@
 <acme:list>
 	<acme:list-column code="administrator.airport.list.label.name" path="name" width="20%"/>
 	<acme:list-column code="administrator.airport.list.label.iata-code" path="iataCode" width="10%"/>
-	<acme:list-column code="administrator.airport.list.label.operationalScope" path="operationalScope" width="18%"/>		
-	<acme:list-column code="administrator.airport.list.label.country" path="country" width="25%"/>
+	<acme:list-column code="administrator.airport.list.label.operationalScope" path="operationalScope" width="%20"/>		
+	<acme:list-column code="administrator.airport.list.label.country" path="country" width="20%"/>
 	<acme:list-column code="administrator.airport.list.label.website" path="website" width="20%"/>		
 </acme:list>
 
