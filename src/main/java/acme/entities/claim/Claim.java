@@ -55,11 +55,6 @@ public class Claim extends AbstractEntity {
 	@Automapped
 	private ClaimType			claimType;
 
-	//	@Mandatory
-	//	@Valid
-	//	@Automapped
-	//	private Indicator			indicator;
-
 	@Mandatory
 	@Automapped
 	private boolean				draftMode;
