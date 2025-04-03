@@ -12,6 +12,8 @@ airline-manager.leg.list.title = Leg list
 airline-manager.leg.form.title = Leg data
 
 airline-manager.leg.list.label.flightNumber = Flight number
+airline-manager.leg.list.label.scheduledDeparture = Scheduled departure
+airline-manager.leg.list.label.scheduledArrival = Scheduled arrival
 airline-manager.leg.list.label.departureAirport = Departure airport
 airline-manager.leg.list.label.arrivalAirport = Arrival airport
 airline-manager.leg.list.label.status = Status

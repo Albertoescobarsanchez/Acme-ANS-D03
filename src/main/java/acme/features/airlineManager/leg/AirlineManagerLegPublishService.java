@@ -85,7 +85,7 @@ public class AirlineManagerLegPublishService extends AbstractGuiService<AirlineM
 		statusChoices = SelectChoices.from(Status.class, object.getStatus());
 		departureAirportChoices = SelectChoices.from(this.repository.findAirports(), "iataCode", object.getDepartureAirport());
 		arrivalAirportChoices = SelectChoices.from(this.repository.findAirports(), "iataCode", object.getArrivalAirport());
-		aircraftChoices = SelectChoices.from(this.repository.findAircraftsByAirlineId(object.getFlight().getAirlineManager().getAirline().getId()), "registrationNumber", object.getAircraft());
+		aircraftChoices = SelectChoices.from(this.repository.findActiveAircraftsByAirlineId(object.getFlight().getAirlineManager().getAirline().getId()), "registrationNumber", object.getAircraft());
 		dataset.put("departureAirports", departureAirportChoices);
 		dataset.put("arrivalAirports", arrivalAirportChoices);
 		dataset.put("aircraftChoices", aircraftChoices);
