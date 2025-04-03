@@ -26,22 +26,10 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("SELECT c FROM Claim c WHERE c.assistanceAgent.id = :agentId")
 	Collection<Claim> findAllClaimsByAssistanceAgentId(int agentId);
 
-	@Query("SELECT c FROM Claim c WHERE c.indicator <> acme.entities.claim.Indicator.PENDING AND  c.assistanceAgent.id = :agentId")
-	Collection<Claim> findCompletedClaims(int agentId);
-
-	@Query("SELECT c FROM Claim c WHERE c.indicator = acme.entities.claim.Indicator.PENDING AND  c.assistanceAgent.id = :agentId")
-	Collection<Claim> findUndergoingClaims(int agentId);
-
-	@Query("SELECT c FROM Claim c WHERE c.indicator = 'PENDING' AND c.leg.id = :legId")
-	Collection<Claim> findUndergoingClaimsByLegId(int legId);
-
 	@Query("SELECT l FROM Leg l WHERE l.status IN ('ON_TIME', 'DELAYED', 'LANDED')")
 	Collection<Leg> findAvailableLegs();
 
 	@Query("SELECT c.leg FROM Claim c WHERE c.id = :claimId")
 	Leg findLegByClaimId(int claimId);
-
-	@Query("SELECT c FROM Claim c WHERE c.indicator = acme.entities.claim.Indicator.PENDING")
-	Collection<Claim> findUndergoingClaims();
 
 }
