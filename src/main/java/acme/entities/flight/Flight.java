@@ -106,7 +106,7 @@ public class Flight extends AbstractEntity {
 		AirlineManagerLegRepository repository;
 		repository = SpringHelper.getBean(AirlineManagerLegRepository.class);
 		int layovers = repository.findLegsByFlightId(this.getId()).size();
-		return layovers < 0 ? 0 : layovers;
+		return layovers == 0 ? 0 : layovers - 1;
 	}
 
 
