@@ -12,8 +12,8 @@ import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
-import acme.entities.flight.FlightRepository;
 import acme.entities.passenger.Passenger;
+import acme.features.airlineManager.flight.AirlineManagerFlightRepository;
 import acme.realms.Customer;
 
 @GuiService
@@ -22,10 +22,10 @@ public class CustomerBookingsShowService extends AbstractGuiService<Customer, Bo
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerBookingsRepository	repository;
+	private CustomerBookingsRepository		repository;
 
 	@Autowired
-	private FlightRepository			flightRepository;
+	private AirlineManagerFlightRepository	flightRepository;
 
 	// AbstractGuiService interface -------------------------------------------
 

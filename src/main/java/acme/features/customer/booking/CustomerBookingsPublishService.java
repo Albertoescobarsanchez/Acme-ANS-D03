@@ -13,8 +13,8 @@ import acme.entities.booking.Booking;
 import acme.entities.booking.BookingRecord;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
-import acme.entities.flight.FlightRepository;
 import acme.entities.passenger.Passenger;
+import acme.features.airlineManager.flight.AirlineManagerFlightRepository;
 import acme.features.customer.bookingRecord.CustomerBookingRecordRepository;
 import acme.realms.Customer;
 
@@ -30,7 +30,7 @@ public class CustomerBookingsPublishService extends AbstractGuiService<Customer,
 	private CustomerBookingRecordRepository	bookingRecordRepository;
 
 	@Autowired
-	private FlightRepository				flightRepository;
+	private AirlineManagerFlightRepository	flightRepository;
 
 	// AbstractGuiService interface -------------------------------------------
 

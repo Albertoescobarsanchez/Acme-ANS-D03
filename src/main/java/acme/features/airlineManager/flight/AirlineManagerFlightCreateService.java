@@ -15,7 +15,6 @@ package acme.features.airlineManager.flight;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -52,11 +51,6 @@ public class AirlineManagerFlightCreateService extends AbstractGuiService<Airlin
 		flight = new Flight();
 		flight.setAirlineManager(manager);
 		flight.setDraftMode(true);
-		flight.setScheduledArrival(MomentHelper.getBaseMoment());
-		flight.setScheduledDeparture(MomentHelper.getBaseMoment());
-		flight.setOrigin("Empty");
-		flight.setDestination("Empty");
-		flight.setLayovers(0);
 		super.getBuffer().addData(flight);
 	}
 

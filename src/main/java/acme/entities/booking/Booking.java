@@ -22,8 +22,8 @@ import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidLastNibble;
 import acme.constraints.ValidLocatorCode;
 import acme.entities.flight.Flight;
-import acme.entities.flight.FlightRepository;
 import acme.entities.passenger.Passenger;
+import acme.features.airlineManager.flight.AirlineManagerFlightRepository;
 import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
@@ -69,7 +69,7 @@ public class Booking extends AbstractEntity {
 	@Transient
 	public Money getPrice() {
 		Money price;
-		FlightRepository flightRepository = SpringHelper.getBean(FlightRepository.class);
+		AirlineManagerFlightRepository flightRepository = SpringHelper.getBean(AirlineManagerFlightRepository.class);
 		BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
 		if (this.getFlight() == null) {
 			Money noPrice = new Money();

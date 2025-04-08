@@ -16,11 +16,11 @@ Flight
 +selfTransfer: Boolean{Mandatory,Valid,Automapped}
 +cost: Money{Mandatory,ValidMoney,Automapped} 
 +description: String{Optional,ValidString,Automapped}
-+scheduledDeparture: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
-+scheduledArrival: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
-+origin: String{Mandatory,ValidString,Automapped}
-+destination: String{Mandatory,ValidString,Automapped}
-+layovers: Integer{Mandatory,ValidNumber(min = 0),Automapped}
+/scheduledDeparture: Date{Transient}
+/scheduledArrival: Date{Transient}
+/origin: String{Transient}
+/destination: String{Transient}
+/layovers: Integer{Transient}
 +draftMode: Boolean{Mandatory,Valid,Automapped}
 bg=GREEN</panel_attributes>
     <additional_attributes/>

@@ -92,21 +92,8 @@ public class AirlineManagerLegCreateService extends AbstractGuiService<AirlineMa
 	@Override
 	public void perform(final Leg object) {
 		assert object != null;
-		Flight flight = object.getFlight();
-		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(flight.getId()));
-		if (legs.size() == 1) {
-			flight.setOrigin(object.getDepartureAirport().getCity());
-			flight.setScheduledDeparture(object.getScheduledDeparture());
-		}
-		flight.setDestination(object.getArrivalAirport().getCity());
-		flight.setScheduledArrival(object.getScheduledArrival());
-		if (legs.size() > 0)
-			flight.setLayovers(legs.size() - 1);
-		else
-			flight.setLayovers(0);
 		object.setId(0);
 		this.repository.save(object);
-		this.repository.save(flight);
 	}
 
 	@Override
