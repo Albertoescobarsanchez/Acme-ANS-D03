@@ -1,12 +1,9 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -47,6 +44,8 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		FlightAssignment flightAssignment;
 
 		masterId = super.getRequest().getData("masterId", int.class);
+		super.getResponse().addGlobal("masterId", masterId);
+
 		flightAssignment = this.repository.findFlightAssignmentById(masterId);
 
 		activityLog = new ActivityLog();
@@ -58,7 +57,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void bind(final ActivityLog object) {
-		super.bindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
+		super.bindObject(object, "moment", "type", "description", "severityLevel");
 	}
 
 	@Override
@@ -83,15 +82,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		Dataset dataset;
 
 		dataset = super.unbindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
-
-		SelectChoices flightAssignmentChoice;
-		Collection<FlightAssignment> flightAssignments;
-
-		flightAssignments = this.repository.findAllFlightAssignments();
-		flightAssignmentChoice = SelectChoices.from(flightAssignments, "id", object.getAssignment());
-
-		dataset.put("flightAssignmentChoice", flightAssignmentChoice);
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 	}

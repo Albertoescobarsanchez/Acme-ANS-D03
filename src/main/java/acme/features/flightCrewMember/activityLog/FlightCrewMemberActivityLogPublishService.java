@@ -11,14 +11,14 @@ import acme.entities.activityLog.ActivityLog;
 import acme.realms.FlightCrewMember;
 
 @GuiService
-public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
+public class FlightCrewMemberActivityLogPublishService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private FlightCrewMemberActivityLogRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
@@ -56,7 +56,8 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 	@Override
 	public void perform(final ActivityLog object) {
 		assert object != null;
-		this.repository.delete(object);
+		object.setDraftMode(false);
+		this.repository.save(object);
 	}
 
 	@Override

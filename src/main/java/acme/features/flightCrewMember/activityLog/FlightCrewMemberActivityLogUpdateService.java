@@ -8,8 +8,6 @@ import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
-import acme.entities.flightAssignment.FlightAssignment;
-import acme.entities.leg.Leg;
 import acme.realms.FlightCrewMember;
 
 @GuiService
@@ -26,10 +24,9 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	@Override
 	public void authorise() {
 		boolean status;
-
-		int flightAssignmentId = super.getRequest().getData("masterId", int.class);
-		FlightAssignment flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
-		status = flightAssignment != null && flightAssignment.getMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+		int activityLogId = super.getRequest().getData("id", int.class);
+		ActivityLog activityLog = this.repository.findActivityLogById(activityLogId);
+		status = activityLog != null && activityLog.isDraftMode() && activityLog.getAssignment().getMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,7 +46,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	public void bind(final ActivityLog object) {
 		assert object != null;
 
-		super.bindObject(object, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
+		super.bindObject(object, "moment", "type", "description", "severityLevel");
 	}
 
 	@Override
@@ -57,7 +54,8 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		assert object != null;
 	}
 
-	public void perform(final Leg object) {
+	@Override
+	public void perform(final ActivityLog object) {
 		this.repository.save(object);
 	}
 
@@ -73,7 +71,6 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		Dataset dataset;
 
 		dataset = super.unbindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
-		dataset.put("assignment", object.getAssignment().getId());
 		super.getResponse().addData(dataset);
 	}
 
