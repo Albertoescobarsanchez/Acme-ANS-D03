@@ -28,6 +28,8 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 	@Autowired
 	private AssistanceAgentTrackingLogRepository	trackingLogRepository;
 
+	// AbstractService interface ----------------------------------------------
+
 
 	@Override
 	public void authorise() {

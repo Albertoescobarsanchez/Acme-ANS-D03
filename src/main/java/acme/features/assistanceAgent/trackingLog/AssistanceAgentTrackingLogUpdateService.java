@@ -2,6 +2,7 @@
 package acme.features.assistanceAgent.trackingLog;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +24,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	@Autowired
 	private AssistanceAgentTrackingLogRepository repository;
 
-	// AbstractGuiService interfaced ------------------------------------------
+	// AbstractGuiService interface ------------------------------------------
 
 
 	@Override
@@ -31,6 +32,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		boolean status;
 		int trackingLogId = super.getRequest().getData("id", int.class);
 		TrackingLog trackingLog = this.repository.findTrackingLogById(trackingLogId);
+
 		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && trackingLog != null;
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,6 +59,11 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
+		List<TrackingLog> trackingLogs = this.repository.findTrackingLogsOrderByResolutionPercentage();
+
+		if (!trackingLogs.isEmpty() && trackingLog.getResolutionPercentage() < trackingLogs.get(0).getResolutionPercentage())
+			super.state(false, "resolutionPercentage", "acme.validation.draftMode.message");
+
 		if (!trackingLog.isDraftMode())
 			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 	}

@@ -23,6 +23,8 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	@Autowired
 	private AssistanceAgentClaimRepository repository;
 
+	// AbstractGuiService interface -------------------------------------------
+
 
 	@Override
 	public void authorise() {
@@ -30,6 +32,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		int claimId = super.getRequest().getData("id", int.class);
 		Claim claim = this.repository.findClaimById(claimId);
 		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && claim != null && super.getRequest().getPrincipal().getActiveRealm().getId() == claim.getAssistanceAgent().getId();
+
 		super.getResponse().setAuthorised(status);
 	}
 
