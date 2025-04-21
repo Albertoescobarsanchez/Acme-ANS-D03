@@ -44,7 +44,6 @@ master.menu.user-account.become-manager = Hazte gerente de aerolínea
 master.menu.user-account.consumer-manager = Perfil de gerente de aerolínea
 master.menu.user-account.become-member = Hazte miembro de la tripulación de vuelo
 master.menu.user-account.member-profile = Perfil de la tripulación de vuelo
-
 master.menu.airline-manager = Gerente de Aerolínea
 master.menu.assistance-agent = Agente de asistencia
 master.menu.airline-manager.flight.list = Vuelos
