@@ -64,3 +64,6 @@ master.menu.customer = Customer
 master.menu.customer.booking.list = Bookings
 master.menu.customer.passenger.list = Passengers
 master.menu.customer.booking-record.list = Passengers Bookings
+
+master.menu.any = Any
+master.menu.any.flights = Flights
