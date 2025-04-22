@@ -15,7 +15,7 @@ airline-manager.flight.form.title = Datos de vuelo
 airline-manager.flight.list.label.tag = Tag
 airline-manager.flight.list.label.origin = Origin
 airline-manager.flight.list.label.destination = Destination
-airline-manager.flight.list.label.draftMode = Is DraftMode
+airline-manager.flight.list.label.draftMode = Es borrador
 
 airline-manager.flight.form.label.tag = Etiqueta
 airline-manager.flight.form.label.selfTransfer = Requiere traslado por cuenta propia

@@ -10,23 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.airlineManager.flight;
+package acme.features.any.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
-import acme.realms.AirlineManager;
 
 @GuiService
-public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineManager, Flight> {
+public class AnyFlightShowService extends AbstractGuiService<Any, Flight> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AirlineManagerFlightRepository repository;
+	private AnyFlightRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -36,7 +36,7 @@ public class AirlineManagerFlightShowService extends AbstractGuiService<AirlineM
 		boolean status;
 		int flightId = super.getRequest().getData("id", int.class);
 		Flight flight = this.repository.findFlightById(flightId);
-		status = flight != null && super.getRequest().getPrincipal().getActiveRealm().getId() == flight.getAirlineManager().getId();
+		status = flight != null && !flight.getDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
