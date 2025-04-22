@@ -12,6 +12,9 @@
 
 package acme.features.airlineManager.flight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -19,6 +22,7 @@ import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
+import acme.entities.leg.Leg;
 import acme.realms.AirlineManager;
 
 @GuiService
@@ -60,14 +64,19 @@ public class AirlineManagerFlightDeleteService extends AbstractGuiService<Airlin
 	@Override
 	public void validate(final Flight object) {
 		assert object != null;
+		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getId()));
+
+		boolean somePublished = legs.stream().anyMatch(l -> !l.getDraftMode());
+		super.state(!somePublished, "*", "airline-manager.flight.form.error.somePublishedLegs");
 	}
 
 	@Override
 	public void perform(final Flight object) {
 		assert object != null;
-
+		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getId()));
+		for (Leg leg : legs)
+			this.repository.delete(leg);
 		this.repository.delete(object);
-		;
 	}
 
 	@Override

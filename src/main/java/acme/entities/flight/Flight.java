@@ -42,9 +42,8 @@ public class Flight extends AbstractEntity {
 	private String				tag;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				selfTransfer;
+	private boolean				selfTransfer;
 
 	@Mandatory
 	@ValidMoney

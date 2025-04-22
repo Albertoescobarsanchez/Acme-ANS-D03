@@ -57,9 +57,9 @@ Leg
 +flightNumber: String{Mandatory,ValidLegCode,Column(unique = true)}
 +scheduledDeparture: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
 +scheduledArrival: Date{Mandatory,ValidMoment,Temporal(TemporalType.TIMESTAMP)}
-+hours: Float{Mandatory,Valid,Automapped}
 +status: Status{Mandatory,Valid,Automapped}
 +draftMode: Boolean{Mandatory,Valid,Automapped}
+/hours: Float{Mandatory,Valid,Automapped}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>

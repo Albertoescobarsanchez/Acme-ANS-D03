@@ -37,3 +37,4 @@ airline-manager.leg.form.button.list = Legs
 
 airline-manager.flight.form.error.publishingWithoutAnyLeg = It is not possible to publish a flight without any leg
 airline-manager.flight.form.error.notPublishedLegs = It is not possible to publish a flight without publishing all its legs
+airline-manager.flight.form.error.somePublishedLegs = A flight cannot be deleted with some published leg
