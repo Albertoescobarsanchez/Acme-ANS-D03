@@ -1,0 +1,12 @@
+authenticated.flight-crew-member.form.label.employeeCode = Employee Code
+authenticated.flight-crew-member.form.label.phoneNumber = Phone Number
+authenticated.flight-crew-member.form.label.languageSkills = Language skills
+authenticated.flight-crew-member.form.label.status = Status
+authenticated.flight-crew-member.form.label.salary = Salary
+authenticated.flight-crew-member.form.label.yearsExperience = Years experience
+
+authenticated.flight-crew-member.form.label.airline = Airline
+authenticated.flight-crew-member.form.button.create = Create
+authenticated.flight-crew-member.form.button.update = Update
+
+authenticated.airline-manager.form.error.duplicatedIdentifierNumber = Duplicated identifier number

@@ -23,7 +23,7 @@
 			<acme:menu-suboption code="30276353G: Cantalejo Gomez, Olga" action="https://www.zara.com/es/"/>
 			<acme:menu-suboption code="77863099A: Gonzalez Lucena, Juan Antonio" action="https://about.meta.com/es/"/>
 			<acme:menu-suboption code="49237577M: Suarez Coronel, Celia" action="https://ev.us.es/ultra/course"/>
-			<acme:menu-suboption code="44053812A: Paradas Borrego, Alvaro" action="https://mercadoracing.com/"/>
+			<acme:menu-suboption code="44053812A: Paradas Borrego, AÂlvaro" action="https://mercadoracing.com/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
@@ -76,6 +76,8 @@
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/airline-manager/create" access="!hasRealm('AirlineManager')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-member" action="/authenticated/flight-crew-member/create" access="!hasRealm('FlightCrewMember')"/>
+			<acme:menu-suboption code="master.menu.user-account.member-profile" action="/authenticated/flight-crew-member/update" access="hasRealm('FlightCrewMember')"/>
 			<acme:menu-suboption code="master.menu.user-account.manager-profile" action="/authenticated/airline-manager/update" access="hasRealm('AirlineManager')"/>
 		</acme:menu-option>
 	</acme:menu-right>
