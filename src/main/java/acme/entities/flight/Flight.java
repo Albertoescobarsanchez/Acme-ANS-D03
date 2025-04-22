@@ -1,12 +1,15 @@
 
 package acme.entities.flight;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -14,10 +17,12 @@ import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.MomentHelper;
+import acme.client.helpers.SpringHelper;
+import acme.entities.leg.Leg;
+import acme.features.airlineManager.leg.AirlineManagerLegRepository;
 import acme.realms.AirlineManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +38,7 @@ public class Flight extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	@Mandatory
 	@ValidString(max = 50)
-	@Automapped
+	@Column(unique = true)
 	private String				tag;
 
 	@Mandatory
@@ -51,38 +56,67 @@ public class Flight extends AbstractEntity {
 	@Automapped
 	private String				description;
 
-	@Mandatory
-	@ValidMoment
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				scheduledDeparture;
 
-	@Mandatory
-	@ValidMoment
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				scheduledArrival;
+	@Transient
+	public Date getScheduledDeparture() {
+		AirlineManagerLegRepository repository;
+		repository = SpringHelper.getBean(AirlineManagerLegRepository.class);
+		List<Leg> legs = new ArrayList<>(repository.findLegsByFlightId(this.getId()));
+		java.util.Optional<Leg> firstLeg = legs.stream().sorted(Comparator.comparing(leg -> leg.getScheduledDeparture())).findFirst();
+		if (firstLeg.isPresent())
+			return firstLeg.get().getScheduledDeparture();
+		return MomentHelper.getBaseMoment();
+	}
 
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				origin;
+	@Transient
+	public Date getScheduledArrival() {
+		AirlineManagerLegRepository repository;
+		repository = SpringHelper.getBean(AirlineManagerLegRepository.class);
+		List<Leg> legs = new ArrayList<>(repository.findLegsByFlightId(this.getId()));
+		java.util.Optional<Leg> lastLeg = legs.stream().sorted(Comparator.comparing(leg -> ((Leg) leg).getScheduledArrival()).reversed()).findFirst();
+		if (lastLeg.isPresent())
+			return lastLeg.get().getScheduledDeparture();
+		return MomentHelper.getBaseMoment();
+	}
 
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				destination;
+	@Transient
+	public String getOrigin() {
+		AirlineManagerLegRepository repository;
+		repository = SpringHelper.getBean(AirlineManagerLegRepository.class);
+		List<Leg> legs = new ArrayList<>(repository.findLegsByFlightId(this.getId()));
+		java.util.Optional<Leg> firstLeg = legs.stream().sorted(Comparator.comparing(leg -> leg.getScheduledDeparture())).findFirst();
+		if (firstLeg.isPresent())
+			return firstLeg.get().getDepartureAirport().getCity();
+		return "Empty";
+	}
 
-	@Mandatory
-	@ValidNumber(min = 0)
-	@Automapped
-	private Integer				layovers;
+	@Transient
+	public String getDestination() {
+		AirlineManagerLegRepository repository;
+		repository = SpringHelper.getBean(AirlineManagerLegRepository.class);
+		List<Leg> legs = new ArrayList<>(repository.findLegsByFlightId(this.getId()));
+		java.util.Optional<Leg> lastLeg = legs.stream().sorted(Comparator.comparing(leg -> ((Leg) leg).getScheduledArrival()).reversed()).findFirst();
+		if (lastLeg.isPresent())
+			return lastLeg.get().getArrivalAirport().getCity();
+		return "Empty";
+	}
+
+	@Transient
+	public Integer getLayovers() {
+		AirlineManagerLegRepository repository;
+		repository = SpringHelper.getBean(AirlineManagerLegRepository.class);
+		int layovers = repository.findLegsByFlightId(this.getId()).size();
+		return layovers == 0 ? 0 : layovers - 1;
+	}
+
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private Boolean				draftMode;
+	private Boolean			draftMode;
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private AirlineManager		airlineManager;
+	private AirlineManager	airlineManager;
 }

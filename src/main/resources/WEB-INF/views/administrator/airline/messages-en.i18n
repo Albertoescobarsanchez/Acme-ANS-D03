@@ -1,0 +1,27 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+administrator.airline.list.title = Airlines list
+administrator.airline.form.title = Airlines data
+
+administrator.airline.list.label.name = Name
+administrator.airline.list.label.iata-code = IATAcode
+administrator.airline.list.label.website = Website
+administrator.airline.list.label.type = Type
+administrator.airline.list.label.foundationMoment = FoundationMoment
+administrator.airline.list.label.email = Email
+administrator.airline.list.label.phoneNumber = Phone number
+
+administrator.airline.list.button.create = Create Airline
+administrator.airline.form.button.create = Create
+administrator.airline.form.button.update = Edit
+
+administrator.airline.form.label.confirmation = Confirm

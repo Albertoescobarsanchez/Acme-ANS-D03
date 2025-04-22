@@ -19,14 +19,18 @@
 <acme:menu-bar>
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="77844410J: Escobar Sánchez, Alberto" action="https://www.minecraft.net/es-es"/>
-			<acme:menu-suboption code="30276353G: Cantalejo Gómez, Olga" action="https://www.zara.com/es/"/>
-			<acme:menu-suboption code="77863099A: González Lucena, Juan Antonio" action="https://about.meta.com/es/"/>
-			<acme:menu-suboption code="49237577M: Suárez Coronel, Celia" action="https://ev.us.es/ultra/course"/>
-			<acme:menu-suboption code="44053812A: Paradas Borrego, Álvaro" action="https://mercadoracing.com/"/>
+			<acme:menu-suboption code="77844410J: Escobar Sanchez, Alberto" action="https://www.minecraft.net/es-es"/>
+			<acme:menu-suboption code="30276353G: Cantalejo Gomez, Olga" action="https://www.zara.com/es/"/>
+			<acme:menu-suboption code="77863099A: Gonzalez Lucena, Juan Antonio" action="https://about.meta.com/es/"/>
+			<acme:menu-suboption code="49237577M: Suarez Coronel, Celia" action="https://ev.us.es/ultra/course"/>
+			<acme:menu-suboption code="44053812A: Paradas Borrego, Alvaro" action="https://mercadoracing.com/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airline/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-airports" action="/administrator/airport/list"/>
+			<acme:menu-separator/>			
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
@@ -60,7 +64,9 @@
 		
 		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.booking.list" action="/customer/booking/list"/>
-		</acme:menu-option>		
+	  		<acme:menu-suboption code="master.menu.customer.passenger.list" action="/customer/passenger/list"/> 
+	  		<acme:menu-suboption code="master.menu.customer.booking-record.list" action="/customer/booking-record/list" />		
+ 		</acme:menu-option>		
 	</acme:menu-left>
 
 	<acme:menu-right>		
@@ -70,6 +76,10 @@
 			<acme:menu-suboption code="master.menu.user-account.provider-profile" action="/authenticated/provider/update" access="hasRealm('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/airline-manager/create" access="!hasRealm('AirlineManager')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-member" action="/authenticated/flight-crew-member/create" access="!hasRealm('FlightCrewMember')"/>
+			<acme:menu-suboption code="master.menu.user-account.member-profile" action="/authenticated/flight-crew-member/update" access="hasRealm('FlightCrewMember')"/>
+			<acme:menu-suboption code="master.menu.user-account.manager-profile" action="/authenticated/airline-manager/update" access="hasRealm('AirlineManager')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>

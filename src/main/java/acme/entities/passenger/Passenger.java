@@ -62,11 +62,10 @@ public class Passenger extends AbstractEntity {
 	@Automapped
 	private String				specialNeeds;
 
-	//Relationships ----------------------------------------------------
+	// Relationships -------------------------------------------------------------
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
 	private Customer			customer;
-
 }

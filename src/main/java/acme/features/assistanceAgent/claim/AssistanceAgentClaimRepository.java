@@ -2,6 +2,7 @@
 package acme.features.assistanceAgent.claim;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -26,22 +27,10 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("SELECT c FROM Claim c WHERE c.assistanceAgent.id = :agentId")
 	Collection<Claim> findAllClaimsByAssistanceAgentId(int agentId);
 
-	@Query("SELECT c FROM Claim c WHERE c.indicator <> acme.entities.claim.Indicator.PENDING AND  c.assistanceAgent.id = :agentId")
-	Collection<Claim> findCompletedClaims(int agentId);
-
-	@Query("SELECT c FROM Claim c WHERE c.indicator = acme.entities.claim.Indicator.PENDING AND  c.assistanceAgent.id = :agentId")
-	Collection<Claim> findUndergoingClaims(int agentId);
-
-	@Query("SELECT c FROM Claim c WHERE c.indicator = 'PENDING' AND c.leg.id = :legId")
-	Collection<Claim> findUndergoingClaimsByLegId(int legId);
-
-	@Query("SELECT l FROM Leg l WHERE l.status IN ('ON_TIME', 'DELAYED', 'LANDED')")
-	Collection<Leg> findAvailableLegs();
+	@Query("SELECT l FROM Leg l WHERE l.status IN ('ON_TIME', 'DELAYED', 'LANDED') AND l.scheduledArrival < :currentMoment")
+	Collection<Leg> findAvailableLegs(Date currentMoment);
 
 	@Query("SELECT c.leg FROM Claim c WHERE c.id = :claimId")
 	Leg findLegByClaimId(int claimId);
-
-	@Query("SELECT c FROM Claim c WHERE c.indicator = acme.entities.claim.Indicator.PENDING")
-	Collection<Claim> findUndergoingClaims();
 
 }

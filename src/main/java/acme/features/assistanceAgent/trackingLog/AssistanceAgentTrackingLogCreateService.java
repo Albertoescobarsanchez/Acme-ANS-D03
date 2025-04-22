@@ -2,6 +2,7 @@
 package acme.features.assistanceAgent.trackingLog;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -63,7 +64,10 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		;
+		List<TrackingLog> trackingLogs = this.repository.findTrackingLogsOrderByResolutionPercentage();
+
+		if (!trackingLogs.isEmpty() && trackingLog.getResolutionPercentage() < trackingLogs.get(0).getResolutionPercentage())
+			super.state(false, "resolutionPercentage", "acme.validation.draftMode.message");
 	}
 
 	@Override

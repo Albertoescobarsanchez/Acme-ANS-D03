@@ -14,7 +14,7 @@ airline-manager.flight.form.title = Flight data
 airline-manager.flight.list.label.tag = Tag
 airline-manager.flight.list.label.origin = Origin
 airline-manager.flight.list.label.destination = Destination
-airline-manager.flight.list.label.draftMode = Is draftMode
+airline-manager.flight.list.label.draftMode = Is DraftMode
 
 airline-manager.flight.form.label.tag = Tag
 airline-manager.flight.form.label.selfTransfer = Requires self transfer
@@ -33,7 +33,7 @@ airline-manager.flight.form.button.update = Update flight
 airline-manager.flight.form.button.delete = Delete flight
 airline-manager.flight.form.button.publish = Publish flight
 
+airline-manager.leg.form.button.list = Legs
+
 airline-manager.flight.form.error.publishingWithoutAnyLeg = It is not possible to publish a flight without any leg
 airline-manager.flight.form.error.notPublishedLegs = It is not possible to publish a flight without publishing all its legs
-
-airline-manager.leg.form.button.list = Legs

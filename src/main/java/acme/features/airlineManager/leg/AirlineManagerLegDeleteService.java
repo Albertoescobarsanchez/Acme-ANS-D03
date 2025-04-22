@@ -12,19 +12,13 @@
 
 package acme.features.airlineManager.leg;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.entities.leg.Status;
 import acme.realms.AirlineManager;
@@ -74,26 +68,7 @@ public class AirlineManagerLegDeleteService extends AbstractGuiService<AirlineMa
 	@Override
 	public void perform(final Leg object) {
 		assert object != null;
-		Flight flight = object.getFlight();
-		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(flight.getId()));
-		legs.remove(object);
-		if (legs.isEmpty()) {
-			flight.setScheduledArrival(MomentHelper.getBaseMoment());
-			flight.setScheduledDeparture(MomentHelper.getBaseMoment());
-			flight.setOrigin("Empty");
-			flight.setDestination("Empty");
-			flight.setLayovers(0);
-		} else {
-			Leg firstLeg = legs.stream().sorted(Comparator.comparing(leg -> leg.getScheduledDeparture())).findFirst().get();
-			Leg lastLeg = legs.stream().sorted(Comparator.comparing(leg -> ((Leg) leg).getScheduledDeparture()).reversed()).findFirst().get();
-			flight.setOrigin(firstLeg.getDepartureAirport().getCity());
-			flight.setScheduledDeparture(firstLeg.getScheduledDeparture());
-			flight.setDestination(lastLeg.getArrivalAirport().getCity());
-			flight.setScheduledArrival(lastLeg.getScheduledArrival());
-			flight.setLayovers(legs.size() - 1);
-		}
 		this.repository.delete(object);
-		this.repository.save(flight);
 	}
 
 	@Override

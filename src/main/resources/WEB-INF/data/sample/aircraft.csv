@@ -1,0 +1,53 @@
+key,model,registrationNumber,capacityPassengers,cargoWeight,status,details,key:airline
+#base-example
+aircraft-00,Boeing,B737-000,400,26000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+#model-example
+aircraft-01,L,A320-001,410,27000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-02,Lo,B777-002,420,28000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",A350-003,430,29000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",B787-004,440,30000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+#registrationNumber-example
+aircraft-05,Bombardier CRJ900,L,450,31000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-06,Boeing 787,Lo,460,32000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-06
+aircraft-07,Airbus A220,"Lorem ipsum dolor sit amet, consectetur adipiscin",470,33000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-08,ATR 72,"Lorem ipsum dolor sit amet, consectetur adipiscing",480,34000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-08
+#capacity-example
+aircraft-09,Boeing 747,B747-009,1,35000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-09
+aircraft-10,McDonnell Douglas MD-80,MD80-010,2,36000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-10
+aircraft-11,Cessna 172,C172-011,799,37000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-11
+aircraft-12,Airbus A330,A330-012,800,38000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-12
+#cargoWeight-example
+aircraft-13,Boeing 757,B757-013,530,2000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-13
+aircraft-14,Embraer E175,E175-014,540,2001,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-14
+aircraft-15,Bombardier Dash 8,Q400-015,550,49999,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-15
+aircraft-16,Boeing 767,B767-016,560,50000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-16
+#status-example
+aircraft-17,Airbus A310,A310-017,570,43000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-17
+aircraft-18,Boeing 737 MAX,B737M-018,580,44000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-18
+#details-example
+aircraft-19,Airbus A380,A380-019,590,45000,ACTIVE,L,airline-19
+aircraft-20,Boeing 707,B707-020,600,46000,UNDER_MAINTENANCE,Lo,airline-20
+aircraft-21,Concorde,CONC-021,610,47000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",airline-21
+aircraft-40,Gigi,GIGI-040,611,47001,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",airline-21
+#model-stringTest
+aircraft-22,โลเร็ม อิปซัม,B737-022,620,48000,ACTIVE,Lorem ipsum dolor sit amet,airline-22
+aircraft-23,لوريم إيبسوم,A310-023,630,49000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet,airline-23
+aircraft-24,洛伦·伊普森,A320-024,640,50000,ACTIVE,Lorem ipsum dolor sit amet,airline-24
+aircraft-25,<marquee>Hacked</marquee>,B747-025,650,41000,ACTIVE,Lorem ipsum dolor sit amet,airline-25
+aircraft-26,<script>alert(‘Hacked!’);</script>,B757-026,660,42000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet,airline-26
+aircraft-27,'' or 'A' = 'A,B767-027,670,43000,ACTIVE,Lorem ipsum dolor sit amet,airline-27
+#registrationNumber-stringTest
+aircraft-28,Boeing 747,โลเร็ม อิปซัม,680,44000,ACTIVE,Lorem ipsum dolor sit amet,airline-28
+aircraft-29,Boeing 757,لوريم إيبسوم,690,15000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet,airline-29
+aircraft-30,Airbus A330,洛伦·伊普森,700,46000,ACTIVE,Lorem ipsum dolor sit amet,airline-30
+aircraft-31,McDonnell Douglas DC-10,<marquee>Hacked</marquee>,710,47000,ACTIVE,Lorem ipsum dolor sit amet,airline-31
+aircraft-32,Airbus A321,<script>alert(‘Hacked!’);</script>,720,38000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet,airline-32
+aircraft-33,Boeing 737 MAX,'' or 'A' = 'A,730,39000,ACTIVE,Lorem ipsum dolor sit amet,airline-33
+#details-stringTest
+aircraft-34,Boeing 777,B777-034,740,30000,ACTIVE,โลเร็ม อิปซัม,airline-00
+aircraft-35,Airbus A320,A320-035,750,31000,UNDER_MAINTENANCE,لوريم إيبسوم,airline-00
+aircraft-36,McDonnell Douglas DC-10,DC10-036,760,32000,ACTIVE,洛伦·伊普森,airline-00
+aircraft-37,Airbus A330,A330-037,770,23000,UNDER_MAINTENANCE,<marquee>Hacked</marquee>,airline-37
+aircraft-38,Boeing 767,B767-038,780,24000,ACTIVE,<script>alert(‘Hacked!’);</script>,airline-38
+aircraft-39,Bombardier CRJ900,CRJ9-039,790,25000,UNDER_MAINTENANCE,'' or 'A' = 'A,airline-39
+# airline - no singular values

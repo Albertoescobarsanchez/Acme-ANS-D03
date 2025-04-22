@@ -1,0 +1,23 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+authenticated.airline-manager.form.title= Perfil de gerente de aerolínea
+
+authenticated.airline-manager.form.label.identifierNumber = Número de identificación
+authenticated.airline-manager.form.label.yearsOfExperience = Años de experiencia
+authenticated.airline-manager.form.label.birthDate = Fecha de nacimiento
+authenticated.airline-manager.form.label.pictureLink = Enlace de imagen
+authenticated.airline-manager.form.label.airline = Aerolínea
+
+authenticated.airline-manager.form.button.create = Crear perfil
+authenticated.airline-manager.form.button.update = Actualizar perfil
+
+authenticated.airline-manager.form.error.duplicatedIdentifierNumber = Número de identificación duplicado
