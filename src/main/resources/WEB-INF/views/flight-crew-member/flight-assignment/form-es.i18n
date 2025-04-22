@@ -12,6 +12,7 @@ flight-crew-member.flight-assignment.form.button.update = Actualizar
 flight-crew-member.flight-assignment.form.button.delete = Borrar
 flight-crew-member.flight-assignment.form.button.publish = Publicar
 
+flight-crew-member.flight-assignment.form.button.activity-log = Informes de registro
 acme.validation.flightAssignment.flightcrewmember = El rol es incorrecto
 acme.validation.flightAssignment.duty = Puesto ya ocupado
 acme.validation.flightAssignment.leg.moment = El momento es incorrecto

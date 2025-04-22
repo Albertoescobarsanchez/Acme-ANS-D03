@@ -1,0 +1,9 @@
+flight-crew-member.activity-log.form.label.moment = Momento
+flight-crew-member.activity-log.form.label.type = Tipo
+flight-crew-member.activity-log.form.label.description = Descripción
+flight-crew-member.activity-log.form.label.severityLevel = Nivel de seriedad
+
+flight-crew-member.activity-log.form.button.update = Actualizar
+flight-crew-member.activity-log.form.button.delete = Borrar
+flight-crew-member.activity-log.form.button.publish = Publicar
+flight-crew-member.activity-log.form.button.create = Crear
