@@ -14,8 +14,12 @@ import acme.realms.AssistanceAgent;
 @GuiService
 public class AssistanceAgentTrackingLogListService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private AssistanceAgentTrackingLogRepository repository;
+
+	// AbstractGuiService interface ------------------------------------------
 
 
 	@Override

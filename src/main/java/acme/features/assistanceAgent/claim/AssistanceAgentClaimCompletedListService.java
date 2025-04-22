@@ -29,7 +29,6 @@ public class AssistanceAgentClaimCompletedListService extends AbstractGuiService
 		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
@@ -50,6 +49,5 @@ public class AssistanceAgentClaimCompletedListService extends AbstractGuiService
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "claimType");
 		dataset.put("getIndicator", claim.getIndicator());
 		super.getResponse().addData(dataset);
-
 	}
 }

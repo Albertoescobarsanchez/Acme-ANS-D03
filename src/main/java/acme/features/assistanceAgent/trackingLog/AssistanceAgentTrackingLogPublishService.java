@@ -23,7 +23,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Autowired
 	private AssistanceAgentTrackingLogRepository repository;
 
-	// AbstractGuiService interfaced ------------------------------------------
+	// AbstractGuiService interface ------------------------------------------
 
 
 	@Override
@@ -31,6 +31,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		boolean status;
 		int trackingLogId = super.getRequest().getData("id", int.class);
 		TrackingLog trackingLog = this.repository.findTrackingLogById(trackingLogId);
+
 		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && trackingLog != null;
 		super.getResponse().setAuthorised(status);
 	}

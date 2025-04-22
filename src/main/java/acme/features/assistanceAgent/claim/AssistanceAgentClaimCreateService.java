@@ -58,7 +58,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "getIndicator");
 		claim.setLeg(leg);
-
 	}
 
 	@Override

@@ -19,12 +19,15 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	@Autowired
 	private AssistanceAgentTrackingLogRepository repository;
 
+	// AbstractGuiService interface -------------------------------------------
+
 
 	@Override
 	public void authorise() {
 		boolean status;
 		int trackingLogId = super.getRequest().getData("id", int.class);
 		TrackingLog trackingLog = this.repository.findTrackingLogById(trackingLogId);
+
 		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && trackingLog != null;
 		super.getResponse().setAuthorised(status);
 	}
