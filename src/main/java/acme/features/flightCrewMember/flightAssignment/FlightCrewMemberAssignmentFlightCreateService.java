@@ -73,7 +73,6 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 		 * super.state(!assigned, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.multipleLegs");
 		 * }
 		 */
-		System.out.println(super.getBuffer().getErrors());
 
 	}
 
@@ -81,7 +80,6 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 	public void perform(final FlightAssignment object) {
 		assert object != null;
 		this.repository.save(object);
-		System.out.println(super.getBuffer().getErrors());
 
 	}
 
@@ -106,7 +104,6 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 		dataset.put("legChoices", legChoices);
 
 		super.getResponse().addData(dataset);
-		System.out.println(super.getBuffer().getErrors());
 
 	}
 
