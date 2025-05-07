@@ -2,7 +2,6 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,7 +44,7 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 		flightAssignment.setStatus(StatusAssignment.CONFIRMED);
 		flightAssignment.setRemarks("This is remarks");
 		flightAssignment.setDraftMode(true);
-
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
 		flightAssignment.setMember(member);
@@ -62,20 +61,7 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 
 	@Override
 	public void validate(final FlightAssignment object) {
-		super.state(object.getMember() != null, "flightCrewMember", "acme.validation.flightAssignment.flightcrewmember");
-		super.state(object.getLeg() != null, "leg", "acme.validation.flightAssignment.leg");
-
-		if (object.getLeg() != null) {
-			Date hora = object.getLeg().getScheduledArrival();
-			boolean linkPastLeg = object.getLastUpdate().before(hora);
-			super.state(!linkPastLeg, "leg", "acme.validation.flightAssignment.leg.moment");
-		}
-
-		if (object.getDuty() != null && object.getLeg() != null)
-			if (object.getDuty() == Duty.PILOT || object.getDuty() == Duty.CO_PILOT) {
-				int count = this.repository.hasDutyAssigned(object.getLeg().getId(), object.getDuty(), object.getId());
-				super.state(count == 0, "duty", "acme.validation.flightAssignment.duty");
-			}
+		assert object != null;
 
 		//Solo miembros de estado "AVAILABLE" pueden ser asignados
 		//No se puede asignar a multiples legs simultaneos

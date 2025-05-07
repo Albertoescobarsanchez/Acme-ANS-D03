@@ -34,7 +34,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		masterId = super.getRequest().getData("masterId", int.class);
 		flightAssignment = this.repository.findFlightAssignmentById(masterId);
 		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		status = flightAssignment != null && flightAssignment.isDraftMode() && flightAssignment.getMember().getId() == flightCrewMemberId;
+		status = flightAssignment != null && !flightAssignment.isDraftMode() && flightAssignment.getMember().getId() == flightCrewMemberId;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -67,7 +67,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		if (object.getMoment() != null) {
 			Date dateFlightAssignment = this.repository.findFlightAssignmentById(object.getAssignment().getId()).getLastUpdate();
 			boolean correctMoments = object.getMoment().after(dateFlightAssignment);
-			// && object.getMoment().before(MomentHelper.getCurrentMoment());
 			super.state(!correctMoments, "leg", "acme.validation.activityLog.moment");
 		}
 		/*
