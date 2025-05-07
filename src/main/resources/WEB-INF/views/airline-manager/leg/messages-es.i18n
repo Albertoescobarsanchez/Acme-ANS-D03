@@ -41,5 +41,3 @@ airline-manager.leg.form.error.legDepartureBeforeExistingLegArrival = La fecha d
 airline-manager.leg.form.error.arrivalAirportCannotBeEqualThanDepartureAirport = El aeropuerto de llegada no puede ser igual que el aeropuerto de salida
 airline-manager.leg.form.error.departurebeforeSomePastLegArrival = La fecha programada de salida tiene que ser posterior a la fecha programada de llegada de cualquier tramo pasado
 airline-manager.leg.form.error.arrivalAfterSomeFutureLegDeparture = La fecha programada de llegada tiene que ser anterior a la fecha programada de salida de cualquier tramo futuro
-airline-manager.leg.form.error.departureAirportMustBeEqualThanPreviousLegArrivalAirport = El aeropuerto de salida tiene que ser igual que el aeropuerto de llegada del tramo anterior
-airline-manager.leg.form.error.arrivalAirportMustBeEqualThanNextLegDepartureAirport = El aeropuerto de llegada tiene que ser igual que el aeropuerto de salida del siguiente tramo

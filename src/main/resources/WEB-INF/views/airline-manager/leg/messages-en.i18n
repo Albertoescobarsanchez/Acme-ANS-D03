@@ -41,5 +41,3 @@ airline-manager.leg.form.error.legDepartureBeforeExistingLegArrival = Scheduled 
 airline-manager.leg.form.error.arrivalAirportCannotBeEqualThanDepartureAirport = Arrival airport cannot be the same as departure airport
 airline-manager.leg.form.error.departurebeforeSomePastLegArrival = Scheduled departure date must be after every existing past leg scheduled arrival date
 airline-manager.leg.form.error.arrivalAfterSomeFutureLegDeparture = Scheduled arrival date must be before every existing future leg scheduled departure date
-airline-manager.leg.form.error.departureAirportMustBeEqualThanPreviousLegArrivalAirport = Departure airport must be equal than previous leg arrival airport
-airline-manager.leg.form.error.arrivalAirportMustBeEqualThanNextLegDepartureAirport = Arrival airport must be equal than next leg departure airport

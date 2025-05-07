@@ -19,7 +19,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
-import acme.client.helpers.MomentHelper;
 import acme.client.helpers.SpringHelper;
 import acme.entities.leg.Leg;
 import acme.features.airlineManager.leg.AirlineManagerLegRepository;
@@ -64,7 +63,7 @@ public class Flight extends AbstractEntity {
 		java.util.Optional<Leg> firstLeg = legs.stream().sorted(Comparator.comparing(leg -> leg.getScheduledDeparture())).findFirst();
 		if (firstLeg.isPresent())
 			return firstLeg.get().getScheduledDeparture();
-		return MomentHelper.getBaseMoment();
+		return null;
 	}
 
 	@Transient
@@ -75,7 +74,7 @@ public class Flight extends AbstractEntity {
 		java.util.Optional<Leg> lastLeg = legs.stream().sorted(Comparator.comparing(leg -> ((Leg) leg).getScheduledArrival()).reversed()).findFirst();
 		if (lastLeg.isPresent())
 			return lastLeg.get().getScheduledDeparture();
-		return MomentHelper.getBaseMoment();
+		return null;
 	}
 
 	@Transient

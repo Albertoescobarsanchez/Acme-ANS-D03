@@ -84,9 +84,6 @@ public class AirlineManagerLegCreateService extends AbstractGuiService<AirlineMa
 
 			List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getFlight().getId()));
 			super.state(!legs.stream().anyMatch(leg -> leg.getId() != object.getId() && leg.getScheduledArrival().after(object.getScheduledDeparture())), "*", "airline-manager.leg.form.error.legDepartureBeforeExistingLegArrival");
-
-			if (legs.size() > 0)
-				super.state(object.getDepartureAirport().getIataCode().equals(legs.get(legs.size() - 1).getArrivalAirport().getIataCode()), "departureAirport", "airline-manager.leg.form.error.departureAirportMustBeEqualThanPreviousLegArrivalAirport");
 		}
 
 	}
