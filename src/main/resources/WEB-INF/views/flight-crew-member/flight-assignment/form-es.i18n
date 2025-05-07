@@ -18,3 +18,6 @@ acme.validation.flightAssignment.duty = Puesto ya ocupado
 acme.validation.flightAssignment.leg.moment = El momento es incorrecto
 acme.validation.flightAssignment.flightCrewMember.available = El trabajador no está disponible
 acme.validation.flightAssignment.flightCrewMember.multipleLegs = Hay multiples tramos de vuelo
+acme.validation.flightAssignment.leg. = El tramo asignado no es correcto
+
+

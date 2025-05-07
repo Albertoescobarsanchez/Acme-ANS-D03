@@ -67,7 +67,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		if (object.getMoment() != null) {
 			Date dateFlightAssignment = this.repository.findFlightAssignmentById(object.getAssignment().getId()).getLastUpdate();
 			boolean correctMoments = object.getMoment().after(dateFlightAssignment);
-			super.state(!correctMoments, "leg", "acme.validation.activityLog.moment");
+			super.state(correctMoments, "*", "acme.validation.activityLog.moment");
 		}
 		/*
 		 * if (object.getAssignment() != null) {
@@ -76,17 +76,23 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		 * }
 		 */
 		assert object != null;
+		System.out.println(super.getBuffer().getErrors());
+
 	}
 
 	@Override
 	public void perform(final ActivityLog object) {
 		this.repository.save(object);
+		System.out.println(super.getBuffer().getErrors());
+
 	}
 
 	@Override
 	public void onSuccess() {
 		if (super.getRequest().getMethod().equals("POST"))
 			PrincipalHelper.handleUpdate();
+		System.out.println(super.getBuffer().getErrors());
+
 	}
 
 	@Override
@@ -97,6 +103,8 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		dataset = super.unbindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
 
 		super.getResponse().addData(dataset);
+		System.out.println(super.getBuffer().getErrors());
+
 	}
 
 }
