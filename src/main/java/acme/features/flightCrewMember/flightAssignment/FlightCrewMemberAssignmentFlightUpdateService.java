@@ -71,10 +71,12 @@ public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiSe
 		super.state(object.getLeg() != null, "leg", "acme.validation.flightAssignment.leg");
 
 		//Solo 1 piloto y 1 copiloto por vuelo
-		if (object.getDuty() != null && object.getLeg() != null) {
-			boolean isDutyAssigned = this.repository.hasDutyAssigned(object.getLeg().getId(), object.getDuty(), object.getId());
-			super.state(!isDutyAssigned, "duty", "acme.validation.flightAssignment.duty");
-		}
+		/*
+		 * if (object.getDuty() != null && object.getLeg() != null) {
+		 * boolean isDutyAssigned = this.repository.hasDutyAssigned(object.getLeg().getId(), Duty.PILOT, object.getId());
+		 * super.state(!isDutyAssigned, "duty", "acme.validation.flightAssignment.duty");
+		 * }
+		 */
 
 		if (object.getLeg() != null) {
 			boolean linkPastLeg = object.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
