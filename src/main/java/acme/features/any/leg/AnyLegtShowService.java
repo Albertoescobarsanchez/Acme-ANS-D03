@@ -10,25 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.airlineManager.leg;
+package acme.features.any.leg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.leg.Leg;
 import acme.entities.leg.Status;
-import acme.realms.AirlineManager;
 
 @GuiService
-public class AirlineManagerLegtShowService extends AbstractGuiService<AirlineManager, Leg> {
+public class AnyLegtShowService extends AbstractGuiService<Any, Leg> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AirlineManagerLegRepository repository;
+	private AnyLegRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -38,7 +38,7 @@ public class AirlineManagerLegtShowService extends AbstractGuiService<AirlineMan
 		boolean status;
 		int legId = super.getRequest().getData("id", int.class);
 		Leg leg = this.repository.findLegById(legId);
-		status = leg != null && leg.getFlight().getAirlineManager().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+		status = leg != null;
 
 		super.getResponse().setAuthorised(status);
 	}

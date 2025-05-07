@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.airlineManager.leg;
+package acme.features.any.leg;
 
 import java.util.Collection;
 
@@ -24,7 +24,7 @@ import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 
 @Repository
-public interface AirlineManagerLegRepository extends AbstractRepository {
+public interface AnyLegRepository extends AbstractRepository {
 
 	@Query("select f from Flight f where f.id = :id")
 	Flight findFlightById(int id);

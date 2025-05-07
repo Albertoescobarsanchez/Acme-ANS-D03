@@ -10,42 +10,39 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.airlineManager.flight;
+package acme.features.any.flight;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
-import acme.realms.AirlineManager;
 
 @GuiService
-public class AirlineManagerFlightListService extends AbstractGuiService<AirlineManager, Flight> {
+public class AnyFlightListService extends AbstractGuiService<Any, Flight> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AirlineManagerFlightRepository repository;
+	private AnyFlightRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(AirlineManager.class);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		Collection<Flight> objects;
-		objects = this.repository.findFlightsByAirlineManagerId(super.getRequest().getPrincipal().getActiveRealm().getId());
+		objects = this.repository.findPublishedFlights();
 
 		super.getBuffer().addData(objects);
 	}
@@ -56,11 +53,7 @@ public class AirlineManagerFlightListService extends AbstractGuiService<AirlineM
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "tag", "origin", "destination", "draftMode");
-		if (object.getDraftMode())
-			dataset.put("draftMode", "✓");
-		else
-			dataset.put("draftMode", "✗");
+		dataset = super.unbindObject(object, "tag", "origin", "destination");
 		super.getResponse().addData(dataset);
 	}
 
