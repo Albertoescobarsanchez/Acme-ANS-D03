@@ -16,8 +16,9 @@ flight-crew-member.flight-assignment.form.button.activity-log = Activity log
 acme.validation.flightAssignment.flightcrewmember = The role is incorrect
 acme.validation.flightAssignment.duty = Duty assigned
 acme.validation.flightAssignment.leg.moment = The moment is incorrect
-acme.validation.flightAssignment.flightCrewMember.available = The member isn't available
+acme.validation.flight-assignment.not-available = The member isn't available
 acme.validation.flightAssignment.flightCrewMember.multipleLegs = There are multiple legs
 acme.validation.flightAssignment.leg. = The leg is incorrect
+acme.validation.flightAssignment.simultaneousLegs = There is a assignment for that moment
 
 

@@ -100,6 +100,18 @@ public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiS
 			super.state(available, "*", "acme.validation.flight-assignment.not-available");
 		}
 
+		if (object.getDuty() != null) {
+			int assignments = this.repository.findSimultaneousLegsByMemberId(object.getLeg().getScheduledDeparture(), object.getLeg().getScheduledArrival(), object.getMember().getId(), object.getId());
+			super.state(assignments == 0, "*", "acme.validation.flightAssignment.simultaneousLegs");
+		}
+
+		/*
+		 * if (object.getMember() != null && object.getLeg() != null) {
+		 * boolean alreadyAssignedToLeg = this.repository.existsAssignmentByMemberAndLeg(object.getMember().getId(), object.getLeg().getId(), object.getId());
+		 * super.state(!alreadyAssignedToLeg, "*", "acme.validation.flightAssignment.leg.duplicate");
+		 * }
+		 */
+
 	}
 
 	@Override

@@ -52,7 +52,10 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select count(f) > 0 from FlightAssignment f where f.member.id = :id and f.lastUpdate = :date")
 	boolean hasLegAssociated(int id, java.util.Date date);
 
-	@Query("SELECT fa.leg FROM FlightAssignment fa WHERE (fa.leg.scheduledDeparture < :arrival AND fa.leg.scheduledArrival > :departure) AND fa.leg.id <> :legId AND fa.member.id = :flightCrewMemberId")
-	Collection<Leg> findSimultaneousLegsByMemberId(Date departure, Date arrival, int legId, int flightCrewMemberId);
+	@Query("SELECT count(fa.leg) FROM FlightAssignment fa WHERE (fa.leg.scheduledDeparture < :arrival AND fa.id != :assignmentId AND fa.leg.scheduledArrival > :departure) AND fa.member.id = :flightCrewMemberId  and fa.draftMode = false")
+	int findSimultaneousLegsByMemberId(Date departure, Date arrival, int flightCrewMemberId, int assignmentId);
+
+	@Query("select count(a) > 0 from FlightAssignment a where a.member.id = :memberId and a.leg.id = :legId and a.id != :assignmentId and a.draftMode = false")
+	boolean existsAssignmentByMemberAndLeg(int memberId, int legId, int assignmentId);
 
 }
