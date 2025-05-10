@@ -1,3 +1,5 @@
+flight-crew-member.activity-log.form.title = Activity logs
+
 flight-crew-member.activity-log.form.label.moment = Moment
 flight-crew-member.activity-log.form.label.type = Type
 flight-crew-member.activity-log.form.label.description = Description
@@ -8,3 +10,4 @@ flight-crew-member.activity-log.form.button.delete = Delete
 flight-crew-member.activity-log.form.button.publish = Publish
 flight-crew-member.activity-log.form.button.create = Create
 
+acme.validation.activityLog.moment = The moment is incorrect

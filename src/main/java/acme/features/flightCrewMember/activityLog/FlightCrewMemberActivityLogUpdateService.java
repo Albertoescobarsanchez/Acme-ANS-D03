@@ -1,6 +1,8 @@
 
 package acme.features.flightCrewMember.activityLog;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -46,11 +48,22 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	public void bind(final ActivityLog object) {
 		assert object != null;
 
-		super.bindObject(object, "moment", "type", "description", "severityLevel");
+		super.bindObject(object, "moment", "logType", "description", "severityLevel");
 	}
 
 	@Override
 	public void validate(final ActivityLog object) {
+		if (object.getMoment() != null) {
+			Date dateFlightAssignment = this.repository.findFlightAssignmentById(object.getAssignment().getId()).getLastUpdate();
+			boolean correctMoments = object.getMoment().after(dateFlightAssignment);
+			super.state(correctMoments, "*", "acme.validation.activityLog.moment");
+		}
+		/*
+		 * if (object.getAssignment() != null) {
+		 * boolean correctAssign = object.getAssignment().getStatus().equals(Status.LANDED);
+		 * super.state(!correctAssign, "assignment", "acme.validation.activityLog.assign");
+		 * }
+		 */
 		assert object != null;
 	}
 
@@ -70,7 +83,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
+		dataset = super.unbindObject(object, "moment", "logType", "description", "severityLevel", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 

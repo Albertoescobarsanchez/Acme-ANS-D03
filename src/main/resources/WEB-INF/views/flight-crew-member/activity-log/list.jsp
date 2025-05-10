@@ -10,6 +10,6 @@
 	<acme:list-column code="flight-crew-member.activity-log.list.label.severityLevel" path="severityLevel" width="20%" sortable="false"/>
 	<acme:list-column code="flight-crew-member.activity-log.list.label.draftMode" path="draftMode" width="20%%" sortable="false"/>
 </acme:list>
-<jstl:if test="${masterDraftMode==true}">
+<jstl:if test="${masterDraftMode==false}">
 	<acme:button code="flight-crew-member.activity-log.list.button.create" action="/flight-crew-member/activity-log/create?masterId=${masterId}"/>
 </jstl:if>

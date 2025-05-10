@@ -27,7 +27,6 @@ import acme.entities.flightAssignment.FlightAssignment;
 import acme.entities.flightAssignment.StatusAssignment;
 import acme.entities.leg.Leg;
 import acme.realms.FlightCrewMember;
-import acme.realms.StatusCrewMember;
 
 @GuiService
 public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
@@ -55,6 +54,7 @@ public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiSe
 		flightAssignment.setDraftMode(true);
 		flightAssignmentId = super.getRequest().getData("id", int.class);
 		flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(flightAssignment);
 	}
 
@@ -62,33 +62,12 @@ public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiSe
 	public void bind(final FlightAssignment object) {
 		assert object != null;
 
-		super.bindObject(object, "duty", "status", "remarks", "leg");
+		super.bindObject(object, "duty", "status", "lastUpdate", "remarks", "leg");
 	}
 
 	@Override
 	public void validate(final FlightAssignment object) {
-		super.state(object.getMember() != null, "flightCrewMember", "acme.validation.flightAssignment.flightcrewmember");
-		super.state(object.getLeg() != null, "leg", "acme.validation.flightAssignment.leg");
-
-		//Solo 1 piloto y 1 copiloto por vuelo
-		if (object.getDuty() != null && object.getLeg() != null) {
-			boolean isDutyAssigned = this.repository.hasDutyAssigned(object.getLeg().getId(), object.getDuty(), object.getId());
-			super.state(!isDutyAssigned, "duty", "acme.validation.flightAssignment.duty");
-		}
-
-		if (object.getLeg() != null) {
-			boolean linkPastLeg = object.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
-			super.state(!linkPastLeg, "leg", "acme.validation.flightAssignment.leg.moment");
-		}
-
-		//Solo miembros de estado "AVAILABLE" pueden ser asignados
-		//No se puede asignar a multiples legs simultaneos
-		if (object.getMember() != null) {
-			boolean available = object.getMember().getStatus().equals(StatusCrewMember.AVAILABLE);
-			super.state(available, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.available");
-			boolean assigned = this.repository.hasLegAssociated(object.getMember().getId(), MomentHelper.getCurrentMoment());
-			super.state(!assigned, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.multipleLegs");
-		}
+		assert object != null;
 	}
 
 	@Override
@@ -96,16 +75,15 @@ public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiSe
 		Dataset dataset;
 		dataset = super.unbindObject(object, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");
 
-		//Choices
-		SelectChoices dutyChoices;
-		SelectChoices statusChoices;
-		SelectChoices legChoices;
+		// Choices
+		SelectChoices dutyChoices = SelectChoices.from(Duty.class, object.getDuty());
+		SelectChoices statusChoices = SelectChoices.from(StatusAssignment.class, object.getStatus());
 
-		dutyChoices = SelectChoices.from(Duty.class, object.getDuty());
-		statusChoices = SelectChoices.from(StatusAssignment.class, object.getStatus());
 		FlightCrewMember crewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		Collection<Leg> legs = this.repository.findAllLegsFromAirline(crewMember.getAirline().getId());
-		legChoices = SelectChoices.from(legs, "flightNumber", null);
+
+		// Aquí usamos el ID del leg para que se seleccione correctamente
+		SelectChoices legChoices = SelectChoices.from(legs, "flightNumber", object.getLeg());
 
 		dataset.put("dutyChoices", dutyChoices);
 		dataset.put("statusChoices", statusChoices);
@@ -116,7 +94,11 @@ public class FlightCrewMemberAssignmentFlightUpdateService extends AbstractGuiSe
 		dataset.put("leg", legChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
+	}
 
+	@Override
+	public void perform(final FlightAssignment assignment) {
+		this.repository.save(assignment);
 	}
 
 	@Override

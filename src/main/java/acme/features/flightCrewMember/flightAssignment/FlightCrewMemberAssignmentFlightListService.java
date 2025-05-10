@@ -32,7 +32,8 @@ public class FlightCrewMemberAssignmentFlightListService extends AbstractGuiServ
 		int id;
 		id = super.getRequest().getPrincipal().getActiveRealm().getId();
 		boolean completed = super.getRequest().getData("completed", boolean.class);
-		if (completed)
+		if (!completed)
+			//--------------------------------SALEN AL REVES---------------------------------
 			super.getBuffer().addData(this.repository.findFlightAssignmentCompletedByMemberId(id));
 		else
 			super.getBuffer().addData(this.repository.findFlightAssignmentNotCompletedByMemberId(id));

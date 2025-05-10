@@ -38,7 +38,7 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String				type;
+	private String				logType;
 
 	@Mandatory
 	@ValidString
@@ -51,12 +51,12 @@ public class ActivityLog extends AbstractEntity {
 	private Integer				severityLevel;
 
 	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
+	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
 	private FlightAssignment	assignment;
-
-	@Mandatory
-	@Automapped
-	private boolean				draftMode;
 
 }
