@@ -46,7 +46,7 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		assert object != null;
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
+		dataset = super.unbindObject(object, "moment", "logType", "description", "severityLevel", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 

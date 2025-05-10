@@ -135,7 +135,7 @@ public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiS
 		statusChoices = SelectChoices.from(StatusAssignment.class, object.getStatus());
 		FlightCrewMember crewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		Collection<Leg> legs = this.repository.findAllLegsFromAirline(crewMember.getAirline().getId());
-		legChoices = SelectChoices.from(legs, "flightNumber", null);
+		legChoices = SelectChoices.from(legs, "flightNumber", object.getLeg());
 
 		dataset.put("dutyChoices", dutyChoices);
 		dataset.put("statusChoices", statusChoices);
