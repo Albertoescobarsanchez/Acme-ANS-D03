@@ -32,7 +32,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		masterId = super.getRequest().getData("masterId", int.class);
 		flightAssignment = this.repository.findFlightAssignmentById(masterId);
 		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		status = flightAssignment != null && flightAssignment.isDraftMode() && flightAssignment.getMember().getId() == flightCrewMemberId;
+		status = flightAssignment != null && !flightAssignment.isDraftMode() && flightAssignment.getMember().getId() == flightCrewMemberId;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,23 +57,33 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void bind(final ActivityLog object) {
-		super.bindObject(object, "moment", "type", "description", "severityLevel");
+		super.bindObject(object, "moment", "logType", "description", "severityLevel");
 	}
 
 	@Override
 	public void validate(final ActivityLog object) {
+
+		/*
+		 * if (object.getAssignment() != null) {
+		 * boolean correctAssign = object.getAssignment().getStatus().equals(Status.LANDED);
+		 * super.state(!correctAssign, "assignment", "acme.validation.activityLog.assign");
+		 * }
+		 */
 		assert object != null;
+
 	}
 
 	@Override
 	public void perform(final ActivityLog object) {
 		this.repository.save(object);
+
 	}
 
 	@Override
 	public void onSuccess() {
 		if (super.getRequest().getMethod().equals("POST"))
 			PrincipalHelper.handleUpdate();
+
 	}
 
 	@Override
@@ -81,9 +91,10 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "moment", "type", "description", "severityLevel", "draftMode");
+		dataset = super.unbindObject(object, "moment", "logType", "description", "severityLevel", "draftMode");
 
 		super.getResponse().addData(dataset);
+
 	}
 
 }

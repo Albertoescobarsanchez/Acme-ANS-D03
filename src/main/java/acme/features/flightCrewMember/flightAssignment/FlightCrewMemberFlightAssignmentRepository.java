@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -42,10 +43,19 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select l from Leg l")
 	Collection<Leg> findAllLegs(int id);
 
-	@Query("select count(a) > 0 from FlightAssignment a where a.leg.id = :legId and a.duty in ('PILOT','CO_PILOT') and a.duty = :duty and a.id != :id")
-	boolean hasDutyAssigned(int legId, Duty duty, int id);
+	@Query("select count(a) from FlightAssignment a where a.leg.id = :legId and a.duty = :duty and a.id != :id and a.draftMode = false")
+	int hasDutyAssigned(int legId, Duty duty, int id);
+
+	//@Query("select count(a) < 2 from FlightAssignment a where a.leg.id = :legId and a.duty='CO_PILOT' and a.duty = :duty and a.id != :id")
+	//boolean hasCopilotAssigned(int legId, Duty duty, int id);
 
 	@Query("select count(f) > 0 from FlightAssignment f where f.member.id = :id and f.lastUpdate = :date")
 	boolean hasLegAssociated(int id, java.util.Date date);
+
+	@Query("SELECT count(fa.leg) FROM FlightAssignment fa WHERE (fa.leg.scheduledDeparture < :arrival AND fa.id != :assignmentId AND fa.leg.scheduledArrival > :departure) AND fa.member.id = :flightCrewMemberId  and fa.draftMode = false")
+	int findSimultaneousLegsByMemberId(Date departure, Date arrival, int flightCrewMemberId, int assignmentId);
+
+	@Query("select count(a) > 0 from FlightAssignment a where a.member.id = :memberId and a.leg.id = :legId and a.id != :assignmentId and a.draftMode = false")
+	boolean existsAssignmentByMemberAndLeg(int memberId, int legId, int assignmentId);
 
 }

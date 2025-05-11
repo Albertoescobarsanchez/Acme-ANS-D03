@@ -1,2 +1,10 @@
 key,duty,last-update,status,remarks,draft-mode,key:leg,key:member
-flight-assignment-01,PILOT,2022/05/21 10:00,PENDING,This is a comment,true,leg-01,flight-crew-member-01
+flight-assignment-01,PILOT,2025/01/01 00:00,PENDING,This is a comment,true,leg-01,flight-crew-member-01
+flight-assignment-02,CO_PILOT,2025/01/01 00:00,PENDING,New employeer,true,leg-01,flight-crew-member-04
+flight-assignment-03,PILOT,2024/11/30 00:00,PENDING,This is a comment,false,leg-03,flight-crew-member-01
+flight-assignment-04,CABIN_ATTENDANT,2025/01/01 00:00,CONFIRMED,This is a comment,true,leg-01,flight-crew-member-01
+flight-assignment-05,CABIN_ATTENDANT,2025/01/01 00:00,CANCELLED,That's needs a special attention,true,leg-06,flight-crew-member-01
+flight-assignment-06,CABIN_ATTENDANT,2025/01/01 00:00,CONFIRMED,This is a comment,true,leg-01,flight-crew-member-02
+flight-assignment-07,CABIN_ATTENDANT,2025/01/01 00:00,CONFIRMED,This is a comment,true,leg-01,flight-crew-member-03
+flight-assignment-08,LEAD_ATTENDANT,2025/01/01 00:00,CONFIRMED,Only one,false,leg-03,flight-crew-member-01
+flight-assignment-09,CABIN_ATTENDANT,2025/01/01 00:00,CONFIRMED,2nd work,false,leg-03,flight-crew-member-04
