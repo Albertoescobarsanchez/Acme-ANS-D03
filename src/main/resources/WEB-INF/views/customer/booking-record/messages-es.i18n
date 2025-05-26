@@ -9,10 +9,14 @@
 # they accept any liabilities with respect to them.
 
 customer.booking-record.list.title = Lista de registros de reserva
-customer.booking-record.form.title = Crear un registro de reserva
+customer.booking-record.form.title = Datos de registro de reserva
 
 customer.booking-record.list.label.passenger = Pasajero
 customer.booking-record.list.label.booking = Reserva
+
+customer.booking-record.form.button.delete = Eliminar Registro de Reserva
+customer.booking-record.form.button.create = Crear un Registro de reserva
+
 
 acme.validation.confirmation.message.booking-record.create = Esa relacion ya está creada
 acme.validation.confirmation.message.booking-record.create.booking = La reserva no puede ser nula

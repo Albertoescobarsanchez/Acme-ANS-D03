@@ -41,6 +41,7 @@
 		
 		<acme:menu-option code="master.menu.any">
       		<acme:menu-suboption code="master.menu.any.flights" action="/any/flight/list"/>
+      		<acme:menu-suboption code="master.menu.any.flight-assignment" action="/any/flight-assignment/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">
@@ -52,12 +53,14 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.airline-manager" access="hasRealm('AirlineManager')">
+		<acme:menu-suboption code="master.menu.airline-manager.dashboard" action="/airline-manager/airline-manager-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.airline-manager.flight.list" action="/airline-manager/flight/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
 			<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.list.completed" action="/flight-crew-member/flight-assignment/list?completed=true"/>
 			<acme:menu-suboption code="master.menu.flight-crew-member.flight-assignment.list.not-completed" action="/flight-crew-member/flight-assignment/list?completed=false"/>
+			<acme:menu-suboption code="master.menu.dashboards.flight-crew-member-dashboard" action="/flight-crew-member/flight-crew-member-dashboard/show"/>
 			
 		</acme:menu-option>
 
@@ -69,7 +72,7 @@
 		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.booking.list" action="/customer/booking/list"/>
 	  		<acme:menu-suboption code="master.menu.customer.passenger.list" action="/customer/passenger/list"/> 
-	  		<acme:menu-suboption code="master.menu.customer.booking-record.list" action="/customer/booking-record/list" />		
+	  		<acme:menu-suboption code="master.menu.customer.booking-record.list" action="/customer/booking-record/list" /> 		
  		</acme:menu-option>		
 	</acme:menu-left>
 

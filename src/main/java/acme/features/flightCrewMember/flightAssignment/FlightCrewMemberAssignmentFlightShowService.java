@@ -47,11 +47,6 @@ public class FlightCrewMemberAssignmentFlightShowService extends AbstractGuiServ
 	}
 
 	@Override
-	public void bind(final FlightAssignment object) {
-		super.bindObject(object, "duty", "status", "remarks", "leg");
-	}
-
-	@Override
 	public void unbind(final FlightAssignment object) {
 		Dataset dataset;
 		dataset = super.unbindObject(object, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");

@@ -20,8 +20,11 @@
 			<acme:input-select code="customer.booking-record.list.label.passenger" path="passenger" choices="${passengers}"/>
  
 	<jstl:choose>	
-				<jstl:when test="${_command == 'create'}" >
-						<acme:submit code="customer.booking-record.form.button.create" action="/customer/booking-record/create"/>
-				</jstl:when>
+	        <jstl:when test="${acme:anyOf(_command, 'show|delete') && isDraftMode == true}">
+            	<acme:submit code="customer.booking-record.form.button.delete" action="/customer/booking-record/delete"/>
+        	</jstl:when> 
+			<jstl:when test="${_command == 'create'}" >
+				<acme:submit code="customer.booking-record.form.button.create" action="/customer/booking-record/create"/>
+			</jstl:when>
 	</jstl:choose>
 </acme:form>

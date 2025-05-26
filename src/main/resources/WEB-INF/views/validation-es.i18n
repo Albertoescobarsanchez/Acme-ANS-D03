@@ -19,4 +19,10 @@ acme.validation.Customer.identifier.message = El identificador deberá correspon
 acme.validation.Customer.identifier.name.message = El identificador no coincide con las iniciales del Cliente
 acme.validation.text.identifier = El identificador no es correcto, debe ser de 6 números y 2 o 3 siglas mayúsculas, debe coincidir con las dos o tres iniciales del Cliente
 acme.validation.text.aitaCode = El código IATA no es correcto
+acme.validation.locator-code = El código debe tener entre 6 y 8 caracteres en mayúsculas o números, sin espacios
+acme.validation.confirmation.message.passenger-required = No puedes publicar una booking sin tener asociado al menos un pasajero asociado.
 acme.validation.confirmation.message.passenger = La reserva debe tener al menos un pasajero para ser publicada
+customer.booking-record.form.error.not-draft = No puedes modificar este registro porque la reserva ya no está en modo borrador.
+acme.validation.confirmation.message.booking.locator-code = El código de localizador ya está en uso.
+acme.validation.last-nibble = El número debe contener exactamente los 4 últimos dígitos numéricos de su tarjeta.
+

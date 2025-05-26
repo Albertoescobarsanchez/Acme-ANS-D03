@@ -29,10 +29,24 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean isCorrect = false;
 
 		status = super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class);
 
-		super.getResponse().setAuthorised(status);
+		if (super.getRequest().getMethod().equals("GET"))
+			isCorrect = true;
+
+		if (super.getRequest().getMethod().equals("POST") && super.getRequest().getData("id", Integer.class).equals(0)) {
+
+			FlightCrewMember member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+			Collection<Leg> legs = this.repository.findAllLegsFromAirline(member.getAirline().getId());
+
+			Leg legSelected = super.getRequest().getData("leg", Leg.class);
+			if (legSelected == null || legs.contains(legSelected))
+				isCorrect = true;
+		}
+
+		super.getResponse().setAuthorised(status && isCorrect);
 	}
 
 	@Override
@@ -79,6 +93,7 @@ public class FlightCrewMemberAssignmentFlightCreateService extends AbstractGuiSe
 	@Override
 	public void perform(final FlightAssignment object) {
 		assert object != null;
+		object.setId(0);
 		this.repository.save(object);
 
 	}

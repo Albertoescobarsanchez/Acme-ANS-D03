@@ -18,14 +18,14 @@ customer.booking.list.label.lastNibble = Last Nibble
 customer.booking.list.label.purchaseMoment = Purchase Moment
 customer.booking.list.label.price = Price
 customer.booking.list.label.passenger = Passengers
-customer.booking.list.label.draftMode = DraftMode
+customer.booking.list.label.draftMode = Draft Mode
 
 customer.booking.form.button.create = Create booking
 customer.booking.form.button.update = Update booking
 customer.booking.form.button.publish = Publish booking
 customer.booking.form.button.passenger = List of passengers
 customer.booking-record.form.button.create = Create booking record
-#customer.booking.form.button.delete = Delete booking
+customer.booking.form.button.delete = Delete booking
 
 acme.validation.confirmation.message.lastNibble = The lastNibble must be filled if the booking is published
 acme.validation.confirmation.message.update = A booking can not be updated if it is published

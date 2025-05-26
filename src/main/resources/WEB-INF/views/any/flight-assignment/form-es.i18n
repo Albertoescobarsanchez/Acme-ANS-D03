@@ -1,0 +1,27 @@
+flight-crew-member.flight-assignment.form.title = Asignación de vuelo
+
+flight-crew-member.flight-assignment.form.label.duty = Cargo
+flight-crew-member.flight-assignment.form.label.lastUpdate = Última actualización
+flight-crew-member.flight-assignment.form.label.status = Estado
+flight-crew-member.flight-assignment.form.label.remarks = Observaciones
+flight-crew-member.flight-assignment.form.label.leg = Tramo
+
+flight-crew-member.flight-assignment.form.button.create = Crear
+
+flight-crew-member.flight-assignment.form.button.update = Actualizar
+flight-crew-member.flight-assignment.form.button.delete = Borrar
+flight-crew-member.flight-assignment.form.button.publish = Publicar
+
+flight-crew-member.flight-assignment.form.button.activity-log = Informes de registro
+acme.validation.flightAssignment.flightcrewmember = El rol es incorrecto
+acme.validation.flightAssignment.duty = Puesto ya ocupado
+acme.validation.flightAssignment.leg.moment = El momento es incorrecto
+acme.validation.flight-assignment.not-available  = El trabajador no está disponible
+acme.validation.flightAssignment.flightCrewMember.multipleLegs = Hay multiples tramos de vuelo
+acme.validation.flightAssignment.leg. = El tramo asignado no es correcto
+acme.validation.flightAssignment.simultaneousLegs = El trabajador ya esta ocupado en ese horario
+any.flight-assignment.form.title = Asignación de vuelo
+
+ flight-crew-member.flight-assignment.form.label.member = Miembro
+
+

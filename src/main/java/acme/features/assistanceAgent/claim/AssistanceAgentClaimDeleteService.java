@@ -15,7 +15,7 @@ import acme.entities.claim.ClaimType;
 import acme.entities.leg.Leg;
 import acme.entities.trackingLog.TrackingLog;
 import acme.features.assistanceAgent.trackingLog.AssistanceAgentTrackingLogRepository;
-import acme.realms.AssistanceAgent;
+import acme.realms.AssistanceAgent.AssistanceAgent;
 
 @GuiService
 public class AssistanceAgentClaimDeleteService extends AbstractGuiService<AssistanceAgent, Claim> {

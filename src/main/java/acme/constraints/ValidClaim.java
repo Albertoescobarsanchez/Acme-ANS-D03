@@ -9,15 +9,17 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Constraint(validatedBy = ClaimValidator.class)
-@Target({
-	ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE
-})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = ClaimValidator.class)
 
 public @interface ValidClaim {
 
-	String message() default "{acme.validation.text.message}";
+	// Standard validation properties -----------------------------------------
+
+	String message() default "";
+
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
+
 }

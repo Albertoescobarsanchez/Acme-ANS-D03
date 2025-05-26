@@ -25,12 +25,10 @@
 		<acme:input-textbox code="administrator.airline.list.label.phoneNumber" path="phoneNumber"/>
 		
 		<acme:input-checkbox code="administrator.airline.form.label.confirmation" path="confirmation"/>
-		<jstl:choose>
-			<jstl:when test="${acme:anyOf(_command, 'show|update')}">
+			<jstl:if test="${acme:anyOf(_command, 'show|update')}">
 				<acme:submit code="administrator.airline.form.button.update" action="/administrator/airline/update"/>
-			</jstl:when>
-			<jstl:when test="${_command == 'create'}">
+			</jstl:if>
+			<jstl:if test="${_command == 'create'}">
 				<acme:submit code="administrator.airline.form.button.create" action="/administrator/airline/create"/>
-			</jstl:when>		
-		</jstl:choose>					
+			</jstl:if>		
 	</acme:form>

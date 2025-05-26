@@ -89,8 +89,8 @@ public class CustomerBookingsCreateService extends AbstractGuiService<Customer, 
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices flightChoices;
-		//		Date today = MomentHelper.getCurrentMoment();
 
+		Date today = MomentHelper.getCurrentMoment();
 		Collection<Flight> flights = this.flightRepository.findAllFlights().stream().filter(f -> f.getDraftMode() == false).toList();
 		flightChoices = SelectChoices.from(flights, "tag", booking.getFlight());
 		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
@@ -107,5 +107,29 @@ public class CustomerBookingsCreateService extends AbstractGuiService<Customer, 
 
 		super.getResponse().addData(dataset);
 	}
+
+	//	@Override
+	//	public void unbind(final Booking booking) {
+	//		Dataset dataset;
+	//		SelectChoices choices;
+	//		SelectChoices flightChoices;
+	//
+	//		Date today = MomentHelper.getCurrentMoment();
+	//		Collection<Flight> flights = this.repository.findAllPublishedFlightsWithFutureDeparture(today);
+	//		flightChoices = SelectChoices.from(flights, "Destination", booking.getFlight());
+	//		choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+	//
+	//		//		Collection<Passenger> passengerN = this.repository.findPassengersByBookingId(booking.getId());
+	//		Collection<String> passengers = this.repository.findPassengersNameByBooking(booking.getId());
+	//
+	//		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "draftMode", "lastNibble");
+	//		dataset.put("travelClass", choices);
+	//		dataset.put("flight", flightChoices.getSelected().getKey());
+	//		dataset.put("flights", flightChoices);
+	//		dataset.put("passengers", passengers);
+	//		System.out.println(flightChoices);
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 
 }

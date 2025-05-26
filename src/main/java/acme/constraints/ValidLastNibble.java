@@ -23,7 +23,7 @@ public @interface ValidLastNibble {
 
 	// Standard validation properties -----------------------------------------
 
-	String message() default "{acme.validation.text.message}";
+	String message() default "{acme.validation.last-nibble}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

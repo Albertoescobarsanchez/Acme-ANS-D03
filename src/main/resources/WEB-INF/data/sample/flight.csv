@@ -10,9 +10,9 @@ flight-07,Flight-07,false,EUR 40.00,null,true,airline-manager-01
 flight-08,Flight-08,false,EUR 30.00,null,true,airline-manager-01
 flight-09,Flight-09,false,EUR 30.00,null,true,airline-manager-01
 flight-10,Flight-10,false,EUR 30.00,null,true,airline-manager-01
-flight-11,Flight-11,false,EUR 30.00,null,true,airline-manager-01
+flight-11,Flight-11,false,EUR 30.00,null,true,airline-manager-02
 flight-12,Flight-12,false,EUR 30.00,null,true,airline-manager-01
-flight-13,Flight-13,false,EUR 30.00,null,true,airline-manager-01
+flight-13,Flight-13,false,EUR 30.00,null,false,airline-manager-01
 flight-14,Flight-14,false,EUR 30.00,null,true,airline-manager-01
 flight-15,Flight-15,false,EUR 30.00,null,true,airline-manager-01
 flight-16,Flight-16,false,EUR 30.00,null,true,airline-manager-01

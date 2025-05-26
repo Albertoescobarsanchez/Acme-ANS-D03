@@ -72,9 +72,9 @@ public class FlightCrewMemberAssignmentFlightPublishService extends AbstractGuiS
 		super.state(object.getLeg() != null, "*", "acme.validation.flightAssignment.leg");
 
 		if (object.getLeg() != null) {
-			Date hora = object.getLeg().getScheduledArrival();
+			Date hora = object.getLeg().getScheduledDeparture();
 			boolean linkPastLeg = object.getLastUpdate().before(hora);
-			super.state(!linkPastLeg, "*", "acme.validation.flightAssignment.leg.moment");
+			super.state(linkPastLeg, "*", "acme.validation.flightAssignment.leg.moment");
 		}
 
 		if (object.getDuty() != null && object.getLeg() != null)

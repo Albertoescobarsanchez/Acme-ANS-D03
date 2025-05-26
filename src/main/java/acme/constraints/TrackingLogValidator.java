@@ -2,6 +2,7 @@
 package acme.constraints;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.ConstraintValidatorContext;
 
@@ -12,12 +13,20 @@ import acme.client.components.validation.Validator;
 import acme.entities.claim.ClaimRepository;
 import acme.entities.claim.Indicator;
 import acme.entities.trackingLog.TrackingLog;
+import acme.entities.trackingLog.TrackingLogRepository;
 
 @Validator
 public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, TrackingLog> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
-	private ClaimRepository claimRepository;
+	private ClaimRepository			claimRepository;
+
+	@Autowired
+	private TrackingLogRepository	trackingLogRepository;
+
+	// ConstraintValidator interface ------------------------------------------
 
 
 	@Override
@@ -34,36 +43,91 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		if (trackingLog == null)
 			super.state(context, false, "*", "acme.validation.NotNull.message");
+
 		else {
-			boolean resolution;
+			TrackingLog existing = this.trackingLogRepository.findTrackingLogById(trackingLog.getId());
 
-			resolution = trackingLog.getResolutionPercentage() != 100.00 || trackingLog.getResolution() != null;
+			// Resolution is mandatory if resolutionPercentage=100%
+			{
+				boolean resolutionValid;
 
-			super.state(context, resolution, "resolution", "acme.validation.trackinLog.resolutionMandatory.message");
+				if (trackingLog.getResolutionPercentage() == 100.00)
+					resolutionValid = trackingLog.getResolution() != null && !trackingLog.getResolution().trim().isEmpty();
+				else
+					resolutionValid = trackingLog.getResolution() == null || trackingLog.getResolution().trim().isEmpty();
+
+				super.state(context, resolutionValid, "resolution", "acme.validation.trackinLog.resolutionMandatory.message");
+
+			}
+
+			// Validate that there are at most 2 trackingLogs with 100% resolution
+			{
+				boolean trackingLogsCompleted = true;
+
+				if (trackingLog.getResolutionPercentage() != null && trackingLog.isDraftMode()) {
+					Collection<TrackingLog> trackingLogs = this.claimRepository.findTrackingLogsOfClaimByResolutionPercentage(trackingLog.getClaim().getId(), trackingLog.getResolutionPercentage());
+					if (trackingLog.getResolutionPercentage() == 100)
+						trackingLogsCompleted = trackingLogs.size() <= 1;
+					else
+						trackingLogsCompleted = trackingLogs.size() <= 0;
+				}
+
+				super.state(context, trackingLogsCompleted, "indicator", "acme.validation.trackingLog.trackingLogsCompleted.message");
+			}
+
+			//Validate that draftMode attribute is logical with its claim
+			{
+				boolean correctDraftMode;
+				correctDraftMode = true;
+
+				if (trackingLog.getClaim().isDraftMode())
+					correctDraftMode = trackingLog.isDraftMode();
+
+				super.state(context, correctDraftMode, "draftMode", "acme.validation.trackingLog.draftModeLogical.message");
+
+			}
+
+			// Validate that resolutionPercentage attribute is incremental
+			{
+				if (trackingLog.getClaim() != null) {
+
+					boolean correctPercentage;
+					Double currentPercentage = trackingLog.getResolutionPercentage();
+
+					List<TrackingLog> logs = this.trackingLogRepository.findTrackingLogsByResolutionPercentage(trackingLog.getClaim().getId());
+
+					if (existing == null) {
+						TrackingLog last = logs.isEmpty() ? null : logs.get(0);
+						correctPercentage = last == null || currentPercentage >= last.getResolutionPercentage();
+
+					} else {
+						int index = logs.indexOf(trackingLog);
+
+						TrackingLog prev = index + 1 < logs.size() ? logs.get(index + 1) : null;
+						TrackingLog next = index - 1 >= 0 ? logs.get(index - 1) : null;
+
+						boolean validPrev = prev == null || currentPercentage >= prev.getResolutionPercentage();
+						boolean validNext = next == null || currentPercentage <= next.getResolutionPercentage();
+
+						correctPercentage = validPrev && validNext;
+					}
+
+					super.state(context, correctPercentage, "resolutionPercentage", "acme.validation.trackingLog.resolutionPercentage.message");
+				}
+			}
+
+			{
+				boolean indicatorPending = true;
+
+				if (trackingLog.getResolutionPercentage() == 100)
+					indicatorPending = !trackingLog.getIndicator().equals(Indicator.PENDING);
+				else
+					indicatorPending = trackingLog.getIndicator().equals(Indicator.PENDING);
+
+				super.state(context, indicatorPending, "indicator", "acme.validation.trackingLog.acceptedPending.message");
+			}
 
 		}
-
-		//Validation for attribute accepted is logical with resolutionPercentage
-		{
-			boolean indicatorPending;
-			boolean isPending = trackingLog.getIndicator().equals(Indicator.PENDING);
-			boolean isCompleted = trackingLog.getResolutionPercentage() == 100.0;
-
-			indicatorPending = !isCompleted && isPending || isCompleted && !isPending;
-
-			super.state(context, indicatorPending, "indicator", "acme.validation.trackingLog.acceptedPending.message");
-		}
-
-		//Validation of the maximum number of trackingLogs with resolutionPercentage == 100.
-		{
-			boolean trackingLogsCompleted;
-			Collection<TrackingLog> trackingLogs = this.claimRepository.findAllByClaimId(trackingLog.getClaim().getId());
-			trackingLogs = trackingLogs.stream().filter(x -> x.getResolutionPercentage() == 100.00).toList();
-			trackingLogsCompleted = trackingLogs.size() <= 2 ? true : false;
-
-			super.state(context, trackingLogsCompleted, "trackingLogsCompleted", "acme.validation.trackingLog.trackingLogsCompleted.message");
-		}
-
 		result = !super.hasErrors(context);
 
 		return result;

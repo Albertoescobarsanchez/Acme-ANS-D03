@@ -1,0 +1,19 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+flight-crew-member.flight-crew-member-dashboard.form.title = Panel del Miembro de la Tripulación
+flight-crew-member.dashboard.form.label.lastFiveDestinations = Últimos cinco destinos
+flight-crew-member.dashboard.form.label.legsWithIncidentSeverity3 = Tramos con severidad de incidente de 0 a 3
+flight-crew-member.dashboard.form.label.legsWithIncidentSeverity7 = Tramos con severidad de incidente de 4 a 7
+flight-crew-member.dashboard.form.label.legsWithIncidentSeverity10 = Tramos con severidad de incidente de 7 a 10
+flight-crew-member.dashboard.form.label.lastLegCrewMembers = Miembros en el último tramo
+flight-crew-member.dashboard.form.label.flightAssignmentsGroupedByStatus = Asignaciones agrupadas por estado
+flight-crew-member.dashboard.form.label.flightAssignmentsStatsLastMonth = Estadísticas del último año
+

@@ -19,7 +19,8 @@
 	<acme:list-column code="customer.booking.list.label.locatorCode" path="locatorCode" width="15%"/>
 	<acme:list-column code="customer.booking.list.label.travelClass" path="travelClass" width="20%"/>
 	<acme:list-column code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" width="20%"/>
+	<%-- <acme:list-column code="customer.booking.list.label.draftMode" path="draftMode" width="20%"/>  --%>
 </acme:list>
 
 <acme:button code="customer.booking.form.button.create" action="/customer/booking/create"/>
-<%-- <acme:button code="customer.booking-record.form.button.create" action="/customer/booking-record/create"/>   --%>
+<acme:button code="customer.booking-record.form.button.create" action="/customer/booking-record/create"/>  

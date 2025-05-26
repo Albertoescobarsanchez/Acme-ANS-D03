@@ -1,6 +1,7 @@
 
 package acme.forms;
 
+import java.util.List;
 import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
@@ -25,8 +26,8 @@ public class AirlineManagerDashboard extends AbstractForm {
 	private Airport					mostPopularAirport; //basado en el numero de vuelos que tengan al aeropuerto 
 	private Airport					lessPopularAirport;// como origen o destino
 	private Map<Status, Integer>	numberofLegsByStatus;
-	private Money					averageFlightCost;
-	private Money					deviationFlightCost;
-	private Money					maximumFlightCost;
-	private Money					minimumFlightCost;
+	private List<Money>				averageFlightCost;
+	private List<Money>				deviationFlightCost;
+	private List<Money>				maximumFlightCost;
+	private List<Money>				minimumFlightCost;
 }

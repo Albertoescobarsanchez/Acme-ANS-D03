@@ -13,7 +13,7 @@ import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
 import acme.entities.claim.Indicator;
 import acme.entities.leg.Leg;
-import acme.realms.AssistanceAgent;
+import acme.realms.AssistanceAgent.AssistanceAgent;
 
 @GuiService
 public class AssistanceAgentClaimPublishService extends AbstractGuiService<AssistanceAgent, Claim> {

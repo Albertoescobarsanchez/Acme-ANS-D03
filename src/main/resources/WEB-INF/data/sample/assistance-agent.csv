@@ -40,12 +40,9 @@ assistanceAgent-28,user-account-assistanceAgent-28,NS000021,"French,Spanish",201
 # salary - no singular values
 # photo - standard variations
 assistanceAgent-29,user-account-assistanceAgent-29,NS000022,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,http://lorem.com/ipsum,airline-00
-assistanceAgent-30,user-account-assistanceAgent-30,NS000023,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,ftp://a,airline-00
-assistanceAgent-31,user-account-assistanceAgent-31,NS000024,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,ftp://a.b,airline-00
 assistanceAgent-32,user-account-assistanceAgent-32,NS000025,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",airline-00
 assistanceAgent-33,user-account-assistanceAgent-33,NS000026,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",airline-00
 assistanceAgent-34,user-account-assistanceAgent-34,NS000027,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,https://www.lorem-ipsum.org,airline-00
-assistanceAgent-35,user-account-assistanceAgent-35,NS000028,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,ftp://www.lorem-ipsum.org,airline-00
 assistanceAgent-36,user-account-assistanceAgent-36,NS000029,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,http://www.lorem-ipsum.org/dolor/sit.html,airline-00
 assistanceAgent-37,user-account-assistanceAgent-37,NS000030,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,http://www.lorem-ipsum.org/dolor/sit.html#dolor,airline-00
 assistanceAgent-38,user-account-assistanceAgent-38,NS000031,"French,Spanish",2019/10/30 23:59,Multilingual agent,EUR 3000.00,http://example.org?a=1&b=2,airline-00

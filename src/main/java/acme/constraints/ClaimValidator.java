@@ -12,6 +12,10 @@ import acme.entities.leg.Leg;
 @Validator
 public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 
+	// Internal state ---------------------------------------------------------
+
+	// ConstraintValidator interface ------------------------------------------
+
 	@Override
 	protected void initialise(final ValidClaim annotation) {
 		assert annotation != null;
@@ -19,6 +23,7 @@ public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 
 	@Override
 	public boolean isValid(final Claim claim, final ConstraintValidatorContext context) {
+
 		assert context != null;
 
 		boolean result;
@@ -26,11 +31,11 @@ public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 		if (claim == null)
 			super.state(context, false, "*", "acme.validation.NotNull.message");
 		else if (claim.getLeg() != null) {
-			boolean correctLeg;
+			boolean isValid;
 			Leg leg = claim.getLeg();
-			correctLeg = MomentHelper.compare(MomentHelper.getCurrentMoment(), leg.getScheduledArrival()) > 0 ? true : false;
+			isValid = MomentHelper.compare(MomentHelper.getCurrentMoment(), leg.getScheduledArrival()) > 0 ? true : false;
 
-			super.state(context, correctLeg, "leg", "acme.validation.claim.leg.message");
+			super.state(context, isValid, "leg", "acme.validation.claim.leg.message");
 		}
 
 		result = !super.hasErrors(context);

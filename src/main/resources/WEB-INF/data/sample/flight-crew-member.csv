@@ -1,6 +1,6 @@
 key,key:userAccount,employee-code,phone-number,language-skills,status,salary,years-experience,key:airline
 flight-crew-member-01,user-account-flight-crew-member-01,AB123456,+34123456789,aleman,AVAILABLE,3200eur,5,airline-01
-flight-crew-member-02,user-account-flight-crew-member-02,CD789012,+447700900123,french,ON_VACATION,4100eur,7,airline-01
+flight-crew-member-02,user-account-flight-crew-member-02,CD789012,+447700900123,french,AVAILABLE,4100eur,7,airline-01
 flight-crew-member-03,user-account-flight-crew-member-03,EF123456,+14081234567,italian,ON_LEAVE,3500eur,3,airline-01
 flight-crew-member-04,user-account-flight-crew-member-04,GH789012,+34123456789,spanish,AVAILABLE,3200eur,5,airline-01
 flight-crew-member-05,user-account-flight-crew-member-05,GH779012,+34123459789,italian,ON_LEAVE,3200eur,5,airline-01

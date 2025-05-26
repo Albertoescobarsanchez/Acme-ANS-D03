@@ -19,7 +19,7 @@
 	<acme:input-moment code="assistance-agent.tracking-log.form.label.updateMoment" path="updateMoment" readonly="true"/>
 	<acme:input-textbox code="assistance-agent.tracking-log.form.label.step" path="step"/>
 	<acme:input-textbox code="assistance-agent.tracking-log.form.label.resolutionPercentage" path="resolutionPercentage"/>
-	<acme:input-select code="assistance-agent.tracking-log.form.label.indicator" path="indicator" choices="${indicator}" readonly="${readOnlyIndicator}"/>
+	<acme:input-select code="assistance-agent.tracking-log.form.label.indicator" path="indicator" choices="${indicator}"/>
 	<acme:input-textbox code="assistance-agent.tracking-log.form.label.resolution" path="resolution"/>
 			
 	<jstl:choose>

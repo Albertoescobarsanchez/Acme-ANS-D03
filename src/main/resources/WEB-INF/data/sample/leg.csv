@@ -1,9 +1,10 @@
 key,draftMode,key:flight,flightNumber,scheduledDeparture,scheduledArrival,status,key:departureAirport,key:arrivalAirport,key:aircraft
 #base entity
-leg-00,true,flight-12,BBB1111,2027/03/13 00:00,2027/03/13 02:00,ON_TIME,airport-01,airport-02,aircraft-00
-leg-01,true,flight-13,BBB1112,2025/03/13 00:00,2025/03/13 04:00,ON_TIME,airport-01,airport-02,aircraft-03
-leg-02,true,flight-12,BBB1113,2026/03/13 03:00,2026/03/13 04:00,ON_TIME,airport-02,airport-03,aircraft-01
-leg-03,true,flight-11,BBB1114,2015/03/13 00:00,2015/03/13 07:00,ON_TIME,airport-01,airport-02,aircraft-04
+leg-00,false,flight-12,BBB1111,2015/03/13 00:00,2015/03/13 02:00,ON_TIME,airport-01,airport-02,aircraft-00
+leg-01,false,flight-13,BBB1112,2015/03/13 00:00,2015/03/13 04:00,LANDED,airport-01,airport-02,aircraft-03
+leg-02,true,flight-12,BBB1113,2015/03/13 03:00,2015/03/13 04:00,ON_TIME,airport-02,airport-03,aircraft-01
+leg-03,false,flight-11,BBB1114,2028/03/13 00:00,2028/03/13 07:00,ON_TIME,airport-01,airport-02,aircraft-04
 leg-04,true,flight-12,BBB1115,2015/03/13 05:00,2015/03/13 07:00,ON_TIME,airport-03,airport-02,aircraft-01
-leg-05,true,flight-12,BBB1116,2015/03/13 05:00,2015/03/13 07:00,LANDED,airport-03,airport-02,aircraft-01
-leg-06,true,flight-12,BBB1117,2015/03/13 05:00,2015/03/13 07:00,LANDED,airport-03,airport-02,aircraft-01
+leg-05,true,flight-12,BBB1116,2015/03/13 08:00,2015/03/13 09:00,ON_TIME,airport-03,airport-02,aircraft-01
+leg-06,true,flight-12,BBB1117,2015/03/13 10:00,2015/03/13 11:00,ON_TIME,airport-03,airport-02,aircraft-01
+leg-07,false,flight-14,BBB1118,2015/03/14 05:00,2015/03/14 07:00,LANDED,airport-01,airport-02,aircraft-01

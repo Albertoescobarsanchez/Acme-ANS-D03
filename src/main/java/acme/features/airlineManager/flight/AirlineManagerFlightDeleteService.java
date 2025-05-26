@@ -65,17 +65,13 @@ public class AirlineManagerFlightDeleteService extends AbstractGuiService<Airlin
 	public void validate(final Flight object) {
 		assert object != null;
 		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getId()));
-
-		boolean somePublished = legs.stream().anyMatch(l -> !l.getDraftMode());
-		super.state(!somePublished, "*", "airline-manager.flight.form.error.somePublishedLegs");
+		super.state(legs.size() == 0, "*", "airline-manager.flight.form.error.deletingWithSomeLeg");
 	}
 
 	@Override
 	public void perform(final Flight object) {
 		assert object != null;
-		List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getId()));
-		for (Leg leg : legs)
-			this.repository.delete(leg);
+
 		this.repository.delete(object);
 	}
 

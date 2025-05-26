@@ -12,6 +12,9 @@
 
 package acme.features.airlineManager.flight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -59,6 +62,9 @@ public class AirlineManagerFlightUpdateService extends AbstractGuiService<Airlin
 	@Override
 	public void validate(final Flight object) {
 		assert object != null;
+		List<Flight> flights = new ArrayList<>(this.repository.findAllFlights());
+		boolean repeatedTag = flights.stream().anyMatch(flight -> flight.getId() != object.getId() && flight.getTag().equals(object.getTag()));
+		super.state(!repeatedTag, "*", "airline-manager.flight.form.error.repeatedTag");
 	}
 
 	@Override

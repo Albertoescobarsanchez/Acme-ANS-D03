@@ -18,12 +18,12 @@ airline-11,Lorem ipsum dolor sit ame,AAA,http://lorem.com/ipsum,LUXURY,2012/07/0
 airline-12,Lorem ipsum dolor sit ame,ZZZ,http://lorem.com/ipsum,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 # IATAcode - no singular values
 # website - standard variations
-airline-13,Lorem ipsum dolor sit ame,BBL,ftp://a,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
-airline-14,Lorem ipsum dolor sit ame,BBM,ftp://a.b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-13,Lorem ipsum dolor sit ame,BBL,http://example.org/a/b?a&b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-14,Lorem ipsum dolor sit ame,BBM,http://example.org/a/b?a&b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 airline-15,Lorem ipsum dolor sit ame,BBN,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 airline-16,Lorem ipsum dolor sit ame,BBO,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 airline-17,Lorem ipsum dolor sit ame,BBP,https://www.lorem-ipsum.org,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
-airline-18,Lorem ipsum dolor sit ame,BBQ,ftp://www.lorem-ipsum.org,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
+airline-18,Lorem ipsum dolor sit ame,BBQ,http://example.org/a/b?a&b,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 airline-19,Lorem ipsum dolor sit ame,BBR,http://www.lorem-ipsum.org/dolor/sit.html,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 airline-20,Lorem ipsum dolor sit ame,BBS,http://www.lorem-ipsum.org/dolor/sit.html#dolor,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393
 airline-21,Lorem ipsum dolor sit ame,BBT,http://example.org?a=1&b=2,LUXURY,2012/07/02 0:00,acme@lorem-ipsum.org,650788393

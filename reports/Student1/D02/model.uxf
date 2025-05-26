@@ -94,10 +94,10 @@ AirlineManagerDashboard
 +mostPopularAirport: Airport
 +lessPopularAirport: Airport
 +numberofLegsByStatus: Map&lt;Status, Integer&gt;
-+averageFlightCost: Money
-+deviationFlightCost: Money
-+maximumFlightCost: Money
-+minimumFlightCost: Money
++averageFlightCost: List&lt;Money&gt;
++deviationFlightCost: List&lt;Money&gt;
++maximumFlightCost: List&lt;Money&gt;
++minimumFlightCost: List&lt;Money&gt;
 bg=YELLOW</panel_attributes>
     <additional_attributes/>
   </element>

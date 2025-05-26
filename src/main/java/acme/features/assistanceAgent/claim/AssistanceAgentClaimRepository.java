@@ -5,12 +5,13 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.claim.Claim;
 import acme.entities.leg.Leg;
-import acme.realms.AssistanceAgent;
+import acme.realms.AssistanceAgent.AssistanceAgent;
 
 @Repository
 public interface AssistanceAgentClaimRepository extends AbstractRepository {
@@ -27,8 +28,8 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("SELECT c FROM Claim c WHERE c.assistanceAgent.id = :agentId")
 	Collection<Claim> findAllClaimsByAssistanceAgentId(int agentId);
 
-	@Query("SELECT l FROM Leg l WHERE l.status IN ('ON_TIME', 'DELAYED', 'LANDED') AND l.scheduledArrival < :currentMoment")
-	Collection<Leg> findAvailableLegs(Date currentMoment);
+	@Query("SELECT l FROM Leg l WHERE l.scheduledArrival < :currentMoment AND l.draftMode = false")
+	Collection<Leg> findAvailableLegs(@Param("currentMoment") Date currentMoment);
 
 	@Query("SELECT c.leg FROM Claim c WHERE c.id = :claimId")
 	Leg findLegByClaimId(int claimId);

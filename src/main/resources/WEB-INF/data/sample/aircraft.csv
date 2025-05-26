@@ -17,13 +17,10 @@ aircraft-10,McDonnell Douglas MD-80,MD80-010,2,36000,ACTIVE,Lorem ipsum dolor si
 aircraft-11,Cessna 172,C172-011,799,37000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-11
 aircraft-12,Airbus A330,A330-012,800,38000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-12
 #cargoWeight-example
-aircraft-13,Boeing 757,B757-013,530,2000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-13
-aircraft-14,Embraer E175,E175-014,540,2001,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-14
 aircraft-15,Bombardier Dash 8,Q400-015,550,49999,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-15
 aircraft-16,Boeing 767,B767-016,560,50000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-16
 #status-example
 aircraft-17,Airbus A310,A310-017,570,43000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-17
-aircraft-18,Boeing 737 MAX,B737M-018,580,44000,ACTIVE,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-18
 #details-example
 aircraft-19,Airbus A380,A380-019,590,45000,ACTIVE,L,airline-19
 aircraft-20,Boeing 707,B707-020,600,46000,UNDER_MAINTENANCE,Lo,airline-20

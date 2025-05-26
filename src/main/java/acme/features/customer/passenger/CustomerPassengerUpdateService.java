@@ -47,8 +47,8 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 
 	@Override
 	public void validate(final Passenger passenger) {
-		if (!passenger.isDraftMode())
-			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
+		//		if (!passenger.isDraftMode())
+		//			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
 	}
 
 	@Override

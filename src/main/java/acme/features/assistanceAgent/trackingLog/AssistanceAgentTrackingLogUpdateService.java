@@ -2,7 +2,6 @@
 package acme.features.assistanceAgent.trackingLog;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +13,7 @@ import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.Indicator;
 import acme.entities.trackingLog.TrackingLog;
-import acme.realms.AssistanceAgent;
+import acme.realms.AssistanceAgent.AssistanceAgent;
 
 @GuiService
 public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
@@ -33,7 +32,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		int trackingLogId = super.getRequest().getData("id", int.class);
 		TrackingLog trackingLog = this.repository.findTrackingLogById(trackingLogId);
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && trackingLog != null;
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && trackingLog != null && super.getRequest().getPrincipal().getActiveRealm().getId() == trackingLog.getClaim().getAssistanceAgent().getId();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -41,6 +40,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	public void load() {
 		TrackingLog trackingLog;
 		int id;
+
 		Date today = MomentHelper.getCurrentMoment();
 		id = super.getRequest().getData("id", int.class);
 		Claim claim = this.repository.findClaimByTrackingLogId(id);
@@ -59,17 +59,17 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		List<TrackingLog> trackingLogs = this.repository.findTrackingLogsOrderByResolutionPercentage();
-
-		if (!trackingLogs.isEmpty() && trackingLog.getResolutionPercentage() < trackingLogs.get(0).getResolutionPercentage())
-			super.state(false, "resolutionPercentage", "acme.validation.draftMode.message");
-
-		if (!trackingLog.isDraftMode())
-			super.state(false, "draftMode", "acme.validation.confirmation.message.update");
+		Indicator indicator;
+		indicator = super.getRequest().getData("indicator", Indicator.class);
+		indicator = indicator == null ? Indicator.PENDING : indicator;
+		if (indicator == null)
+			super.state(false, "indicator", "acme.validation.claim.trackingLog.indicator");
 	}
 
 	@Override
 	public void perform(final TrackingLog trackingLog) {
+		trackingLog.setUpdateMoment(MomentHelper.getCurrentMoment());
+
 		this.repository.save(trackingLog);
 	}
 

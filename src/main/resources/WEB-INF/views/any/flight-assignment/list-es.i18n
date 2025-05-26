@@ -1,0 +1,10 @@
+any.flight-assignment.list.title = Lista de asignaciones de vuelo
+
+flight-crew-member.flight-assignment.list.label.duty = Cargo
+flight-crew-member.flight-assignment.list.label.lastUpdate = Última actualización
+flight-crew-member.flight-assignment.list.label.status = Estado
+flight-crew-member.flight-assignment.list.label.remarks = Anotaciones
+flight-crew-member.flight-assignment.list.label.draftMode = Modo borrador
+flight-crew-member.flight-assignment.list.label.flightNumber = Nº de vuelo
+
+flight-crew-member.flight-assignment.list.button.create = Crear

@@ -33,11 +33,7 @@ public class AnyFlightShowService extends AbstractGuiService<Any, Flight> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int flightId = super.getRequest().getData("id", int.class);
-		Flight flight = this.repository.findFlightById(flightId);
-		status = flight != null && !flight.getDraftMode();
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override

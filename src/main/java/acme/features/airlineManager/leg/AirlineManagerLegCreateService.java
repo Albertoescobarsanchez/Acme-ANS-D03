@@ -71,20 +71,19 @@ public class AirlineManagerLegCreateService extends AbstractGuiService<AirlineMa
 	@Override
 	public void validate(final Leg object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("scheduledDeparture") && !super.getBuffer().getErrors().hasErrors("scheduledArrival") && !super.getBuffer().getErrors().hasErrors("departureAirport")
-			&& !super.getBuffer().getErrors().hasErrors("arrivalAirport") && !super.getBuffer().getErrors().hasErrors("aircraft")) {
-			super.state(object.getFlightNumber().startsWith(object.getFlight().getAirlineManager().getAirline().getIataCode()), "flightNumber", "airline-manager.leg.form.error.flightNumberNotStartingWithAirlineIATACode");
-
-			boolean duplicatedNumber = this.repository.findLegsByAirlineId(object.getFlight().getAirlineManager().getAirline().getId()).stream().anyMatch(leg -> leg.getFlightNumber().equals(object.getFlightNumber()) && leg.getId() != object.getId());
-			super.state(!duplicatedNumber, "flightNumber", "airline-manager.leg.form.error.duplicatedFlightNumber");
+		super.state(object.getFlightNumber().startsWith(object.getFlight().getAirlineManager().getAirline().getIataCode()), "flightNumber", "airline-manager.leg.form.error.flightNumberNotStartingWithAirlineIATACode");
+		boolean duplicatedNumber = this.repository.findLegsByAirlineId(object.getFlight().getAirlineManager().getAirline().getId()).stream().anyMatch(leg -> leg.getFlightNumber().equals(object.getFlightNumber()) && leg.getId() != object.getId());
+		super.state(!duplicatedNumber, "flightNumber", "airline-manager.leg.form.error.duplicatedFlightNumber");
+		if (!super.getBuffer().getErrors().hasErrors("scheduledDeparture") && !super.getBuffer().getErrors().hasErrors("scheduledArrival")) {
 
 			super.state(object.getScheduledDeparture().before(object.getScheduledArrival()), "scheduledArrival", "airline-manager.leg.form.error.arrivalBeforeDeparture");
 
-			super.state(!object.getDepartureAirport().getIataCode().equals(object.getArrivalAirport().getIataCode()), "arrivalAirport", "airline-manager.leg.form.error.arrivalAirportCannotBeEqualThanDepartureAirport");
-
 			List<Leg> legs = new ArrayList<>(this.repository.findLegsByFlightId(object.getFlight().getId()));
-			super.state(!legs.stream().anyMatch(leg -> leg.getId() != object.getId() && leg.getScheduledArrival().after(object.getScheduledDeparture())), "*", "airline-manager.leg.form.error.legDepartureBeforeExistingLegArrival");
+			boolean departureBeforeSomeArrival = legs.stream().anyMatch(leg -> leg.getId() != object.getId() && leg.getScheduledArrival().after(object.getScheduledDeparture()));
+			super.state(!departureBeforeSomeArrival, "*", "airline-manager.leg.form.error.legDepartureBeforeExistingLegArrival");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("departureAirport") && !super.getBuffer().getErrors().hasErrors("arrivalAirport"))
+			super.state(!object.getDepartureAirport().getIataCode().equals(object.getArrivalAirport().getIataCode()), "arrivalAirport", "airline-manager.leg.form.error.arrivalAirportCannotBeEqualThanDepartureAirport");
 
 	}
 

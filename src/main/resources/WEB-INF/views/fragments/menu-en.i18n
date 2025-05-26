@@ -45,9 +45,10 @@ master.menu.user-account.become-manager = Become an airline manager
 master.menu.user-account.consumer-manager = Airline manager profile
 master.menu.user-account.become-member = Become a flight crew member
 master.menu.user-account.member-profile = Flight crew member
-master.menu.airline-manager = Airline Manager
 
+master.menu.airline-manager = Airline Manager
 master.menu.airline-manager.flight.list = Flights
+master.menu.airline-manager.dashboard = Dashboard
 
 master.menu.flight-crew-member = Flight crew member
 master.menu.flight-crew-member.flight-assignment.list.completed = List of completed flights
@@ -67,3 +68,5 @@ master.menu.customer.booking-record.list = Passengers Bookings
 
 master.menu.any = Any
 master.menu.any.flights = Flights
+master.menu.any.flight-assignment = Flights assignments
+master.menu.dashboards.flight-crew-member-dashboard = Flight crew member dashboard

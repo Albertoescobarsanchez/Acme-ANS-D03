@@ -9,10 +9,13 @@
 # they accept any liabilities with respect to them.
 
 customer.booking-record.list.title = Bookings record list
-customer.booking-record.form.title = Create booking record
+customer.booking-record.form.title = Booking record data
 
 customer.booking-record.list.label.passenger = Passenger
 customer.booking-record.list.label.booking = Booking
+
+customer.booking-record.form.button.create = Create Booking Record
+customer.booking-record.form.button.delete = Delete Booking Record
 
 acme.validation.confirmation.message.booking-record.create = That relation is already created
 acme.validation.confirmation.message.booking-record.create.booking = The booking must not be null

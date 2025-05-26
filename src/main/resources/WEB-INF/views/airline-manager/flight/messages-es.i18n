@@ -38,4 +38,5 @@ airline-manager.leg.form.button.list = Tramos
 
 airline-manager.flight.form.error.publishingWithoutAnyLeg = No es posible publicar un vuelo sin ningún tramo
 airline-manager.flight.form.error.notPublishedLegs = No es posible publicar un vuelo sin publicar todos sus tramos
-airline-manager.flight.form.error.somePublishedLegs = No se puede borrar un vuelo con algún tramo publicado
+airline-manager.flight.form.error.deletingWithSomeLeg = No se puede borrar un vuelo con algún tramo
+airline-manager.flight.form.error.repeatedTag = Etiqueta repetida

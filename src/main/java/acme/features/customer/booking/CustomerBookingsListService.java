@@ -10,7 +10,6 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.realms.Customer;
-// 5a) porque no pertenece a la zona hija
 
 @GuiService
 public class CustomerBookingsListService extends AbstractGuiService<Customer, Booking> {

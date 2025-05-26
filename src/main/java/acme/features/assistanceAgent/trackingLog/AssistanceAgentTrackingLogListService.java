@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLog.TrackingLog;
-import acme.realms.AssistanceAgent;
+import acme.features.assistanceAgent.claim.AssistanceAgentClaimRepository;
+import acme.realms.AssistanceAgent.AssistanceAgent;
 
 @GuiService
 public class AssistanceAgentTrackingLogListService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
@@ -17,15 +19,28 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AssistanceAgentTrackingLogRepository repository;
+	private AssistanceAgentTrackingLogRepository	repository;
+
+	@Autowired
+	private AssistanceAgentClaimRepository			claimRepository;
 
 	// AbstractGuiService interface ------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean isAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		super.getResponse().setAuthorised(isAgent);
+		boolean status;
+		Collection<TrackingLog> trackingLogs;
+		int claimId = super.getRequest().getData("id", int.class);
+		trackingLogs = this.repository.findTrackingLogsByClaimId(claimId);
+		Claim claim = this.claimRepository.findClaimById(claimId);
+
+		boolean status2 = true;
+		if (!trackingLogs.isEmpty())
+			status2 = trackingLogs.stream().toList().get(0).getClaim().getId() == claimId;
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && claim != null && super.getRequest().getPrincipal().getActiveRealm().getId() == claim.getAssistanceAgent().getId() && status2;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

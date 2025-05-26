@@ -18,14 +18,14 @@ customer.booking.list.label.purchaseMoment = Momento de compra
 customer.booking.list.label.lastNibble = Últimos digitos de la tarjeta
 customer.booking.list.label.price = Precio
 customer.booking.list.label.passenger = Pasajeros
-customer.booking.list.label.draftMode = Es borrador
+customer.booking.list.label.draftMode = Modo borrador
 
 customer.booking.form.button.create = Crear reserva
 customer.booking.form.button.update = Editar reserva
 customer.booking.form.button.publish = Publicar reserva
 customer.booking.form.button.passenger = Lista de pasajeros
 customer.booking-record.form.button.create = Crear un registro de reserva
-#customer.booking.form.button.delete = Eliminar reserva
+customer.booking.form.button.delete = Eliminar reserva
 
 acme.validation.confirmation.message.lastNibble = Los últimos digitos de la tarjeta de crédito deberán ser rellenados si la reserva es publicada
 acme.validation.confirmation.message.update = Una reserva no puede ser actualizada si está publicada
